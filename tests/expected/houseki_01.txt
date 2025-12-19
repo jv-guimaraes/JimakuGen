@@ -1,0 +1,346 @@
+[23330ms - 24500ms] Well...
+[25750ms - 27290ms] time for work.
+[49330ms - 50530ms] Ah, right.
+[51440ms - 53530ms] Phos! I know you're here!
+[53530ms - 54610ms] Phos!
+[57320ms - 59370ms] Master Adamant is looking for you.
+[68380ms - 69650ms] Why is that?
+[69650ms - 70550ms] Beats me.
+[70550ms - 72170ms] Wait, you don't think...
+[72710ms - 74970ms] maybe Master wants me to join you all in battle?
+[74970ms - 76340ms] I highly doubt that.
+[77220ms - 80640ms] I see even an ace like yourself is worried about what I might be capable of!
+[80640ms - 82520ms] "Might  be capable of"?
+[82520ms - 84690ms] Do you still not have a job?
+[84690ms - 85600ms] Morga!
+[86600ms - 87230ms] Goshe?
+[87230ms - 88520ms] We don't have time for this!
+[89070ms - 91230ms] There's sunspot activity in the sky to the south.
+[91230ms - 93440ms] It's small, but we need to alert Master!
+[93440ms - 94440ms] All right.
+[94440ms - 96530ms] If it's small, let's just fight it off ourselves!
+[96530ms - 97530ms] What?!
+[97530ms - 98490ms] Don't go getting haughty!
+[98490ms - 99700ms] It'll be fine!
+[99700ms - 102490ms] We need to cut Master a break sometimes.
+[102490ms - 104830ms] He's older than he looks after all.
+[104830ms - 106370ms] You hurry on back now!
+[108370ms - 110080ms] Jerk.
+[110080ms - 112460ms] Acting busy and all that...
+[113170ms - 114210ms] Okay!
+[114210ms - 116340ms] Today's the day then.
+[123850ms - 127230ms] Wait! Gotta make the right impression.
+[128390ms - 130900ms] Perfect! Cute!
+[130900ms - 132440ms] Dignified!
+[134060ms - 135690ms] Phos is as lively as ever, huh?
+[135690ms - 137780ms] I just hope he won't cause trouble.
+[138210ms - 139160ms] Reporting!
+[140570ms - 141660ms] Come.
+[144080ms - 146430ms] You called for me, Master Adamant?
+[146430ms - 147540ms] Yes.
+[153170ms - 158420ms] Phosphophyllite, at last, I have a job for you.
+[165190ms - 166500ms] We can handle this.
+[166500ms - 167430ms] Yeah.
+[203130ms - 203510ms] Oh!
+[203510ms - 210080ms] Master, just a little while ago, Morga and Goshe said they saw one of the Lunarian sunspots.
+[210600ms - 212900ms] But, since it was small, they said they'd...
+[213690ms - 214440ms] Master?
+[242680ms - 243470ms] What?!
+[247310ms - 249080ms] That didn't stop it?!
+[249080ms - 250890ms] And look at the color of those arrowheads...
+[251640ms - 254400ms] Aren't those pieces from Heliodor's capture?
+[254400ms - 256560ms] How could they do that?
+[256560ms - 257650ms] It's perfect.
+[258570ms - 260860ms] Let's take back every last piece!
+[262820ms - 265700ms] They come to harvest us as jewelry.
+[265700ms - 269040ms] While their hunters sweep down  in countless numbers from the moon,
+[269040ms - 271160ms] there are but 28 of us.
+[271160ms - 274870ms] The skilled among us work in pairs. Some keep lookout.
+[274870ms - 275960ms] Some fight.
+[275960ms - 281630ms] Each of us has our own skills which we use to fulfill our goals and help one another.
+[283010ms - 288140ms] But you seemed fit for none, and I was at a loss.
+[288140ms - 292520ms] With your physical condition and incomparable clumsiness,
+[292520ms - 297460ms] I could find nothing to rely on you for.
+[297460ms - 300230ms] Why not just have me fight then?
+[300230ms - 302320ms] Fight, you say?
+[303610ms - 306910ms] Well, I mean, that's the only thing we've never tried, right?
+[308950ms - 311200ms] You would do best to give up on that.
+[325420ms - 326430ms] Yikes.
+[326430ms - 328640ms] Looking out for your elders, are you?
+[329390ms - 330810ms] Here it comes! Fall back!
+[332270ms - 333560ms] You're still incapable!
+[333560ms - 336440ms] You fools!
+[341860ms - 343150ms] Oh, dear.
+[346150ms - 347910ms] You are particularly fragile,
+[348420ms - 350740ms] and your hardness is only three and a half.
+[350740ms - 353910ms] Simply brushing into someone is more than enough to break you.
+[353910ms - 357120ms] Moreover, the Lunarians are fond of your peppermint color.
+[357120ms - 360000ms] To overcome all those weaknesses,
+[360000ms - 363170ms] you would need to be able to wipe out an entire army in one fell swoop.
+[363170ms - 365720ms] You would need to be stronger than myself.
+[365720ms - 367630ms] Like that'll happen!
+[367630ms - 368890ms] Which is why I decided...
+[371930ms - 374220ms] that you should compile our encyclopedia.
+[374640ms - 375430ms] Wh—
+[376180ms - 377390ms] What?!
+[377390ms - 378140ms] You're gonna spill!
+[378140ms - 379230ms] That's so boring!
+[379230ms - 380190ms] Quite the contrary.
+[380190ms - 385610ms] By compiling an encyclopedia, you will both preserve the present and prepare for the future.
+[385610ms - 389200ms] It is an important role which requires creativity and intelligence.
+[389200ms - 391410ms] The key to battle is a keen eye.
+[391410ms - 396090ms] If you wish to fight, first train your eyes through this task.
+[396090ms - 397960ms] I know you're just trying to trick me into it!
+[397960ms - 401000ms] Only you've got the guts to back sass Master.
+[401000ms - 403960ms] Big talk for someone who doesn't ever do a thing around here.
+[403960ms - 405210ms] Who asked you?!
+[405210ms - 408720ms] But it is that very frankness of yours that is needed for this task.
+[408720ms - 410260ms] I'm counting on you.
+[411300ms - 412720ms] Need any help?
+[412720ms - 413760ms] Nope.
+[413760ms - 417480ms] You put my legs on backwards last time, so no thanks.
+[417480ms - 419970ms] Hmph, haven't forgotten that, huh?
+[419970ms - 421520ms] Hey! Stop!
+[421520ms - 423060ms] Don't you have an encyclopedia to write?
+[423060ms - 426480ms] No one's ever going to need it anyway, and it's just a pain to deal with!
+[426480ms - 427990ms] Sounds like you!
+[427990ms - 429030ms] Oh, shut up!
+[429030ms - 430240ms] Tell me, Rutile...
+[430950ms - 432110ms] What is it?
+[433950ms - 438700ms] Helio's in pieces, but if we get them all back, you can reform him, right?
+[438700ms - 439830ms] Of course.
+[440620ms - 445710ms] Our bodies are home to microscopic  organisms called "inclusions," you see.
+[446460ms - 448920ms] Thanks to them, even if we break into pieces,
+[448920ms - 453800ms] as long as we collect enough parts, we can be put back together.
+[454340ms - 457220ms] It's a wonderful characteristic of ours seen in no other living being.
+[457720ms - 463900ms] But, because of that, we have grown completely incapable of letting anything go.
+[464860ms - 466650ms] There you are. Good as new.
+[467270ms - 468780ms] Let's head back out there then.
+[472240ms - 473530ms] Watch it!
+[473530ms - 476280ms] You're the one who would break if we bumped into each other, you three-and-a-half!
+[476280ms - 478580ms] I'm quite used to it, O Great Seven.
+[478580ms - 479160ms] Take me wi—
+[479160ms - 479870ms] Absolutely not!
+[479870ms - 481000ms] You have to!
+[481000ms - 484580ms] If I hadn't told Master Adamant, the both  of you would be out on the moon right now!
+[484580ms - 485840ms] Don't forget it!
+[485840ms - 489550ms] Rutile, you sure you can't switch the hardness of his body for the hardness of his head?
+[489550ms - 494050ms] Come on, just get me out of this lame job, would you?!
+[494050ms - 495970ms] You really hate it that much, do you?
+[495970ms - 498310ms] Of course! I want a cooler job!
+[498310ms - 500310ms] Want to trade places then?
+[504770ms - 507730ms] I'm not so pitiful as to take what doesn't belong to me...
+[508320ms - 510610ms] is what you probably thought I'd say!
+[510650ms - 511570ms] You were mistaken!
+[511570ms - 512650ms] That's heavy, you know!
+[514950ms - 516440ms] Maybe this will teach you a lesson.
+[516440ms - 518240ms] I just finished putting you back together...
+[524960ms - 526500ms] Thank goodness!
+[527250ms - 529880ms] I didn't think you'd really take it!
+[530250ms - 531090ms] Hey...
+[531090ms - 532920ms] you were hoping it would hit me, weren't you?
+[532920ms - 533630ms] You got me.
+[535890ms - 537850ms] Jeez. All right.
+[537850ms - 539510ms] Fine then.
+[541680ms - 543930ms] My only friend here...
+[544350ms - 545940ms] is you.
+[550960ms - 552190ms] Right, so...
+[552690ms - 556240ms] Let me guess: "What is an encyclopedia anyway?"
+[556240ms - 557320ms] Woah, it's blank?!
+[557320ms - 558200ms] Don't peek!
+[558200ms - 561100ms] You were hard at work putting this off, huh?
+[561100ms - 561620ms] I'm amazed.
+[561620ms - 564040ms] No! I'm just working out a greater overall concept!
+[564040ms - 568580ms] I heard that encyclopedias are supposed to categorize everything in nature itself.
+[568580ms - 569920ms] Share your wisdom, Goshe!
+[569920ms - 571000ms] Like how though?
+[571960ms - 575170ms] Maybe recording all the bugs and plants along the shore?
+[575170ms - 576470ms] Gonna need more than that.
+[576470ms - 580260ms] We know all about the things we use, so maybe the things we don't use?
+[580260ms - 581930ms] Almost there—give me more!
+[582680ms - 586330ms] We aren't really that familiar with this stuff, sorry.
+[586330ms - 588940ms] Lookouts like us always have our eyes on the skies...
+[589690ms - 591520ms] Cinnabar might know though.
+[592730ms - 593690ms] Cinnabar...
+[593690ms - 595070ms] Why don't you go ask?
+[595070ms - 596360ms] I can't do that!
+[596360ms - 597780ms] I can't go up to him!
+[597780ms - 599280ms] We've never even spoken!
+[599280ms - 602330ms] But he might know more than us.
+[602330ms - 606620ms] Anyway, good luck on your wild discoveries, Master Scholar.
+[606620ms - 609500ms] Master Scholar...
+[611340ms - 612420ms] All right!
+[612420ms - 613380ms] Idiot.
+[615210ms - 617420ms] Cinnabar, huh? Nope.
+[617420ms - 620220ms] I should probably ask Master Adamant instead...
+[620760ms - 622220ms] Nope, that'd be even worse.
+[622220ms - 624470ms] Half a day of lecture at least.
+[624470ms - 627980ms] Still, I'm not really getting anywhere on my own.
+[627980ms - 630390ms] I wouldn't mind making some big new discovery though.
+[630390ms - 631480ms] Okay!
+[631900ms - 635590ms] The Master Scholar must be open to the opinions of others.
+[635590ms - 637690ms] Huh? Something new?
+[637690ms - 639820ms] I only know about the stuff I work with.
+[639820ms - 643330ms] But, hey, I want to fix this chair,  so could you just hold that there?
+[643330ms - 645200ms] Oh! Nice timing, Phos!
+[645200ms - 646580ms] Can you model this for me?
+[646580ms - 648830ms] I heard you're working on an encyclopedia...
+[648830ms - 651880ms] We're running low on hemp this year, so don't go wasting paper!
+[651880ms - 657420ms] I know all about glues and powders, but you want something no one has used before, huh?
+[658260ms - 658880ms] Ah.
+[659550ms - 662970ms] Cinnabar out on night watch  might know something if you ask.
+[662970ms - 664850ms] Oh, come on!
+[664850ms - 667400ms] Wouldn't you know more than anyone?
+[667400ms - 669730ms] Are you just brushing me off  'cause you're busy, you quack?
+[669730ms - 672440ms] Maybe your mouth is in need of an emergency operation.
+[672440ms - 674400ms] Ew! Don't use that hand!
+[674770ms - 680380ms] I mean, I know Cinnabar walks every nook along the shore, but it's always at night, right?
+[680380ms - 683700ms] Can Cinnabar even see anything? The rest of us barely function at night.
+[683700ms - 691330ms] Indeed, the rest of us feed off the sun and are not built for the night, which makes things dangerous.
+[691330ms - 692880ms] But Cinnabar...
+[695340ms - 703760ms] Cinnabar's endless silvery poison pulls in the faint night light and allows for patrols in the dark.
+[704510ms - 705510ms] But...
+[709680ms - 713600ms] The Lunarians have never shown themselves at night.
+[713600ms - 717880ms] What? Then why even have a lookout at night?
+[717880ms - 721240ms] No matter how unlikely, that is his job.
+[721970ms - 723910ms] If you do go out there, be careful.
+[723910ms - 726240ms] It's not like I want to go see him.
+[726240ms - 728040ms] You probably know this already, but...
+[728040ms - 732410ms] if any part of you comes in contact with his poison, light will no longer pass through it.
+[732410ms - 734460ms] It will have to be chipped off of you.
+[734970ms - 739960ms] And you will lose all the memories held within those chipped pieces.
+[742340ms - 743380ms] Hey, you!
+[743380ms - 748140ms] Quit wasting time on that useless job of yours and help me discover something grand!
+[748140ms - 751850ms] Wow! You'll let me help you, O Great Master Scholar?
+[751850ms - 753150ms] Indeed.
+[753150ms - 756930ms] And, just like that, I'll make Cinnabar my assistant.
+[756930ms - 761690ms] Then I'll finish the encyclopedia, make some grand discovery,
+[761690ms - 763570ms] earn everyone's admiration,
+[763570ms - 766370ms] and then they'll realize I must have what it takes to join the battle.
+[766370ms - 768530ms] Oh, yeah, that's it!
+[768530ms - 769620ms] Benito!
+[769620ms - 772750ms] Now, I do believe your room is right next to Cinnabar's.
+[772750ms - 774120ms] Lead the way!
+[774730ms - 776130ms] Why do you even wanna know?
+[781100ms - 784380ms] He can't control his poison, you know?
+[784380ms - 787760ms] Maybe it was just too much to bear, but Cinnabar's been gone a long while now.
+[787760ms - 792430ms] Benito, are you sure it wasn't because you said something mean to my little helper?
+[792430ms - 793430ms] Of course not!
+[793430ms - 794940ms] Who do you think I am? You?
+[794940ms - 796520ms] And what do you mean, your "helper"?
+[798120ms - 799150ms] Give it up, Phos.
+[800000ms - 802530ms] Poison is as natural as breathing to him,
+[802530ms - 805740ms] and he knows to stay away from us  so he doesn't cause trouble.
+[806980ms - 809240ms] But, honestly...
+[809580ms - 812080ms] just being near Cinnabar leaves me uneasy.
+[814380ms - 816330ms] Cinnabar's a bother just by existing...
+[817410ms - 821250ms] Who'd have thought someone was  even more good-for-nothing than me?
+[821840ms - 826630ms] I dunno why he'd do such a pointless, useless, thankless job.
+[826630ms - 828180ms] Not at all.
+[828180ms - 829350ms] Why not just quit?
+[841900ms - 843150ms] Nowhere to be found.
+[844650ms - 849240ms] Come on, help a Master Scholar out here.
+[850540ms - 853830ms] Cinnabar, where are you?
+[860170ms - 864170ms] If you aren't out on this cliff, that means you're either...
+[864170ms - 866090ms] out in the ocean or up in the sk—
+[876270ms - 880850ms] Why would anyone come at twilight, I wondered, but of course it's you, Three-and-a-Half!
+[887110ms - 888070ms] Damn...
+[889880ms - 891160ms] Why now?
+[891730ms - 895990ms] My breathing kills the grass and earth itself...
+[896620ms - 899790ms] I don't want to ruin any more.
+[900640ms - 902170ms] I don't want to be seen anymore.
+[902750ms - 904590ms] Not like this...
+[906090ms - 907130ms] I don't want to fight...
+[908470ms - 910010ms] I don't want to fight...
+[910010ms - 911680ms] I don't want t—
+[926110ms - 926730ms] Cinnabar!
+[983980ms - 985630ms] I never asked for help.
+[991260ms - 992630ms] Cinnabar...
+[1004020ms - 1007650ms] I'm the weakest out of all 28 of us...
+[1008820ms - 1010030ms] Hardness: two.
+[1013030ms - 1013860ms] There.
+[1014600ms - 1016640ms] I've chipped away all the contaminated spots.
+[1017540ms - 1019180ms] Do you remember who I am?
+[1019830ms - 1020790ms] A quack.
+[1020790ms - 1022840ms] Perhaps it was worse than I thought.
+[1022840ms - 1024500ms] Let's carve that right out of you.
+[1024500ms - 1025330ms] An excellent doctor!
+[1025330ms - 1028170ms] Well, that's the best I can do.
+[1032280ms - 1034220ms] I've never had to be chipped before.
+[1034220ms - 1036220ms] Have you forgotten anything?
+[1038130ms - 1042540ms] I don't really know yet,  but I definitely won't forget today...
+[1043210ms - 1046400ms] Cinnabar didn't want to fight, but still saved me.
+[1046400ms - 1049400ms] Indeed. Quite shrewd.
+[1050240ms - 1053550ms] Unfortunately, the area there is now stagnant.
+[1053550ms - 1056360ms] The water, flora, and fauna will be of no use for some time.
+[1058670ms - 1060880ms] Phos, the truth is...
+[1061800ms - 1064720ms] Cinnabar is incredibly bright and gifted,
+[1064720ms - 1069210ms] but, because his touch brings ruin, we have no way of handling it.
+[1069210ms - 1070920ms] So we have forced him out into the night.
+[1071300ms - 1073050ms] Is that all we can do?
+[1073050ms - 1079680ms] Rigorous, meaningful work is the best medicine against questioning one's place in the world.
+[1080100ms - 1087730ms] We cannot die, so we must simply face these problems as they are until we eventually find an answer.
+[1088190ms - 1093170ms] Or perhaps you'll find a place for Cinnabar for us?
+[1093170ms - 1094690ms] Aren't you looking for a big discovery?
+[1096570ms - 1098570ms] How am I supposed to do that?
+[1098570ms - 1101780ms] Even you and Master Adamant  couldn't think of anything else, right?
+[1102280ms - 1106080ms] Tell me, though: where did  Cinnabar stay during the day?
+[1106870ms - 1110540ms] Just sort of appeared when I went up that cliff to the north.
+[1110540ms - 1112170ms] The Cape of Emptiness?
+[1112170ms - 1114550ms] Yeah, there, at just the right moment.
+[1114550ms - 1120210ms] The Cape of Emptiness is the most dangerous of locations and where Heliodor was stolen away from us.
+[1120210ms - 1122760ms] I can't imagine Cinnabar would stay there long...
+[1124890ms - 1125850ms] Oh, Phos.
+[1129410ms - 1130310ms] Dia...
+[1131380ms - 1133020ms] I'm glad to see you're well.
+[1135010ms - 1136690ms] You must be careful out there.
+[1137720ms - 1138650ms] Yeah...
+[1149830ms - 1150920ms] I don't know.
+[1152880ms - 1154710ms] I guess I might as well jot it down.
+[1158170ms - 1158840ms] Hey.
+[1161890ms - 1163450ms] Cinnabar...
+[1163450ms - 1164850ms] Haven't you had enough already?
+[1164850ms - 1167100ms] Th-This is my job! I'm not here by choice!
+[1167100ms - 1169720ms] And why are you even here again anyway?
+[1169720ms - 1172180ms] Helio got taken here! It's dangerous, you know?
+[1172840ms - 1173700ms] It is.
+[1174660ms - 1175690ms] And I...
+[1178560ms - 1182410ms] I'm waiting here until I'm swept away.
+[1184780ms - 1188540ms] At least on the moon they might make use of me.
+[1190010ms - 1192120ms] I've been waiting, but they never come.
+[1193260ms - 1196630ms] Yet, the second you arrive, they show up.
+[1199650ms - 1201340ms] Must be nice.
+[1201340ms - 1202760ms] Desired even by our enemy...
+[1210410ms - 1212270ms] There are two species along the south beach.
+[1212270ms - 1214290ms] Three species on the Twin Shores.
+[1214290ms - 1215780ms] One in the Inter Plain.
+[1215780ms - 1217610ms] One on White Hill.
+[1217610ms - 1223070ms] I don't know if any are major discoveries, but I've seen unnamed, unused plants out there.
+[1223070ms - 1225360ms] Rutile came out to treat me this morning.
+[1225360ms - 1227720ms] That's all you need from me, right?
+[1227720ms - 1229000ms] Now stay out of my way.
+[1229790ms - 1232360ms] I'd like you to help me!
+[1232830ms - 1233620ms] I don't want to.
+[1233620ms - 1235320ms] F-Fine!
+[1235320ms - 1243380ms] Well, I'm going to find something more fun  than the night watch that only you can do then!
+[1245510ms - 1246300ms] So just...
+[1248560ms - 1250680ms] don't say you're leaving for the moon!
+[1251830ms - 1252890ms] Got it?!
+[1263560ms - 1264880ms] Hey.
+[1264880ms - 1266070ms] Are you all right?
+[1267610ms - 1270160ms] What then? What is it?
+[1270160ms - 1272200ms] What can only you do?
+[1273560ms - 1275900ms] I couldn't sleep 'cause something was flapping around,
+[1275900ms - 1278730ms] and I find he left this here.
+[1278730ms - 1280590ms] How careless can he get?
+[1281240ms - 1282880ms] You big dummy.
+[1282880ms - 1284050ms] Not my problem.
+[1289740ms - 1291180ms] You big dummy.
+[1291180ms - 1293290ms] This handwriting is horrendous.
+[1293290ms - 1295230ms] And these pictures are just as bad.
+[1295230ms - 1296140ms] What's even in this?
+[1307980ms - 1309450ms] I want to be free of the night.
+[1310320ms - 1313250ms] But it won't happen. I refuse to believe him.
+[1320680ms - 1322920ms] This stupid thing...
+[1323740ms - 1325380ms] But, still...
+[1326840ms - 1329470ms] I don't want you to go away.

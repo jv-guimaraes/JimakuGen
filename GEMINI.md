@@ -59,7 +59,8 @@ python main.py sample/Yofukashi_no_Uta_01.mkv
 The script generates a new subtitle file in the same directory as the input video, with the extension `.ja.generated.srt`.
 
 ## Project Structure
-*   `main.py`: The core script containing all logic for media processing, API interaction, and subtitle generation.
+*   `main.py`: The core script containing the workflow logic (file I/O, API interaction).
+*   `subtitle_extractor.py`: Module for analyzing video files, selecting the best English subtitle track, and extracting/cleaning dialogue events.
 *   `requirements.txt`: Python package dependencies.
 *   `cache/`: Directory where intermediate transcription results are stored.
 *   `sample/`: Directory containing sample video and subtitle files.

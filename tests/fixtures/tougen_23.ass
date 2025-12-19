@@ -1,0 +1,361 @@
+[Script Info]
+Title: English (US)
+ScriptType: v4.00+
+YCbCr Matrix: TV.601
+PlayResX: 640
+PlayResY: 360
+Update Details: v2 - using final video
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[Aegisub Project Garbage]
+Last Style Storage: Third-Party
+Audio File: CR_TougenAnki_S1E23.0_TOUSIM0023_354885_video_ja-jp_J5921208.mp4
+Video File: CR_TougenAnki_S1E23.0_TOUSIM0023_354885_video_ja-jp_J5921208.mp4
+Video AR Mode: 4
+Video AR Value: 1.777778
+Video Zoom Percent: 0.625000
+Scroll Position: 315
+Active Line: 325
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: BD DX,Roboto Medium,71,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: Default,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: OS,Arial,18,&H00FFFFFF,&H0000FFFF,&H00000000,&H7F404040,-1,0,0,0,100,100,0,0,1,2,1,8,1,1,15,0
+Style: On Top,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: Italics,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: DefaultLow,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: B1,Arial,32,&H00FFFFFF,&H0000FFFF,&H00000000,&H7F404040,-1,0,0,0,100,100,0,0,1,2,1,2,70,70,30,0
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:08.28,0:00:10.70,Italics,NTP,0,0,0,,Lighting a beacon of hope\Nat the journey's end
+Dialogue: 0,0:00:10.70,0:00:14.20,Italics,NTP,0,0,0,,Walking on instinct, ignoring the noise
+Dialogue: 0,0:00:14.20,0:00:17.46,Italics,NTP,0,0,0,,Searching for the real thing,\Nthough admittedly a little uncertain
+Dialogue: 0,0:00:17.46,0:00:20.12,Italics,NTP,0,0,0,,I chase after your shadow
+Dialogue: 0,0:00:20.12,0:00:23.13,Italics,NTP,0,0,0,,Win or lose, it was all-or-nothing
+Dialogue: 0,0:00:23.13,0:00:24.75,Italics,NTP,0,0,0,,This game of moral justice,\Ngood and evil
+Dialogue: 0,0:00:24.75,0:00:26.51,Italics,NTP,0,0,0,,Two sides of the same coin,\Nentangled in rules
+Dialogue: 0,0:00:26.51,0:00:27.72,Italics,NTP,0,0,0,,Flames wrapped in righteousness
+Dialogue: 0,0:00:27.72,0:00:29.84,Italics,NTP,0,0,0,,"Only God knows our fate"
+Dialogue: 0,0:00:29.84,0:00:31.55,Italics,NTP,0,0,0,,That's just a coward's way out
+Dialogue: 0,0:00:31.55,0:00:33.30,Italics,NTP,0,0,0,,If you're going to bear a grudge,\Nthen be ready
+Dialogue: 0,0:00:33.30,0:00:35.26,Italics,NTP,0,0,0,,If you've made up your mind,\Nsee it through
+Dialogue: 0,0:00:35.26,0:00:36.72,Italics,NTP,0,0,0,,Yeah, shake it off, shake it off
+Dialogue: 0,0:00:36.72,0:00:38.39,Italics,NTP,0,0,0,,Let all this absurdity shatter to pieces
+Dialogue: 0,0:00:38.39,0:00:41.27,Italics,NTP,0,0,0,,Beyond the inner conflict,\Nmy thoughts are with you
+Dialogue: 0,0:00:41.27,0:00:42.10,Italics,NTP,0,0,0,,As the days flow by
+Dialogue: 0,0:00:42.10,0:00:44.19,Italics,NTP,0,0,0,,I hear the voices of my friends\Nracing through my mind
+Dialogue: 0,0:00:44.19,0:00:47.15,Italics,NTP,0,0,0,,In the sound of impermanence\Nechoing all around
+Dialogue: 0,0:00:48.49,0:00:51.07,Italics,NTP,0,0,0,,Living in chaos, mad and unrestrained
+Dialogue: 0,0:00:51.07,0:00:54.70,Italics,NTP,0,0,0,,My heart's fate,\Ndrawn at random like an Amidakuji
+Dialogue: 0,0:00:54.70,0:00:56.95,Italics,NTP,0,0,0,,In times of turmoil, whenever they come
+Dialogue: 0,0:00:56.95,0:00:59.46,Italics,NTP,0,0,0,,Each wound I bear is proof of our bond
+Dialogue: 0,0:00:59.46,0:01:01.87,Italics,NTP,0,0,0,,Wear them with pride
+Dialogue: 0,0:01:03.83,0:01:06.71,Italics,NTP,0,0,0,,Oh oh oh ohh
+Dialogue: 0,0:01:06.80,0:01:08.71,Italics,NTP,0,0,0,,Oh oh oh ohh
+Dialogue: 0,0:01:09.47,0:01:12.59,Italics,NTP,0,0,0,,Oh oh oh ohh
+Dialogue: 0,0:01:12.68,0:01:14.14,Italics,NTP,0,0,0,,Oh oh oh ohh
+Dialogue: 0,0:01:14.14,0:01:15.76,Italics,NTP,0,0,0,,This is what a life worth loving\Nlooks like
+Dialogue: 0,0:01:15.76,0:01:17.18,Italics,NTP,0,0,0,,Yeah, shake it off, shake it off
+Dialogue: 0,0:01:17.18,0:01:18.85,Italics,NTP,0,0,0,,Let all this absurdity shatter to pieces
+Dialogue: 0,0:01:18.85,0:01:21.60,Italics,NTP,0,0,0,,Beyond the inner conflict,\Nmy thoughts are with you
+Dialogue: 0,0:01:21.60,0:01:22.44,Italics,NTP,0,0,0,,As the days flow by
+Dialogue: 0,0:01:22.44,0:01:24.69,Italics,NTP,0,0,0,,I hear the voices of my friends\Nracing through my mind
+Dialogue: 0,0:01:24.69,0:01:27.69,Italics,NTP,0,0,0,,In the sound of impermanence\Nechoing all around
+Dialogue: 0,0:01:31.11,0:01:35.12,On Top,sign,0,0,0,,MY FRIEND
+Dialogue: 0,0:01:35.15,0:01:38.16,Italics,NTP,0,0,0,,That idiot. What's he thinking?
+Dialogue: 0,0:01:38.66,0:01:41.08,Italics,NTP,0,0,0,,Conjuring multiple guns isn't easy.
+Dialogue: 0,0:01:41.58,0:01:44.20,Italics,NTP,0,0,0,,It's like the "dominant hand rule."
+Dialogue: 0,0:01:44.20,0:01:51.46,On Top,sign,0,0,0,,A         A
+Dialogue: 0,0:01:44.75,0:01:46.54,Italics,NTP,0,0,0,,Try writing with your nondominant hand.
+Dialogue: 0,0:01:46.54,0:01:50.79,Italics,NTP,0,0,0,,It's never neat. Same principle.
+Dialogue: 0,0:01:51.71,0:01:55.21,Italics,NTP,0,0,0,,It's only natural\Nhe can't get the hang of it right away.
+Dialogue: 0,0:01:55.46,0:01:57.84,Italics,NTP,0,0,0,,For a weapon-materialization type\Nlike him,
+Dialogue: 0,0:01:57.84,0:02:00.47,Italics,NTP,0,0,0,,he's gotta train with handling\Nmultiple real weapons first
+Dialogue: 0,0:02:00.47,0:02:03.81,Italics,NTP,0,0,0,,before trying to control\Nmultiple blood weapons at once.
+Dialogue: 0,0:02:04.93,0:02:10.98,Italics,NTP,0,0,0,,Even then, it takes insane\Nmental strength, focus, and imagination.
+Dialogue: 0,0:02:11.48,0:02:13.82,Italics,NTP,0,0,0,,Six guns at once, though?
+Dialogue: 0,0:02:13.82,0:02:15.23,Italics,NTP,0,0,0,,Gives me chills.
+Dialogue: 0,0:02:15.65,0:02:19.99,Italics,NTP,0,0,0,,Shiki Ichinose isn't the kind of guy\Nwho fights with his head.
+Dialogue: 0,0:02:20.99,0:02:23.91,Italics,NTP,0,0,0,,You can multiply zero brains\Nby anything.
+Dialogue: 0,0:02:23.91,0:02:24.99,Italics,NTP,0,0,0,,It still comes out zero.
+Dialogue: 0,0:02:25.54,0:02:29.46,Italics,NTP,0,0,0,,If he tries copying a genius,\Nhe's gonna die.
+Dialogue: 0,0:02:38.51,0:02:41.68,Italics,NTP,0,0,0,,This is really bad.
+Dialogue: 0,0:02:41.68,0:02:44.22,Italics,NTP,0,0,0,,I can't feel my right arm!
+Dialogue: 0,0:02:45.06,0:02:47.02,Italics,NTP,0,0,0,,His regeneration can't keep up.
+Dialogue: 0,0:02:47.52,0:02:49.39,Italics,NTP,0,0,0,,Maybe this is where he hits his limit.
+Dialogue: 0,0:02:49.73,0:02:52.10,Italics,NTP,0,0,0,,I've gotta regroup.
+Dialogue: 0,0:02:52.10,0:02:53.65,Italics,NTP,0,0,0,,How the hell do I—
+Dialogue: 0,0:02:53.65,0:02:56.28,Italics,NTP,0,0,0,,No, I just need to move, anything!
+Dialogue: 0,0:03:01.07,0:03:02.24,Default,NTP,0,0,0,,I told you, didn't I?
+Dialogue: 0,0:03:02.74,0:03:04.53,Default,NTP,0,0,0,,You're weak.
+Dialogue: 0,0:03:05.33,0:03:07.37,Default,NTP,0,0,0,,This outcome was inevitable.
+Dialogue: 0,0:03:09.33,0:03:10.66,Default,NTP,0,0,0,,Farewell.
+Dialogue: 0,0:03:11.54,0:03:15.13,Default,NTP,0,0,0,,Your heartbeat's melody ends here.
+Dialogue: 0,0:03:16.67,0:03:18.13,Italics,NTP,0,0,0,,Huh?
+Dialogue: 0,0:03:18.67,0:03:20.67,Italics,NTP,0,0,0,,Am I dying?
+Dialogue: 0,0:03:23.93,0:03:27.64,Italics,NTP,0,0,0,,Why the hell am I trying this hard?
+Dialogue: 0,0:03:28.22,0:03:31.56,Italics,NTP,0,0,0,,Why am I even trying\Nto pull out another gun?
+Dialogue: 0,0:03:32.14,0:03:35.02,Italics,NTP,0,0,0,,I don't need to copy Mikado to fight.
+Dialogue: 0,0:03:36.15,0:03:38.65,Italics,NTP,0,0,0,,I just have to do it my own way.
+Dialogue: 0,0:03:40.86,0:03:42.36,Italics,NTP,0,0,0,,No, that's not it.
+Dialogue: 0,0:03:42.86,0:03:44.07,Italics,NTP,0,0,0,,I know.
+Dialogue: 0,0:03:44.66,0:03:48.45,Italics,NTP,0,0,0,,I... look up to Mikado.
+Dialogue: 0,0:03:48.95,0:03:52.16,Italics,NTP,0,0,0,,I admire his strength.
+Dialogue: 0,0:03:55.96,0:03:57.21,Italics,NTP,0,0,0,,Man...
+Dialogue: 0,0:03:57.71,0:04:00.38,Italics,NTP,0,0,0,,I wish I could be like you, too.
+Dialogue: 0,0:04:01.51,0:04:04.84,Italics,NTP,0,0,0,,If I were, things wouldn't have\Nturned out this damn pathetic.
+Dialogue: 0,0:04:06.72,0:04:10.68,Italics,NTP,0,0,0,,If I were stronger, I could stop more\Nkids like Mei from ending up like that.
+Dialogue: 0,0:04:11.39,0:04:13.31,Italics,NTP,0,0,0,,Even my dad...
+Dialogue: 0,0:04:13.73,0:04:15.73,Italics,NTP,0,0,0,,he wouldn't have had to die.
+Dialogue: 0,0:04:17.31,0:04:18.94,Italics,NTP,0,0,0,,Yeah.
+Dialogue: 0,0:04:20.57,0:04:22.19,Italics,NTP,0,0,0,,Yeah, that's it!
+Dialogue: 0,0:04:26.95,0:04:28.70,Italics,NTP,0,0,0,,I just wanna be stronger!
+Dialogue: 0,0:04:29.79,0:04:31.45,Italics,NTP,0,0,0,,Like Mikado...
+Dialogue: 0,0:04:34.29,0:04:35.17,Italics,NTP,0,0,0,,No.
+Dialogue: 0,0:04:42.80,0:04:44.18,Italics,NTP,0,0,0,,Stronger than Mikado!
+Dialogue: 0,0:04:44.97,0:04:45.97,Default,NTP,0,0,0,,This is...
+Dialogue: 0,0:04:47.34,0:04:50.47,Italics,NTP,0,0,0,,Stronger than Mikado!
+Dialogue: 0,0:04:54.02,0:04:57.48,Default,NTP,0,0,0,,Getting to meet someone like you,\Nsomeone who made me feel this way,
+Dialogue: 0,0:04:57.48,0:04:59.98,Default,NTP,0,0,0,,seriously, I'm a happy guy!
+Dialogue: 0,0:05:00.23,0:05:02.32,Italics,NTP,0,0,0,,So this is... Enki.
+Dialogue: 0,0:05:03.40,0:05:04.45,Italics,NTP,0,0,0,,That guy...
+Dialogue: 0,0:05:05.28,0:05:07.70,Italics,NTP,0,0,0,,he just materialized two guns.
+Dialogue: 0,0:05:08.53,0:05:11.99,Italics,NTP,0,0,0,,Sure, the power of Enki\Nis backing him up...
+Dialogue: 0,0:05:12.50,0:05:15.37,Italics,NTP,0,0,0,,but once you get the hang of it,\Nyou've got it for good.
+Dialogue: 0,0:05:15.92,0:05:18.83,Italics,NTP,0,0,0,,Let's see where this goes next.
+Dialogue: 0,0:05:19.92,0:05:22.63,Italics,NTP,0,0,0,,When Mikado pointed his gun at me,\NI realized something.
+Dialogue: 0,0:05:23.13,0:05:25.59,Italics,NTP,0,0,0,,His weapons were crafted\Ndown to the smallest detail.
+Dialogue: 0,0:05:26.22,0:05:28.89,Italics,NTP,0,0,0,,To make something real,\Nyou've gotta picture it piece by piece,
+Dialogue: 0,0:05:28.89,0:05:30.51,Italics,NTP,0,0,0,,as if you're building it from scratch.
+Dialogue: 0,0:05:31.06,0:05:36.10,Italics,NTP,0,0,0,,Never thought all those times I took\Napart airsoft guns would pay off here.
+Dialogue: 0,0:05:37.02,0:05:40.15,Italics,NTP,0,0,0,,But I'm still stuck at two guns,\Ndamn it.
+Dialogue: 0,0:05:43.19,0:05:45.40,Italics,NTP,0,0,0,,Face to face, I can feel it on my skin.
+Dialogue: 0,0:05:46.15,0:05:49.03,Italics,NTP,0,0,0,,An overwhelming pressure,\Nlike my blood's about to boil.
+Dialogue: 0,0:05:49.91,0:05:52.03,Default,NTP,0,0,0,,But so what?
+Dialogue: 0,0:05:52.54,0:05:54.62,Default,NTP,0,0,0,,That's no reason to run!
+Dialogue: 0,0:06:07.34,0:06:09.09,Default,NTP,0,0,0,,Block it like your life depends on it!
+Dialogue: 0,0:06:09.09,0:06:10.93,Default,NTP,0,0,0,,'Cause you'll die if you don't!
+Dialogue: 0,0:06:33.99,0:06:37.37,Italics,NTP,0,0,0,,It feels like I'm burning\Nfrom both inside and out.
+Dialogue: 0,0:06:38.46,0:06:40.21,Italics,NTP,0,0,0,,If I underestimate him,
+Dialogue: 0,0:06:40.46,0:06:42.21,Italics,NTP,0,0,0,,I'll be turned to ash.
+Dialogue: 0,0:06:42.96,0:06:45.92,Default,NTP,0,0,0,,From here on out, I'm going all-in!
+Dialogue: 0,0:06:46.80,0:06:49.30,Default,NTP,0,0,0,,Sorry to keep you waiting.
+Dialogue: 0,0:06:49.30,0:06:52.22,Default,NTP,0,0,0,,I must have been so weak,\Nit bored you, huh?
+Dialogue: 0,0:06:52.72,0:06:54.93,Default,NTP,0,0,0,,Now we can fight as equals.
+Dialogue: 0,0:06:56.27,0:06:57.35,Default,NTP,0,0,0,,Equals?
+Dialogue: 0,0:06:58.48,0:06:59.77,Default,NTP,0,0,0,,My friend...
+Dialogue: 0,0:06:59.77,0:07:01.35,Default,NTP,0,0,0,,don't you dare die on me!
+Dialogue: 0,0:07:01.65,0:07:03.40,Default,NTP,0,0,0,,Don't make me laugh!
+Dialogue: 0,0:07:03.40,0:07:05.61,Default,NTP,0,0,0,,You're out of your league!
+Dialogue: 0,0:07:08.11,0:07:11.11,Italics,NTP,0,0,0,,In a gunfight, meeting head-on\Nin a straight line isn't ideal...
+Dialogue: 0,0:07:12.03,0:07:12.87,Italics,NTP,0,0,0,,so...
+Dialogue: 0,0:07:19.62,0:07:22.37,Italics,NTP,0,0,0,,I'll attack\Nfrom an angle you can't reach!
+Dialogue: 0,0:07:24.21,0:07:27.46,Default,NTP,0,0,0,,How? How are you up there?
+Dialogue: 0,0:07:30.26,0:07:34.47,Italics,NTP,0,0,0,,He's melted the concrete with his heat\Nand jammed his feet right into it.
+Dialogue: 0,0:07:35.51,0:07:38.27,Default,NTP,0,0,0,,Now I can pull that off, too!
+Dialogue: 0,0:07:40.39,0:07:43.02,Default,NTP,0,0,0,,The power's incredible, but...
+Dialogue: 0,0:07:45.27,0:07:48.40,Default,NTP,0,0,0,,...your output's so huge,\Nit makes your trajectory easy to read.
+Dialogue: 0,0:07:48.61,0:07:49.78,Default,NTP,0,0,0,,You're kidding me!
+Dialogue: 0,0:07:50.07,0:07:52.03,Default,NTP,0,0,0,,Which means it's easy to dodge!
+Dialogue: 0,0:07:55.78,0:07:58.66,Italics,NTP,0,0,0,,He's right. There's got to be\Nbalance between strength and control.
+Dialogue: 0,0:07:58.66,0:07:59.62,Italics,NTP,0,0,0,,Can I even do that?
+Dialogue: 0,0:08:00.33,0:08:01.87,Italics,NTP,0,0,0,,Yeah, I can!
+Dialogue: 0,0:08:02.37,0:08:05.04,Italics,NTP,0,0,0,,All I did was picture every detail,
+Dialogue: 0,0:08:05.04,0:08:07.29,Italics,NTP,0,0,0,,and now all these images\Nare flooding into my head!
+Dialogue: 0,0:08:07.55,0:08:08.75,Italics,NTP,0,0,0,,I can do this.
+Dialogue: 0,0:08:09.51,0:08:10.42,Italics,NTP,0,0,0,,I can do this!
+Dialogue: 0,0:08:12.13,0:08:13.22,Italics,NTP,0,0,0,,I can do it!
+Dialogue: 0,0:08:16.30,0:08:19.01,Italics,NTP,0,0,0,,Even holding back, that power's amazing.
+Dialogue: 0,0:08:19.01,0:08:21.68,Italics,NTP,0,0,0,,And those flames, what a nuisance.
+Dialogue: 0,0:08:21.98,0:08:23.73,Italics,NTP,0,0,0,,He's developing fast.
+Dialogue: 0,0:08:24.23,0:08:28.94,Italics,NTP,0,0,0,,Thinkers pick things up quickly,\Nbut they take time to master them.
+Dialogue: 0,0:08:29.69,0:08:33.70,Italics,NTP,0,0,0,,Meanwhile, instinctive types\Ntake longer to grasp the basics.
+Dialogue: 0,0:08:33.70,0:08:35.45,Italics,NTP,0,0,0,,But once they do, they adapt fast,
+Dialogue: 0,0:08:35.45,0:08:39.45,Italics,NTP,0,0,0,,especially when it's a friend\Nwho spurs it on.
+Dialogue: 0,0:08:41.25,0:08:43.58,Default,NTP,0,0,0,,Hell yeah! How's that?
+Dialogue: 0,0:08:44.37,0:08:46.29,Default,NTP,0,0,0,,Nothing to get cocky about.
+Dialogue: 0,0:08:51.88,0:08:53.42,Default,NTP,0,0,0,,An RPG?
+Dialogue: 0,0:08:53.42,0:08:54.72,Default,NTP,0,0,0,,Oh, crap!
+Dialogue: 0,0:08:55.97,0:08:57.97,Default,NTP,0,0,0,,This is seriously bad!
+Dialogue: 0,0:09:04.31,0:09:05.73,Default,NTP,0,0,0,,Close one.
+Dialogue: 0,0:09:11.53,0:09:13.15,Default,NTP,0,0,0,,A homing type?
+Dialogue: 0,0:09:18.16,0:09:19.58,Italics,NTP,0,0,0,,No response.
+Dialogue: 0,0:09:20.70,0:09:23.12,Italics,NTP,0,0,0,,He shouldn't be dead from a single hit.
+Dialogue: 0,0:09:29.34,0:09:31.09,Italics,NTP,0,0,0,,Did he aim short on purpose?
+Dialogue: 0,0:09:39.22,0:09:41.10,Italics,NTP,0,0,0,,Shit! I'm fallin'!
+Dialogue: 0,0:09:44.85,0:09:46.02,Default,NTP,0,0,0,,Damn it!
+Dialogue: 0,0:09:46.89,0:09:48.48,Default,NTP,0,0,0,,Let go of that!
+Dialogue: 0,0:10:21.01,0:10:24.60,Default,NTP,0,0,0,,Weirdly enough,\Nthis fight ain't half bad, huh?
+Dialogue: 0,0:10:24.60,0:10:26.89,Default,NTP,0,0,0,,Feels like I've still\Ngot more left to give.
+Dialogue: 0,0:10:27.39,0:10:30.40,Default,NTP,0,0,0,,Laughing in the middle of a fight.
+Dialogue: 0,0:10:30.40,0:10:32.23,Default,NTP,0,0,0,,You're insane.
+Dialogue: 0,0:10:32.23,0:10:33.90,Default,NTP,0,0,0,,What are you talking about?
+Dialogue: 0,0:10:34.90,0:10:37.70,Italics,NTP,0,0,0,,Mikado Momodera had always\Nbeen cool and detached.
+Dialogue: 0,0:10:38.28,0:10:41.28,Italics,NTP,0,0,0,,His strength had never once\Nmade him burn with passion.
+Dialogue: 0,0:10:42.28,0:10:46.66,Italics,NTP,0,0,0,,And then, one day,\NShiki Ichinose appeared before him.
+Dialogue: 0,0:10:47.16,0:10:52.54,Italics,NTP,0,0,0,,Without a doubt, this man\Nwould set Mikado's heart ablaze.
+Dialogue: 0,0:10:55.05,0:10:57.72,Default,NTP,0,0,0,,You're smilin', too, aren't you?
+Dialogue: 0,0:11:28.54,0:11:29.87,Italics,NTP,0,0,0,,Hey, Mikado.
+Dialogue: 0,0:11:40.13,0:11:44.51,Italics,NTP,0,0,0,,When I'm with you,\NI feel like I can keep growin' stronger.
+Dialogue: 0,0:11:45.76,0:11:50.68,Italics,NTP,0,0,0,,I wanna be that kind of person\Nfor you, too.
+Dialogue: 0,0:11:54.27,0:11:55.44,Default,NTP,0,0,0,,Uh-oh.
+Dialogue: 0,0:12:07.12,0:12:08.41,Default,NTP,0,0,0,,He's going berserk?
+Dialogue: 0,0:12:12.08,0:12:13.37,Italics,NTP,0,0,0,,So heavy...
+Dialogue: 0,0:12:24.80,0:12:27.39,Italics,NTP,0,0,0,,He's on a whole different level\Nfrom before.
+Dialogue: 0,0:12:53.46,0:12:55.54,Italics,NTP,0,0,0,,There's no opening to counter.
+Dialogue: 0,0:12:56.13,0:12:58.96,Italics,NTP,0,0,0,,It's unlike any other Oni's rampage.
+Dialogue: 0,0:12:58.96,0:13:00.59,Italics,NTP,0,0,0,,Pure, mindless slaughter.
+Dialogue: 0,0:13:01.63,0:13:03.17,Italics,NTP,0,0,0,,This is an Oni?
+Dialogue: 0,0:13:04.72,0:13:07.34,Italics,NTP,0,0,0,,No. This is a demon!
+Dialogue: 0,0:13:17.90,0:13:20.77,Italics,NTP,0,0,0,,Looks like the Kishin power\Nwent over capacity.
+Dialogue: 0,0:13:37.67,0:13:40.92,Italics,NTP,0,0,0,,Even with my full defense,\Nthis much damage...
+Dialogue: 0,0:13:53.22,0:13:54.68,Italics,NTP,0,0,0,,Is this as far as I go?
+Dialogue: 0,0:14:08.66,0:14:10.49,Default,NTP,0,0,0,,Mikado...
+Dialogue: 0,0:14:11.78,0:14:15.75,Default,NTP,0,0,0,,kill... me.
+Dialogue: 0,0:14:16.75,0:14:22.71,Default,NTP,0,0,0,,Or else... I'll... kill... you.
+Dialogue: 0,0:14:23.59,0:14:26.76,Default,NTP,0,0,0,,Kill me...
+Dialogue: 0,0:14:27.26,0:14:31.47,Default,NTP,0,0,0,,before I... lose it... completely.
+Dialogue: 0,0:14:32.18,0:14:35.72,Default,NTP,0,0,0,,Please... hurry.
+Dialogue: 0,0:14:36.64,0:14:38.39,Italics,NTP,0,0,0,,He's still conscious?
+Dialogue: 0,0:14:40.56,0:14:43.98,Default,NTP,0,0,0,,I don't wanna...
+Dialogue: 0,0:14:43.98,0:14:47.49,Default,NTP,0,0,0,,kill my friend.
+Dialogue: 0,0:14:52.03,0:14:55.24,Default,NTP,0,0,0,,Kill... me!
+Dialogue: 0,0:15:01.63,0:15:03.75,Default,NTP,0,0,0,,Hey, dumbass Momo, listen up.
+Dialogue: 0,0:15:03.75,0:15:05.80,Default,NTP,0,0,0,,I'll draw Ichinose away.
+Dialogue: 0,0:15:05.80,0:15:09.01,Default,NTP,0,0,0,,In the meantime, haul your\Nwrecked body up and finish this.
+Dialogue: 0,0:15:09.26,0:15:12.68,Default,NTP,0,0,0,,The worst-case scenario\Nis he goes down into the city.
+Dialogue: 0,0:15:12.68,0:15:15.14,Default,NTP,0,0,0,,Civilians will die.
+Dialogue: 0,0:15:15.39,0:15:18.85,Default,NTP,0,0,0,,I don't care what you think.\NGet up and blast him.
+Dialogue: 0,0:15:18.85,0:15:20.23,Default,NTP,0,0,0,,Shoot like you mean to kill him.
+Dialogue: 0,0:15:20.64,0:15:22.15,Default,NTP,0,0,0,,Otherwise you won't stop him.
+Dialogue: 0,0:15:22.65,0:15:27.44,Default,NTP,0,0,0,,But if you really do kill Ichinose,\NI'll kill you.
+Dialogue: 0,0:15:28.61,0:15:30.57,Default,NTP,0,0,0,,You're contradicting yourself.
+Dialogue: 0,0:15:30.57,0:15:34.28,Default,NTP,0,0,0,,But you're right.\NWe can't involve civilians.
+Dialogue: 0,0:15:34.28,0:15:36.20,Default,NTP,0,0,0,,In this condition, I need to prep.
+Dialogue: 0,0:15:36.20,0:15:37.37,Default,NTP,0,0,0,,Give me five minutes.
+Dialogue: 0,0:15:37.66,0:15:40.62,Default,NTP,0,0,0,,Get ready quick.\NWe don't have time to waste.
+Dialogue: 0,0:15:41.42,0:15:43.38,Default,NTP,0,0,0,,You don't need to tell me.
+Dialogue: 0,0:15:43.38,0:15:45.75,Default,NTP,0,0,0,,But I can't promise\Nyou won't catch flak, too.
+Dialogue: 0,0:15:46.00,0:15:48.38,Default,NTP,0,0,0,,Cocky for someone\Nwho's got one foot in the grave.
+Dialogue: 0,0:15:49.42,0:15:54.30,Default,NTP,0,0,0,,Well, then, let's see how far\Na so-called noncombatant can go.
+Dialogue: 0,0:15:54.30,0:15:55.80,Default,NTP,0,0,0,,This is gonna sting.
+Dialogue: 0,0:15:58.89,0:16:00.73,Default,NTP,0,0,0,,Bring it on, brat!
+Dialogue: 0,0:16:01.56,0:16:04.73,Default,NTP,0,0,0,,Can you see me with those peepers?
+Dialogue: 0,0:16:26.38,0:16:29.17,Default,NTP,0,0,0,,Damn. Can't even get close.
+Dialogue: 0,0:16:29.67,0:16:32.22,Default,NTP,0,0,0,,Guess I'll focus\Non keeping his attention.
+Dialogue: 0,0:16:33.26,0:16:34.47,Default,NTP,0,0,0,,Still, though...
+Dialogue: 0,0:16:34.72,0:16:36.30,Default,NTP,0,0,0,,it's cruel.
+Dialogue: 0,0:16:36.30,0:16:39.18,Default,NTP,0,0,0,,To still be conscious\Nwhile in a berserk state.
+Dialogue: 0,0:16:40.27,0:16:45.10,Default,NTP,0,0,0,,Run... away.
+Dialogue: 0,0:16:53.49,0:16:58.99,Default,NTP,0,0,0,,I really... will... kill you.
+Dialogue: 0,0:16:59.79,0:17:04.96,Default,NTP,0,0,0,,It'd probably be easier if you'd just\Ngive in to the rage and black out.
+Dialogue: 0,0:17:06.50,0:17:08.17,Default,NTP,0,0,0,,But that willpower of yours,
+Dialogue: 0,0:17:08.17,0:17:10.13,Default,NTP,0,0,0,,that stubborn fight\Nagainst losing yourself...
+Dialogue: 0,0:17:10.13,0:17:12.26,Default,,0,0,0,,Run... away.
+Dialogue: 0,0:17:12.63,0:17:15.34,Default,NTP,0,0,0,,...I won't let it be in vain, jackass.
+Dialogue: 0,0:17:17.64,0:17:22.02,Italics,NTP,0,0,0,,I've never heard of an Oni\Nin berserk mode still being conscious!
+Dialogue: 0,0:17:23.39,0:17:24.77,Italics,NTP,0,0,0,,He's crying.
+Dialogue: 0,0:17:25.02,0:17:27.65,Italics,NTP,0,0,0,,Berserk Oni are supposed\Nto be mindless weapons.
+Dialogue: 0,0:17:28.15,0:17:31.61,Italics,NTP,0,0,0,,Killing them is the right thing to do,\Nor so I thought.
+Dialogue: 0,0:17:33.65,0:17:35.82,Italics,NTP,0,0,0,,Then why is he crying?
+Dialogue: 0,0:17:36.86,0:17:40.70,Italics,NTP,0,0,0,,Doesn't that mean\Nhe still has awareness? Feelings?
+Dialogue: 0,0:17:41.91,0:17:44.54,Italics,NTP,0,0,0,,Could it be all the Oni\NI've killed before...
+Dialogue: 0,0:17:45.16,0:17:47.58,Italics,NTP,0,0,0,,were crying, too?
+Dialogue: 0,0:17:49.17,0:17:51.50,Italics,NTP,0,0,0,,Then how much pain must that be...
+Dialogue: 0,0:17:52.00,0:17:53.71,Italics,NTP,0,0,0,,wanting not to hurt anyone,
+Dialogue: 0,0:17:53.71,0:17:56.22,Italics,NTP,0,0,0,,yet ending up hurting\Neveryone around you?
+Dialogue: 0,0:17:57.55,0:17:59.85,Italics,NTP,0,0,0,,Even through that pain...
+Dialogue: 0,0:18:00.64,0:18:02.39,Italics,NTP,0,0,0,,you still worried about me.
+Dialogue: 0,0:18:03.39,0:18:05.23,Italics,NTP,0,0,0,,Even as you cried...
+Dialogue: 0,0:18:06.73,0:18:11.48,Italics,NTP,0,0,0,,You've always been so honest\Nand so kind.
+Dialogue: 0,0:18:14.44,0:18:16.99,Italics,NTP,0,0,0,,I don't wanna...
+Dialogue: 0,0:18:16.99,0:18:20.20,Italics,NTP,0,0,0,,kill my friend.
+Dialogue: 0,0:18:21.45,0:18:23.45,Italics,NTP,0,0,0,,Even after losing himself...
+Dialogue: 0,0:18:24.45,0:18:25.91,Italics,NTP,0,0,0,,he still called me his friend.
+Dialogue: 0,0:18:28.00,0:18:29.79,Italics,NTP,0,0,0,,I'm such a fool!
+Dialogue: 0,0:18:35.84,0:18:36.80,Default,NTP,0,0,0,,It must hurt.
+Dialogue: 0,0:18:37.30,0:18:38.51,Default,NTP,0,0,0,,It must be unbearable.
+Dialogue: 0,0:18:39.01,0:18:39.84,Default,NTP,0,0,0,,Ichinose...
+Dialogue: 0,0:18:40.26,0:18:42.43,Default,NTP,0,0,0,,No, Shiki!
+Dialogue: 0,0:18:42.93,0:18:47.39,Default,NTP,0,0,0,,I'll end your suffering\Nwith my own hands.
+Dialogue: 0,0:18:50.48,0:18:52.19,Italics,NTP,0,0,0,,Unreal.
+Dialogue: 0,0:18:52.19,0:18:55.44,Italics,NTP,0,0,0,,Even when I disappear from sight,\Nhe tracks me with his other senses.
+Dialogue: 0,0:18:58.20,0:18:59.11,Italics,NTP,0,0,0,,Shit!
+Dialogue: 0,0:19:03.28,0:19:04.45,Italics,NTP,0,0,0,,You've gotta be kidding me.
+Dialogue: 0,0:19:11.50,0:19:12.63,Italics,NTP,0,0,0,,Damn it.
+Dialogue: 0,0:19:13.09,0:19:15.30,Default,NTP,0,0,0,,Of all things, my leg.
+Dialogue: 0,0:19:15.80,0:19:17.26,Default,NTP,0,0,0,,What a pain in the ass.
+Dialogue: 0,0:19:17.63,0:19:20.51,Italics,NTP,0,0,0,,If he takes him out,\Nhe'll come for me next.
+Dialogue: 0,0:19:21.01,0:19:23.64,Italics,NTP,0,0,0,,What do I do? I'm still not ready.
+Dialogue: 0,0:19:24.89,0:19:27.89,Default,NTP,0,0,0,,The more I think about it,\Nthe more hopeless it feels.
+Dialogue: 0,0:19:29.44,0:19:32.90,Default,NTP,0,0,0,,This is why I hate babysitting kids.
+Dialogue: 0,0:19:33.19,0:19:35.36,Default,NTP,0,0,0,,Run.
+Dialogue: 0,0:19:35.90,0:19:37.90,Default,NTP,0,0,0,,I'm a disgrace.
+Dialogue: 0,0:19:38.44,0:19:39.65,Default,NTP,0,0,0,,Ichinose...
+Dialogue: 0,0:19:41.28,0:19:43.91,Default,NTP,0,0,0,,don't feel guilty about my death.
+Dialogue: 0,0:20:04.89,0:20:07.18,Default,NTP,0,0,0,,What's with that peaceful look?
+Dialogue: 0,0:20:08.39,0:20:11.02,Default,NTP,0,0,0,,You planning to retire\Nto the afterlife already?
+Dialogue: 0,0:20:11.89,0:20:13.44,Default,NTP,0,0,0,,Sorry I'm late.
+Dialogue: 0,0:20:13.69,0:20:16.40,Default,NTP,0,0,0,,Your dramatic entrance pisses me off.
+Dialogue: 0,0:20:17.27,0:20:19.40,Default,NTP,0,0,0,,No need for a status report.
+Dialogue: 0,0:20:23.36,0:20:25.24,Default,NTP,0,0,0,,I've got a pretty good idea\Nwhat's going on.
+Dialogue: 0,0:20:30.70,0:20:33.92,Default,NTP,0,0,0,,So when are you planning\Nto fire that thing?
+Dialogue: 0,0:20:34.88,0:20:37.59,Default,NTP,0,0,0,,Showing up out of nowhere\Nand acting all high and mighty, huh?
+Dialogue: 0,0:20:40.84,0:20:42.47,Default,NTP,0,0,0,,I'm ready.
+Dialogue: 0,0:20:47.81,0:20:48.64,Italics,NTP,0,0,0,,Fire...
+Dialogue: 0,0:20:49.60,0:20:50.85,Italics,NTP,0,0,0,,I have to fire.
+Dialogue: 0,0:20:51.60,0:20:56.31,Italics,NTP,0,0,0,,There's no way to save him except death\Nto free him from his pain.
+Dialogue: 0,0:20:57.73,0:20:59.94,Italics,NTP,0,0,0,,At least let it be by my hand!
+Dialogue: 0,0:21:01.24,0:21:02.36,Default,NTP,0,0,0,,Mi...
+Dialogue: 0,0:21:03.53,0:21:06.12,Default,NTP,0,0,0,,Mikado...
+Dialogue: 0,0:21:09.99,0:21:14.12,Italics,NTP,0,0,0,,Feeling this way makes me\Na failure as a Momotaro.
+Dialogue: 0,0:21:15.54,0:21:16.75,Italics,NTP,0,0,0,,But I don't care anymore.
+Dialogue: 0,0:21:17.25,0:21:19.50,Italics,NTP,0,0,0,,Momotaro, Oni, none of that matters!
+Dialogue: 0,0:21:20.80,0:21:24.97,Italics,NTP,0,0,0,,This is the will of me,\NMikado Momodera, as a person!
+Dialogue: 0,0:21:26.76,0:21:27.72,Italics,NTP,0,0,0,,Please.
+Dialogue: 0,0:21:28.64,0:21:29.47,Italics,NTP,0,0,0,,Please.
+Dialogue: 0,0:21:30.51,0:21:31.52,Default,NTP,0,0,0,,Please...
+Dialogue: 0,0:21:33.06,0:21:34.64,Default,NTP,0,0,0,,don't die!
+Dialogue: 0,0:21:44.70,0:21:45.53,Italics,NTP,0,0,0,,Don't die!
+Dialogue: 0,0:21:46.53,0:21:47.74,Italics,NTP,0,0,0,,Don't you die on me!
+Dialogue: 0,0:21:48.53,0:21:51.16,Italics,NTP,0,0,0,,Don't die!
+Dialogue: 0,0:22:02.34,0:22:06.93,Default,NTP,0,0,0,,Thank... you.
+Dialogue: 0,0:22:16.23,0:22:17.23,Italics,NTP,0,0,0,,Sure.
+Dialogue: 0,0:22:27.66,0:22:28.49,Italics,NTP,0,0,0,,Action!
+Dialogue: 0,0:22:28.78,0:22:32.08,Italics,NTP,0,0,0,,Harahara hara
+Dialogue: 0,0:22:32.08,0:22:33.04,Italics,NTP,0,0,0,,Hey
+Dialogue: 0,0:22:33.04,0:22:36.08,Italics,NTP,0,0,0,,Harahara hara
+Dialogue: 0,0:22:36.08,0:22:37.46,Italics,NTP,0,0,0,,Oh oh oh
+Dialogue: 0,0:22:37.46,0:22:40.75,Italics,NTP,0,0,0,,Harahara hara
+Dialogue: 0,0:22:40.75,0:22:41.84,Italics,NTP,0,0,0,,Hey
+Dialogue: 0,0:22:41.84,0:22:44.80,Italics,NTP,0,0,0,,Harahara hara
+Dialogue: 0,0:22:44.80,0:22:45.67,Italics,NTP,0,0,0,,Oh oh oh
+Dialogue: 0,0:22:45.67,0:22:47.26,Italics,NTP,0,0,0,,A moonlit night
+Dialogue: 0,0:22:47.26,0:22:50.26,Italics,NTP,0,0,0,,Tonight is\Nthe ultimate voltage
+Dialogue: 0,0:22:50.26,0:22:53.47,Italics,NTP,0,0,0,,Our meeting\Nwas so emotional
+Dialogue: 0,0:22:53.47,0:22:54.31,Italics,NTP,0,0,0,,Oh oh oh
+Dialogue: 0,0:22:54.31,0:23:01.31,Italics,NTP,0,0,0,,I always figured we'd\Nface off like this one day
+Dialogue: 0,0:23:03.11,0:23:06.36,Italics,NTP,0,0,0,,Oh, give me\Nyour words
+Dialogue: 0,0:23:06.36,0:23:11.74,Italics,NTP,0,0,0,,Even if I believe,\Nthere's no going back
+Dialogue: 0,0:23:11.74,0:23:18.37,Italics,NTP,0,0,0,,Oh, before I fall\Nhead over heels for you
+Dialogue: 0,0:23:18.37,0:23:20.46,Italics,NTP,0,0,0,,Dive me out
+Dialogue: 0,0:23:20.46,0:23:22.42,Italics,NTP,0,0,0,,Last dance
+Dialogue: 0,0:23:22.42,0:23:24.42,Italics,NTP,0,0,0,,Let's dive deep into love
+Dialogue: 0,0:23:24.42,0:23:28.47,Italics,NTP,0,0,0,,I want to try dancing with you
+Dialogue: 0,0:23:28.47,0:23:31.18,Italics,NTP,0,0,0,,Is it already checkmate?
+Dialogue: 0,0:23:31.18,0:23:33.10,Italics,NTP,0,0,0,,This charming little sparring match
+Dialogue: 0,0:23:33.10,0:23:38.35,Italics,NTP,0,0,0,,Good or evil, none of it matters
+Dialogue: 0,0:23:38.35,0:23:41.81,Italics,NTP,0,0,0,,Harahara hara
+Dialogue: 0,0:23:41.81,0:23:42.86,Italics,NTP,0,0,0,,Hey
+Dialogue: 0,0:23:42.86,0:23:44.57,Italics,NTP,0,0,0,,Harahara
+Dialogue: 0,0:23:44.57,0:23:45.69,Italics,NTP,0,0,0,,- Do you think\N- Hara
+Dialogue: 0,0:23:45.69,0:23:47.19,Italics,NTP,0,0,0,,- I'm so crazy?\N- Oh oh oh
+Dialogue: 0,0:23:47.19,0:23:50.53,Italics,NTP,0,0,0,,Harahara hara
+Dialogue: 0,0:23:50.53,0:23:51.49,Italics,NTP,0,0,0,,Hey
+Dialogue: 0,0:23:51.49,0:23:53.24,Italics,NTP,0,0,0,,Harahara
+Dialogue: 0,0:23:53.24,0:23:55.95,Italics,NTP,0,0,0,,- Do you think I'm so crazy?\N- Hara oh oh oh
+Dialogue: 0,0:23:56.45,0:24:00.96,On Top,sign,0,0,0,,NEXT TIME\NUNTIL WE MEET AGAIN
+

@@ -1,0 +1,327 @@
+[Script Info]
+Title: English (US)
+ScriptType: v4.00+
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.601
+PlayResX: 640
+PlayResY: 360
+
+[Aegisub Project Garbage]
+Last Style Storage: Default
+Audio File: ../raws/Final Proxy Video - May I ask for one Final Thing - S01 E7-13 - EN/CR_MayIAskForOneFi_S1.0E13_MAYSIM0013_362112_video_ja-jp_J3544123.mp4
+Video File: ../raws/Final Proxy Video - May I ask for one Final Thing - S01 E7-13 - EN/CR_MayIAskForOneFi_S1.0E13_MAYSIM0013_362112_video_ja-jp_J3544123.mp4
+Video AR Mode: 4
+Video AR Value: 1.777778
+Video Zoom Percent: 2.500000
+Scroll Position: 39
+Active Line: 234
+Video Position: 26612
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,1
+Style: top,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: italics,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: italicstop,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: flashback,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,1
+Style: flashback italics,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,2,20,20,23,1
+Style: flashbacktop,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: flashbackitalicstop,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: overlap,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: overlaptop,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,8,20,20,23,0
+Style: overlap italics,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,2,20,20,23,0
+Style: main,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,1.3,0,2,20,20,23,1
+Style: Narration,Roboto Medium,26,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,-1,0,0,100,100,0,0,1,1.3,0,8,20,20,23,1
+Style: sign_generic,Arial,20,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:01.08,0:00:04.23,top,Scarlet,0,0,0,,You seem to be making \Nquite the assumption.
+Dialogue: 0,0:00:05.69,0:00:09.16,Default,Scarlet,0,0,0,,Did you think that against Prince Julius...
+Dialogue: 0,0:00:25.73,0:00:28.26,top,Scarlet,0,0,0,,I would hesitate?
+Dialogue: 0,0:00:30.34,0:00:32.27,Default,Scarlet,0,0,0,,This is all for the greater good.
+Dialogue: 0,0:00:32.27,0:00:35.92,Default,Scarlet,0,0,0,,Don't take it personally, Prince Julius!
+Dialogue: 0,0:00:45.41,0:00:47.94,top,Julius,0,0,0,,Still showing your legs \Nin that unbecoming manner, I see.
+Dialogue: 0,0:00:47.94,0:00:50.15,Default,Scarlet,0,0,0,,Very impressive, Prince Julius.
+Dialogue: 0,0:00:52.04,0:00:56.20,Default,Scarlet,0,0,0,,Even when you break your wrist, \Nyou heal it immediately with a spell.
+Dialogue: 0,0:00:57.13,0:01:00.45,Default,Julius,0,0,0,,You do indeed have \Nthe advantage in close combat.
+Dialogue: 0,0:01:01.72,0:01:04.46,italics,Scarlet,0,0,0,,Acceleration: Three Burst.
+Dialogue: 0,0:01:05.87,0:01:07.96,italics,Scarlet,0,0,0,,He predicted it?
+Dialogue: 0,0:01:13.57,0:01:14.79,italics,Terenezza,0,0,0,,What the hell?
+Dialogue: 0,0:01:14.79,0:01:18.57,italics,Terenezza,0,0,0,,Her prince abandoned her \Nand even attacked her, and yet...
+Dialogue: 0,0:01:20.56,0:01:23.02,italics,Terenezza,0,0,0,,I want you in greater despair!
+Dialogue: 0,0:01:23.47,0:01:26.01,Default,Terenezza,0,0,0,,You really are a heartless woman.
+Dialogue: 0,0:01:26.01,0:01:29.07,Default,Terenezza,0,0,0,,You actually punched \Nyour own kingdom's prince!
+Dialogue: 0,0:01:31.02,0:01:34.12,Default,Scarlet,0,0,0,,It's awful to hear you say I'm heartless.
+Dialogue: 0,0:01:35.38,0:01:37.82,Default,Scarlet,0,0,0,,This is proof of true love...
+Dialogue: 0,0:01:37.82,0:01:43.22,Default,Scarlet,0,0,0,,The fists of love that won't stop until \NPrince Julius is back in his right mind!
+Dialogue: 0,0:01:49.00,0:01:54.01,sign_generic,title,0,0,0,,{\bord0\fnTimes New Roman\c&H3D3E36&\pos(320,142)\fs23}May I Ask For One {\c&H6A5DA0&}Final{\c&H3D3E36&} Thing?
+Dialogue: 0,0:01:55.39,0:02:00.93,italics,Terenezza,0,0,0,,I hate people who look down on me \Nbecause they're life's winners.
+Dialogue: 0,0:02:01.49,0:02:03.39,italics,Terenezza,0,0,0,,Always enjoying themselves...
+Dialogue: 0,0:02:02.93,0:02:04.58,top,Students,0,0,0,,No way!
+Dialogue: 0,0:02:09.12,0:02:10.53,Default,Girl,0,0,0,,Sorry!
+Dialogue: 0,0:02:10.53,0:02:11.36,top,Students,0,0,0,,Who was that?
+Dialogue: 0,0:02:11.36,0:02:12.60,top,Students,0,0,0,,You okay?
+Dialogue: 0,0:02:11.74,0:02:16.83,italics,Terenezza,0,0,0,,Like they never act petty \Nor think awful things.
+Dialogue: 0,0:02:17.87,0:02:19.41,italics,Terenezza,0,0,0,,I...
+Dialogue: 0,0:02:21.29,0:02:24.62,italics,Terenezza,0,0,0,,I want to see them in despair.
+Dialogue: 0,0:02:25.23,0:02:28.88,italics,Terenezza,0,0,0,,I want their faces distorted with agony.
+Dialogue: 0,0:02:29.59,0:02:32.89,Default,Scarlet,0,0,0,,Still, this isn't like you.
+Dialogue: 0,0:02:34.76,0:02:37.72,Default,Scarlet,0,0,0,,To fall straight into the enemy's trap...
+Dialogue: 0,0:02:38.19,0:02:41.83,Default,Julius,0,0,0,,Fireball, blaze with an inferno's rage.
+Dialogue: 0,0:02:49.14,0:02:53.23,Default,Scarlet,0,0,0,,Or is it that you prefer \Nwomen like Terenezza?
+Dialogue: 0,0:02:53.23,0:02:54.70,Default,Julius,0,0,0,,Jealous?
+Dialogue: 0,0:02:54.70,0:03:00.66,Default,Julius,0,0,0,,It's rather charming to see you \Nact like a lady your age for once.
+Dialogue: 0,0:03:03.67,0:03:06.46,Default,Terenezza,0,0,0,,Stop flirting already.
+Dialogue: 0,0:03:13.11,0:03:18.29,Default,Terenezza,0,0,0,,Do you not realize the situation you're in?
+Dialogue: 0,0:03:27.10,0:03:29.31,Default,Terenezza,0,0,0,,That's a good look on you, Scarlet.
+Dialogue: 0,0:03:29.70,0:03:32.69,Default,Terenezza,0,0,0,,I should have just done this from the start!
+Dialogue: 0,0:03:34.27,0:03:36.70,Default,Terenezza,0,0,0,,I can see your blessing exhausting itself.
+Dialogue: 0,0:03:36.70,0:03:39.24,Default,Terenezza,0,0,0,,It's really weak now!
+Dialogue: 0,0:03:39.24,0:03:44.18,Default,Terenezza,0,0,0,,In that state, you won't \Nbe able to stop my lance.
+Dialogue: 0,0:03:45.66,0:03:48.62,Default,Terenezza,0,0,0,,If you don't want to see \Nyour precious prince killed,
+Dialogue: 0,0:03:48.62,0:03:50.50,Default,Terenezza,0,0,0,,surrender where you stand!
+Dialogue: 0,0:03:52.44,0:03:54.04,Default,Scarlet,0,0,0,,Very well.
+Dialogue: 0,0:03:54.04,0:03:55.55,Default,Scarlet,0,0,0,,I admit defeat.
+Dialogue: 0,0:03:57.86,0:04:00.59,Default,Terenezza,0,0,0,,Link your hands behind your head.
+Dialogue: 0,0:04:04.31,0:04:09.27,Default,Terenezza,0,0,0,,This spell will steal \Nyour blessings from you.
+Dialogue: 0,0:04:10.98,0:04:13.80,Default,Terenezza,0,0,0,,Blessings given directly by gods
+Dialogue: 0,0:04:13.80,0:04:18.35,Default,Terenezza,0,0,0,,can only be stolen with this special \Nspell that uses Palmia's power.
+Dialogue: 0,0:04:18.72,0:04:25.45,Default,Terenezza,0,0,0,,But if I steal your blessings, \NI can achieve Palmia's goal with ease.
+Dialogue: 0,0:04:25.98,0:04:30.67,italics,Scarlet,0,0,0,,This spell has the power to prevent \Na blessing from activating.
+Dialogue: 0,0:04:30.67,0:04:33.36,Default,Terenezza,0,0,0,,There's no way around this.
+Dialogue: 0,0:04:33.36,0:04:36.13,Default,Terenezza,0,0,0,,Julius, restrain her.
+Dialogue: 0,0:04:48.85,0:04:53.04,Default,Scarlet,0,0,0,,What inappropriate nonsense is this?
+Dialogue: 0,0:04:53.04,0:04:55.09,Default,Julius,0,0,0,,I'm restraining you.
+Dialogue: 0,0:04:55.09,0:04:57.15,Default,Julius,0,0,0,,Blame Terenezza, not me.
+Dialogue: 0,0:04:57.15,0:05:00.07,Default,Terenezza,0,0,0,,Seems my charm's effect is waning.
+Dialogue: 0,0:05:00.07,0:05:04.58,Default,Terenezza,0,0,0,,How truly vexing that blessing \Nof yours, Heroic Tale, is.
+Dialogue: 0,0:05:04.58,0:05:06.08,Default,Scarlet,0,0,0,,Heroic Tale?
+Dialogue: 0,0:05:07.41,0:05:09.23,Default,Terenezza,0,0,0,,You didn't know?
+Dialogue: 0,0:05:09.23,0:05:12.19,Default,Terenezza,0,0,0,,Well, it'll be mine soon enough.
+Dialogue: 0,0:05:12.19,0:05:16.05,Default,Terenezza,0,0,0,,I just know what Palmia told me, \Nbut since this is almost over, I'll tell you.
+Dialogue: 0,0:05:16.05,0:05:22.68,Default,Terenezza,0,0,0,,Heroic Tale is a special blessing created by \NOrigin the Creator, the god above all others.
+Dialogue: 0,0:05:22.68,0:05:28.81,Default,Terenezza,0,0,0,,It allows the wielder \Nto unleash unlimited power
+Dialogue: 0,0:05:28.81,0:05:31.10,Default,Terenezza,0,0,0,,when the person they love is in danger.
+Dialogue: 0,0:05:31.47,0:05:33.19,italics,Scarlet,0,0,0,,The person they love?
+Dialogue: 0,0:05:34.69,0:05:39.28,Default,Julius,0,0,0,,No, I don't feel that way \Nabout you whatsoever.
+Dialogue: 0,0:05:43.09,0:05:45.92,Default,Scarlet,0,0,0,,You deny it so earnestly...
+Dialogue: 0,0:05:46.36,0:05:49.62,Default,Scarlet,0,0,0,,But then why is the blessing \Ngoing into effect?
+Dialogue: 0,0:05:49.88,0:05:52.46,Default,Scarlet,0,0,0,,It's quite annoying, you know.
+Dialogue: 0,0:05:52.93,0:05:58.54,Default,Scarlet,0,0,0,,The way you toy with my feelings \Nwith those suggestive acts of yours...
+Dialogue: 0,0:05:59.05,0:06:03.58,Default,Scarlet,0,0,0,,I don't have any of those feelings \Nfor you, either.
+Dialogue: 0,0:06:05.89,0:06:08.43,Default,Julius,0,0,0,,Yes. That's right.
+Dialogue: 0,0:06:09.42,0:06:11.62,Default,Terenezza,0,0,0,,She really is cold!
+Dialogue: 0,0:06:11.62,0:06:15.02,Default,Terenezza,0,0,0,,Such an awful thing to say \Nto the person who threw himself on you
+Dialogue: 0,0:06:15.02,0:06:16.91,Default,Terenezza,0,0,0,,to protect you from Godwin's shot!
+Dialogue: 0,0:06:18.36,0:06:20.19,Default,Terenezza,0,0,0,,I like it, though.
+Dialogue: 0,0:06:20.19,0:06:26.32,Default,Terenezza,0,0,0,,Heroic Tale can't activate fully \Nunless the love is mutual.
+Dialogue: 0,0:06:28.29,0:06:29.63,italics,Scarlet,0,0,0,,That time back then, too...
+Dialogue: 0,0:06:30.45,0:06:34.04,italics,Scarlet,0,0,0,,Was that also the effect of \NOrigin the Creator's blessing?
+Dialogue: 0,0:06:34.70,0:06:38.31,italics,Scarlet,0,0,0,,Then the reason Julius almost died...
+Dialogue: 0,0:06:41.05,0:06:44.51,italics,Scarlet,0,0,0,,The reason he's doing what \Nthat filthy woman says...
+Dialogue: 0,0:06:44.51,0:06:48.18,Default,Terenezza,0,0,0,,I guess it was always a one-sided love!
+Dialogue: 0,0:06:48.18,0:06:49.72,Default,Terenezza,0,0,0,,So funny!
+Dialogue: 0,0:06:49.99,0:06:54.42,italics,Scarlet,0,0,0,,It was all my fault? Because I didn't...
+Dialogue: 0,0:06:54.42,0:06:57.00,Default,Terenezza,0,0,0,,You really are a villainess!
+Dialogue: 0,0:06:57.00,0:07:00.65,Default,Terenezza,0,0,0,,You can never become a true leading lady!
+Dialogue: 0,0:07:00.98,0:07:04.86,Default,Scarlet,0,0,0,,Prince Julius. \NAllow me to confirm one thing.
+Dialogue: 0,0:07:04.86,0:07:06.17,Default,Julius,0,0,0,,Yes?
+Dialogue: 0,0:07:06.17,0:07:11.97,Default,Scarlet,0,0,0,,If your blessing activates fully, \Nyou'll be able to overcome all dangers
+Dialogue: 0,0:07:11.97,0:07:14.29,Default,Scarlet,0,0,0,,and save me?
+Dialogue: 0,0:07:14.92,0:07:18.45,Default,Scarlet,0,0,0,,Even under the influence \Nof the charm blessing...
+Dialogue: 0,0:07:18.45,0:07:20.71,Default,Julius,0,0,0,,Why are you asking me that?
+Dialogue: 0,0:07:22.28,0:07:27.85,Default,Julius,0,0,0,,Neither of us is in love with the other.
+Dialogue: 0,0:07:28.34,0:07:31.05,Default,Scarlet,0,0,0,,Well? Tell me clearly!
+Dialogue: 0,0:07:36.46,0:07:37.30,Default,Julius,0,0,0,,Yes.
+Dialogue: 0,0:07:37.91,0:07:41.54,Default,Julius,0,0,0,,Heroic Tale grants the power \Nto overcome all dangers
+Dialogue: 0,0:07:41.54,0:07:44.53,Default,Julius,0,0,0,,so I can save the one I love.
+Dialogue: 0,0:07:45.71,0:07:48.20,Default,Scarlet,0,0,0,,That's quite a relief.
+Dialogue: 0,0:07:54.06,0:07:56.41,Default,Scarlet,0,0,0,,Save me, Prince Julius.
+Dialogue: 0,0:08:22.67,0:08:24.44,Default,Julius,0,0,0,,It's finally broken.
+Dialogue: 0,0:08:24.44,0:08:27.39,Default,Terenezza,0,0,0,,Heroic Tale has activated completely?!
+Dialogue: 0,0:08:29.60,0:08:36.12,Default,Julius,0,0,0,,When you said you didn't feel that way \Nabout me, you had me rather worried.
+Dialogue: 0,0:08:40.85,0:08:41.58,Default,Scarlet,0,0,0,,Huh?
+Dialogue: 0,0:08:41.58,0:08:43.83,Default,Scarlet,0,0,0,,I beg your pardon?
+Dialogue: 0,0:08:43.83,0:08:47.76,Default,Scarlet,0,0,0,,Do you know how much I struggled with \Nmyself to work up the courage to say that?
+Dialogue: 0,0:08:47.76,0:08:49.55,Default,Julius,0,0,0,,You did well, though.
+Dialogue: 0,0:08:49.55,0:08:52.09,Default,Julius,0,0,0,,You can leave the rest to me.
+Dialogue: 0,0:08:54.79,0:08:57.27,Default,Terenezza,0,0,0,,Screw your Heroic Tale...
+Dialogue: 0,0:08:59.31,0:09:04.57,Default,Terenezza,0,0,0,,That nonsense doesn't stand \Na chance against my divine vessel!
+Dialogue: 0,0:09:04.98,0:09:05.65,Default,Julius,0,0,0,,It's pointless.
+Dialogue: 0,0:09:07.78,0:09:10.40,Default,Terenezza,0,0,0,,Hit him! Just hit him!
+Dialogue: 0,0:09:10.73,0:09:13.89,Default,Julius,0,0,0,,Your divine vessel can't emit \Nanything more than a gentle breeze.
+Dialogue: 0,0:09:13.89,0:09:18.33,Default,Julius,0,0,0,,That gutless goddess Palmia \Nhas a cruel sense of humor.
+Dialogue: 0,0:09:18.33,0:09:20.96,Default,Terenezza,0,0,0,,You don't get to say that!
+Dialogue: 0,0:09:28.91,0:09:29.84,Default,Terenezza,0,0,0,,You...
+Dialogue: 0,0:09:30.42,0:09:31.73,Default,Terenezza,0,0,0,,Die!
+Dialogue: 0,0:09:32.50,0:09:35.45,Default,Julius,0,0,0,,Quite a live wire you are.
+Dialogue: 0,0:09:35.45,0:09:39.31,Default,Scarlet,0,0,0,,You're smiling, black-hearted prince.
+Dialogue: 0,0:09:39.31,0:09:40.45,Default,Terenezza,0,0,0,,Why...
+Dialogue: 0,0:09:40.88,0:09:42.58,Default,Terenezza,0,0,0,,Why?!
+Dialogue: 0,0:09:42.58,0:09:45.79,Default,Terenezza,0,0,0,,Why won't anything go the way I want?!
+Dialogue: 0,0:09:46.48,0:09:48.68,Default,Terenezza,0,0,0,,I'm the leading lady!
+Dialogue: 0,0:09:48.68,0:09:51.57,Default,Terenezza,0,0,0,,I'm the main character! \NEveryone's supposed to love me!
+Dialogue: 0,0:09:53.18,0:09:57.67,Default,Terenezza,0,0,0,,Everyone who doesn't \Nlove me should just die!
+Dialogue: 0,0:09:57.67,0:10:00.44,Default,Terenezza,0,0,0,,The whole kingdom... the whole world...
+Dialogue: 0,0:10:00.79,0:10:03.45,Default,Terenezza,0,0,0,,should just disappear!
+Dialogue: 0,0:10:08.67,0:10:12.34,Default,Scarlet,0,0,0,,You show yourself at last, \Nyou piece of shit goddess.
+Dialogue: 0,0:10:13.05,0:10:17.13,Default,Palmia,0,0,0,,Don't worry, my darling Terenezza.
+Dialogue: 0,0:10:17.51,0:10:20.97,Default,Palmia,0,0,0,,You have me to love you.
+Dialogue: 0,0:10:38.92,0:10:44.54,Default,Palmia,0,0,0,,Now, show those villains \Nwho try to get in your way
+Dialogue: 0,0:10:44.98,0:10:48.00,Default,Palmia,0,0,0,,the true power of a leading lady!
+Dialogue: 0,0:10:48.88,0:10:52.70,Default,Terenezza,0,0,0,,Light of love, rain down.
+Dialogue: 0,0:10:57.12,0:10:58.14,Default,Soldiers,0,0,0,,What the...
+Dialogue: 0,0:10:58.14,0:10:59.24,Default,Paragas,0,0,0,,Hey!
+Dialogue: 0,0:10:59.60,0:11:01.52,Default,Paragas,0,0,0,,The ceiling's coming down!
+Dialogue: 0,0:11:03.14,0:11:04.96,Default,Diana,0,0,0,,Saint Protective Barrier!
+Dialogue: 0,0:11:11.07,0:11:14.65,italics,Diana,0,0,0,,I'll protect them all!
+Dialogue: 0,0:11:20.90,0:11:24.72,Default,Julius,0,0,0,,That would have fried us \Nif it had hit head-on.
+Dialogue: 0,0:11:24.72,0:11:26.63,Default,Julius,0,0,0,,Incredible power.
+Dialogue: 0,0:11:26.63,0:11:31.43,Default,Scarlet,0,0,0,,Yet your blessing, Heroic Tale, \Nnullified it entirely.
+Dialogue: 0,0:11:31.43,0:11:32.87,Default,Scarlet,0,0,0,,Quite impressive.
+Dialogue: 0,0:11:33.37,0:11:36.55,Default,Julius,0,0,0,,But she seems to have used too much power.
+Dialogue: 0,0:11:38.34,0:11:42.14,Default,Julius,0,0,0,,I believe it may be time\N for us to strike back.
+Dialogue: 0,0:11:42.14,0:11:43.93,Default,Julius,0,0,0,,I believe it worked like this...
+Dialogue: 0,0:11:43.93,0:11:46.66,Default,Julius,0,0,0,,Light of love, rain down.
+Dialogue: 0,0:11:51.48,0:11:53.86,Default,Scarlet,0,0,0,,Would you like another helping of my fists?
+Dialogue: 0,0:11:59.93,0:12:02.91,Default,Julius,0,0,0,,She's regenerating as soon as she's injured...
+Dialogue: 0,0:12:03.23,0:12:05.87,Default,Julius,0,0,0,,Those necklaces don't even compare.
+Dialogue: 0,0:12:06.40,0:12:09.58,Default,Scarlet,0,0,0,,In other words, I can \Npunch her as much as I like?
+Dialogue: 0,0:12:09.87,0:12:15.14,Default,Julius,0,0,0,,No, I doubt the fun will last much longer.
+Dialogue: 0,0:12:16.13,0:12:18.40,Default,Julius,0,0,0,,As compatible as they may be,
+Dialogue: 0,0:12:18.40,0:12:21.65,Default,Julius,0,0,0,,a human vessel can't withstand \Nthe power of a god for long.
+Dialogue: 0,0:12:22.12,0:12:26.28,Default,Julius,0,0,0,,Terenezza will die within minutes.
+Dialogue: 0,0:12:27.73,0:12:31.90,Default,Julius,0,0,0,,We have no way to finish her, so we \Ncould wait for her to self-destruct...
+Dialogue: 0,0:12:31.90,0:12:32.69,Default,Scarlet,0,0,0,,I won't wait.
+Dialogue: 0,0:12:33.93,0:12:36.03,Default,Scarlet,0,0,0,,I won't let it end that way.
+Dialogue: 0,0:12:38.65,0:12:40.02,Default,Scarlet,0,0,0,,I refuse to.
+Dialogue: 0,0:12:49.75,0:12:50.96,Default,Scarlet,0,0,0,,Because...
+Dialogue: 0,0:12:50.96,0:12:57.92,Default,Scarlet,0,0,0,,I still haven't dealt her the blow \Nthat will {\i1}really{\i0} make me feel better.
+Dialogue: 0,0:12:58.54,0:13:00.38,Default,Julius,0,0,0,,I thought you would say that.
+Dialogue: 0,0:13:03.67,0:13:06.13,Default,Julius,0,0,0,,I'll protect you with my blessing.
+Dialogue: 0,0:13:06.13,0:13:10.51,Default,Julius,0,0,0,,I'll make sure it holds out \Nuntil you can deliver that punch.
+Dialogue: 0,0:13:14.44,0:13:16.53,Default,Scarlet,0,0,0,,I won't say thank you.
+Dialogue: 0,0:13:16.87,0:13:22.40,Default,Scarlet,0,0,0,,I expect you to spend your life repaying me \Nfor gifting you my maiden lips.
+Dialogue: 0,0:13:25.13,0:13:26.24,Default,Julius,0,0,0,,Go on, then.
+Dialogue: 0,0:13:29.83,0:13:33.17,Default,Terenezza,0,0,0,,Light of love, rain down.
+Dialogue: 0,0:13:33.44,0:13:37.42,Default,Julius,0,0,0,,Shine of the hero, protect my beloved.
+Dialogue: 0,0:13:39.08,0:13:42.63,Default,Terenezza,0,0,0,,If not... If not for you...
+Dialogue: 0,0:13:42.63,0:13:46.13,Default,Terenezza,0,0,0,,Scarlet!
+Dialogue: 0,0:13:46.13,0:13:48.86,Default,Scarlet,0,0,0,,Time, stop.
+Dialogue: 0,0:13:50.94,0:13:52.77,Default,Scarlet,0,0,0,,Time of Chronoir.
+Dialogue: 0,0:13:57.94,0:14:00.53,Default,Scarlet,0,0,0,,I shall now deliver...
+Dialogue: 0,0:14:00.53,0:14:03.95,Default,Scarlet,0,0,0,,the blow that will put all regrets to rest!
+Dialogue: 0,0:14:04.20,0:14:05.99,Default,Scarlet,0,0,0,,Go flying...
+Dialogue: 0,0:14:13.00,0:14:15.33,Default,Scarlet,0,0,0,,to the ends of the world!
+Dialogue: 0,0:14:34.90,0:14:36.90,Default,Scarlet,0,0,0,,I feel {\i1}so{\i0} much better now!
+Dialogue: 0,0:14:42.34,0:14:43.91,Default,Diana,0,0,0,,Blessing of Chronoa:
+Dialogue: 0,0:14:44.89,0:14:46.76,Default,Diana,0,0,0,,Saint Protective Barrier.
+Dialogue: 0,0:14:55.20,0:14:57.54,Default,Diana,0,0,0,,Did I do it?
+Dialogue: 0,0:14:57.54,0:14:59.42,Default,Scarlet,0,0,0,,Well done.
+Dialogue: 0,0:14:59.42,0:15:01.63,Default,Scarlet,0,0,0,,You carried out your duty perfectly...
+Dialogue: 0,0:15:01.99,0:15:03.33,Default,Scarlet,0,0,0,,Saint Sanya.
+Dialogue: 0,0:15:05.77,0:15:06.84,Default,Diana,0,0,0,,Yeah!
+Dialogue: 0,0:15:21.08,0:15:24.32,Default,Scarlet,0,0,0,,You're going to leave \Nwithout saying goodbye?
+Dialogue: 0,0:15:24.65,0:15:27.16,Default,Scarlet,0,0,0,,Prince Julius told me...
+Dialogue: 0,0:15:27.16,0:15:30.53,Default,Scarlet,0,0,0,,You've become an intelligence \Nagent for Pallistan, then?
+Dialogue: 0,0:15:30.93,0:15:32.66,Default,Dios,0,0,0,,Oh, well...
+Dialogue: 0,0:15:32.66,0:15:36.18,Default,Dios,0,0,0,,He said that if I didn't agree, \Nhe'd sentence me to a hundred years
+Dialogue: 0,0:15:36.18,0:15:39.70,Default,Dios,0,0,0,,of hard labor in the boonies \Nwith the other inquisitors!
+Dialogue: 0,0:15:39.70,0:15:42.78,Default,Dios,0,0,0,,It was basically a plea bargain!
+Dialogue: 0,0:15:43.25,0:15:46.88,Default,Scarlet,0,0,0,,There's no telling \Nwhen you'll return to Pallistan.
+Dialogue: 0,0:15:49.17,0:15:50.60,Default,Diana,0,0,0,,Dios!
+Dialogue: 0,0:15:53.29,0:15:55.02,Default,Diana,0,0,0,,I want to talk to you.
+Dialogue: 0,0:15:55.02,0:15:57.03,Default,Diana,0,0,0,,About us.
+Dialogue: 0,0:15:58.92,0:16:02.99,Default,Dios,0,0,0,,You heard that we were half-siblings, then?
+Dialogue: 0,0:16:05.80,0:16:09.36,Default,Diana,0,0,0,,You saved me in the western ruins that day.
+Dialogue: 0,0:16:11.31,0:16:12.49,Default,Diana,0,0,0,,Thank you.
+Dialogue: 0,0:16:13.20,0:16:20.27,Default,Diana,0,0,0,,In the past, I've only done my duties \Nas a saint because I was told to.
+Dialogue: 0,0:16:20.63,0:16:24.38,Default,Diana,0,0,0,,Because I thought it was \Nthe only thing I was good for.
+Dialogue: 0,0:16:25.05,0:16:25.67,Default,Diana,0,0,0,,But...
+Dialogue: 0,0:16:27.42,0:16:28.88,Default,Diana,0,0,0,,Things will be different now.
+Dialogue: 0,0:16:29.23,0:16:33.49,Default,Diana,0,0,0,,I want to protect the people \Nof this country of my own will.
+Dialogue: 0,0:16:33.49,0:16:38.03,Default,Diana,0,0,0,,For the sake of this kingdom's future, \NI want to carry out my mission
+Dialogue: 0,0:16:38.46,0:16:42.86,Default,Diana,0,0,0,,with my divinely granted gift, \Nrisking my life to fight like you all do.
+Dialogue: 0,0:16:43.48,0:16:47.52,italics,Dios,0,0,0,,Scarlet was right. Sanya is strong.
+Dialogue: 0,0:16:48.24,0:16:49.82,Default,Dios,0,0,0,,Look at you...
+Dialogue: 0,0:16:49.82,0:16:52.35,Default,Dios,0,0,0,,Acting all grown up, are we?!
+Dialogue: 0,0:16:52.35,0:16:54.03,Default,Diana,0,0,0,,Hey! What are you doing?!
+Dialogue: 0,0:16:54.03,0:16:58.83,Default,Dios,0,0,0,,By the way, I told everyone that you only \Nbetrayed them because I manipulated you.
+Dialogue: 0,0:16:58.83,0:17:01.24,Default,Diana,0,0,0,,Huh? But it was my own weakness that—
+Dialogue: 0,0:17:01.24,0:17:06.17,Default,Dios,0,0,0,,And anyway, the info you gave me \Nturned out to be meaningless!
+Dialogue: 0,0:17:07.38,0:17:12.41,Default,Dios,0,0,0,,I mean, when you told me with a straight face \Nabout the taste of the bread you order,
+Dialogue: 0,0:17:12.41,0:17:15.10,Default,Dios,0,0,0,,it was all I could do to keep from laughing.
+Dialogue: 0,0:17:17.32,0:17:21.77,Default,Diana,0,0,0,,D-Dios!
+Dialogue: 0,0:17:23.01,0:17:25.00,Default,Dios,0,0,0,,Well, goodbye!
+Dialogue: 0,0:17:25.00,0:17:28.72,Default,Dios,0,0,0,,Next time we meet, \Nlet's have ourselves a date, Scarlet!
+Dialogue: 0,0:17:29.43,0:17:32.45,Default,Diana,0,0,0,,Stupid Dios! Don't hit on my sister!
+Dialogue: 0,0:17:32.45,0:17:34.14,Default,Dios,0,0,0,,Farewell!
+Dialogue: 0,0:17:34.14,0:17:35.87,Default,Diana,0,0,0,,Never come back,
+Dialogue: 0,0:17:35.87,0:17:38.99,Default,Diana,0,0,0,,you lying elf!
+Dialogue: 0,0:17:42.65,0:17:48.29,Default,Leonardo,0,0,0,,If things go as planned, we should make it \Nwell in time for Julius's tea party.
+Dialogue: 0,0:17:48.29,0:17:50.44,Default,Scarlet,0,0,0,,I believe it's to celebrate our contributions.
+Dialogue: 0,0:17:50.44,0:17:54.18,Default,Scarlet,0,0,0,,Saint Diana, Sir Sigurd, and the members \Nof the Holy Order will also attend.
+Dialogue: 0,0:17:54.18,0:17:55.18,Default,Leonardo,0,0,0,,Yes.
+Dialogue: 0,0:17:55.18,0:17:59.44,Default,Leonardo,0,0,0,,Once Terenezza was off the board, \Nthe Eldrand Army withdrew immediately.
+Dialogue: 0,0:17:59.90,0:18:02.03,Default,Leonardo,0,0,0,,Things have finally been resolved.
+Dialogue: 0,0:18:02.66,0:18:06.45,Default,Leonardo,0,0,0,,But I fear how capable that man is.
+Dialogue: 0,0:18:07.49,0:18:10.74,Default,Leonardo,0,0,0,,He used the fact that he was \Nalso controlled by her charms
+Dialogue: 0,0:18:10.74,0:18:14.99,Default,Leonardo,0,0,0,,as testimony to condemn \NSargon and the other Palmians.
+Dialogue: 0,0:18:16.08,0:18:22.67,Default,Leonardo,0,0,0,,In that moment, the Palmians saw clearly \Nthat Diana was not a false saint,
+Dialogue: 0,0:18:23.25,0:18:29.32,Default,Leonardo,0,0,0,,and began to insist that they had been \Nbrainwashed by the Saint of Palmia.
+Dialogue: 0,0:18:29.92,0:18:33.40,Default,Leonardo,0,0,0,,As a result, the Palmian religion \Nhas been dissolved.
+Dialogue: 0,0:18:34.00,0:18:38.64,Default,Scarlet,0,0,0,,My brother, did you know \Nabout Prince Julius's blessing?
+Dialogue: 0,0:18:38.64,0:18:41.72,Default,Leonardo,0,0,0,,I knew he had a blessing,
+Dialogue: 0,0:18:42.08,0:18:43.72,Default,Leonardo,0,0,0,,but for some reason he said...
+Dialogue: 0,0:18:44.46,0:18:48.19,flashback,Julius,0,0,0,,I could never speak of something \Nso embarrassing in public.
+Dialogue: 0,0:18:48.19,0:18:51.15,Default,Leonardo,0,0,0,,...and kept it strictly to himself.
+Dialogue: 0,0:18:51.55,0:18:56.04,Default,Leonardo,0,0,0,,Even if he'd told me, though, \NI'm not sure I would have believed it.
+Dialogue: 0,0:18:56.04,0:19:00.37,Default,Leonardo,0,0,0,,I don't even know how much of this he planned.
+Dialogue: 0,0:19:00.69,0:19:04.11,italics,Scarlet,0,0,0,,Indeed, how much did he plan?
+Dialogue: 0,0:19:05.33,0:19:06.08,Default,Scarlet,0,0,0,,Oh.
+Dialogue: 0,0:19:06.08,0:19:07.51,Default,Leonardo,0,0,0,,What is it, Scarlet?
+Dialogue: 0,0:19:07.51,0:19:09.04,Default,Leonardo,0,0,0,,You aren't feeling well?
+Dialogue: 0,0:19:10.95,0:19:12.96,italics,Scarlet,0,0,0,,He beat me.
+Dialogue: 0,0:19:15.19,0:19:18.65,Default,Scarlet,0,0,0,,He arranged a situation \Nin which I would be in danger
+Dialogue: 0,0:19:18.65,0:19:22.89,Default,Scarlet,0,0,0,,and have to rely on his power,
+Dialogue: 0,0:19:22.89,0:19:26.74,Default,Scarlet,0,0,0,,made me confess my feelings and kiss him...
+Dialogue: 0,0:19:26.74,0:19:31.11,Default,Scarlet,0,0,0,,In other words, to unlock his hidden power,
+Dialogue: 0,0:19:31.11,0:19:33.92,Default,Scarlet,0,0,0,,he intentionally let himself be charmed.
+Dialogue: 0,0:19:34.32,0:19:36.47,Default,Leonardo,0,0,0,,What are you muttering about?
+Dialogue: 0,0:19:37.11,0:19:38.28,Default,Scarlet,0,0,0,,Brother.
+Dialogue: 0,0:19:38.28,0:19:40.84,Default,Scarlet,0,0,0,,I have business to take care of.
+Dialogue: 0,0:19:42.45,0:19:45.33,Default,Scarlet,0,0,0,,I'll go ahead of you with Rex.
+Dialogue: 0,0:19:54.42,0:19:56.18,Default,Diana,0,0,0,,Such cute desserts!
+Dialogue: 0,0:19:56.18,0:19:58.05,Default,Diana,0,0,0,,Is this apple pie?
+Dialogue: 0,0:19:58.05,0:20:00.14,Default,Julius,0,0,0,,Scarlet's favorite.
+Dialogue: 0,0:20:00.14,0:20:03.43,Default,Julius,0,0,0,,We made a promise to have some \Nwhen this was all over.
+Dialogue: 0,0:20:11.30,0:20:12.78,Default,Scarlet,0,0,0,,Good day to you...
+Dialogue: 0,0:20:13.27,0:20:14.97,Default,Scarlet,0,0,0,,Prince Julius.
+Dialogue: 0,0:20:15.36,0:20:18.61,Default,Julius,0,0,0,,Perfect timing, Scarlet.
+Dialogue: 0,0:20:18.61,0:20:22.45,Default,Julius,0,0,0,,Your apple pie with vanilla \Nice cream was just finished.
+Dialogue: 0,0:20:23.03,0:20:25.99,Default,Scarlet,0,0,0,,No, it is not yet finished.
+Dialogue: 0,0:20:25.99,0:20:30.12,Default,Scarlet,0,0,0,,It's lacking a dash of mortal peril, you see.
+Dialogue: 0,0:20:30.12,0:20:32.75,Default,Julius,0,0,0,,It seems you have something to say.
+Dialogue: 0,0:20:32.75,0:20:33.93,Default,Scarlet,0,0,0,,Yes.
+Dialogue: 0,0:20:33.93,0:20:38.72,Default,Scarlet,0,0,0,,Kindly brace yourself \Nso that I may enlighten you.
+Dialogue: 0,0:20:38.72,0:20:40.93,Default,Julius,0,0,0,,Ah, of course.
+Dialogue: 0,0:20:40.93,0:20:44.18,Default,Julius,0,0,0,,First, may I ask you one thing?
+Dialogue: 0,0:20:44.18,0:20:45.77,Default,Scarlet,0,0,0,,What is it?
+Dialogue: 0,0:20:46.40,0:20:51.73,Default,Julius,0,0,0,,When you kiss someone, you should be sure \Nto tilt your head just a little bit.
+Dialogue: 0,0:20:51.73,0:20:53.82,Default,Julius,0,0,0,,You don't want to bump noses.
+Dialogue: 0,0:20:53.82,0:20:57.67,Default,Julius,0,0,0,,Also, it's not good to dive in too quickly.
+Dialogue: 0,0:20:57.67,0:20:59.58,Default,Julius,0,0,0,,It hurts when your teeth clack together.
+Dialogue: 0,0:21:00.15,0:21:04.65,Default,Julius,0,0,0,,Next time we do it, I hope you'll \Ntake these things into account.
+Dialogue: 0,0:21:05.14,0:21:06.24,Default,Julius,0,0,0,,Understand?
+Dialogue: 0,0:21:06.24,0:21:08.69,Default,Julius,0,0,0,,My beloved Lady of Beatings.
+Dialogue: 0,0:21:09.45,0:21:12.66,Default,Scarlet,0,0,0,,First, you said it was just {\i1}one{\i0} thing,
+Dialogue: 0,0:21:12.66,0:21:16.91,Default,Scarlet,0,0,0,,but you ended up making \Ntwo different requests.
+Dialogue: 0,0:21:16.91,0:21:18.67,Default,Julius,0,0,0,,Yes, I did!
+Dialogue: 0,0:21:19.03,0:21:24.60,Default,Scarlet,0,0,0,,Then may I also ask one final thing?
+Dialogue: 0,0:21:26.56,0:21:34.40,Default,Scarlet,0,0,0,,May I send this insensitive \Nblack-hearted prince flying?
+Dialogue: 0,0:21:48.65,0:21:49.79,Default,Leonardo,0,0,0,,Wait, Scarle—
+Dialogue: 0,0:21:50.33,0:21:56.54,sign_generic,credits,0,0,0,,{\an9\fnTimes New Roman\fs14)\3c&HB84FB5&\shad0\c&HFFFFFF&\move(173,280,173,-69)}Translation\h\h\NSubtitle Timing\h\h\NSubtitle Editing\h\h\NQuality Check\h\h\NTranslation Check\h\h
+Dialogue: 0,0:21:50.33,0:21:56.54,sign_generic,credits,0,0,0,,{\an7\fnTimes New Roman\fs14)\3c&HB84FB5&\shad0\c&HFFFFFF&\move(173,280,173,-69)}\h\hElizabeth Ellis\N\h\hMariana Martinez\N\h\hMeagan Smith\N\h\hWilliam Haggard\N\h\hSriram Gurunathan
+

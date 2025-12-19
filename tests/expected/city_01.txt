@@ -1,0 +1,372 @@
+[3910ms - 6750ms] Long ago, there was a bird.
+[7620ms - 10380ms] One day, the bird fell asleep while flying,
+[10380ms - 11750ms] and a tragedy occurred.
+[15050ms - 19260ms] It crashed into a long rock protruding from the ground.
+[20800ms - 25890ms] The bird had a disease that would make it turn to stone upon crashing into a rock,
+[25890ms - 29810ms] and it remained there, stuck, as eons passed by.
+[32060ms - 35570ms] In some eras, it was an object of worship,
+[35570ms - 38700ms] while in others, it was used as a drying rack.
+[39490ms - 42950ms] While its use changed over the eras,
+[42950ms - 46000ms] it became rooted to the area.
+[54880ms - 57500ms] And now, in the present day...
+[58260ms - 62550ms] This is the story of a city
+[64310ms - 68140ms] that has nothing to do with that bird whatsoever.
+[76400ms - 79490ms] Hello, dear my friends
+[79490ms - 82240ms] I remember the days
+[82240ms - 87250ms] We spent talking about our dreams
+[88450ms - 94630ms] It's hard to become an adult
+[94630ms - 97420ms] Let's go find the thing
+[97420ms - 102510ms] That we kept hidden
+[102510ms - 103600ms] Hey!
+[112400ms - 118570ms] Throw away your cluttered mind
+[118570ms - 121530ms] Swim in the clouds
+[121530ms - 125200ms] Raise your head and run out, right
+[126410ms - 129490ms] The rain has stopped
+[129490ms - 132660ms] Sing along
+[132660ms - 135920ms] Hold hands
+[138840ms - 141880ms] I laugh too
+[141880ms - 145050ms] You laugh too
+[145050ms - 148430ms] I'm sure like this
+[148430ms - 154390ms] We'll meet again
+[165370ms - 167780ms] Big Bro, what's your star sign again?
+[167780ms - 169160ms] Capricorn.
+[169160ms - 171580ms] Yikes. Let me read you your horoscope.
+[171580ms - 172860ms] This week for Capricorns—
+[172860ms - 173580ms] Wait!
+[173580ms - 176000ms] Don't lead with "yikes"!
+[176880ms - 177630ms] Okay.
+[177920ms - 179750ms] Then let me try again.
+[179750ms - 180880ms] Try again?!
+[181340ms - 183470ms] So, the ranking for Capricorns is...
+[185260ms - 187430ms] You don't have to say it!
+[187430ms - 189060ms] I don't believe in that stuff anyway!
+[190180ms - 191020ms] Fine.
+[202860ms - 206130ms] Actually, I think you better tell me the lucky item!
+[211410ms - 214200ms] Is this really what it is?
+[214200ms - 217420ms] Yeah. Says so right here. Miniskirt.
+[217420ms - 218670ms] I see.
+[219170ms - 221300ms] So, did it work?
+[221300ms - 222130ms] Did what work?
+[222590ms - 226420ms] Has this lucky item granted me luck now?
+[227010ms - 228130ms] Who knows?
+[229050ms - 230890ms] Well, I guess it has...
+[231350ms - 235100ms] Yes, I've looked at it. It must have worked.
+[236850ms - 237640ms] All right!
+[237640ms - 239150ms] Wear it.
+[240610ms - 242610ms] Wear it, Tatewaku.
+[242610ms - 243730ms] Dad!
+[244090ms - 246990ms] That's exactly what I didn't want to do!
+[246990ms - 248490ms] Then what are you going to do?
+[248490ms - 252230ms] I'll keep it with me all day and never let it leave my side!
+[254370ms - 256410ms] What are you laughing at?!
+[256410ms - 258290ms] Sorry, sorry.
+[258290ms - 260460ms] Listen, Tatewaku.
+[260460ms - 264500ms] If the lucky item had been curry rice,  what would you have done?
+[266330ms - 268690ms] Would you just look at it all day?
+[268690ms - 271890ms] Would you keep it on you all day and never let it leave your side?
+[272250ms - 276980ms] You wouldn't, would you?  Tatewaku, curry is something you eat.
+[276980ms - 278480ms] And a skirt
+[278480ms - 280200ms] is something you wear.
+[281020ms - 283900ms] You said you wanted to play in the next soccer match, right?
+[285070ms - 289410ms] If the new girl we hired actually shows her face, you can go to the match.
+[290200ms - 293740ms] But there is no guarantee she'll come.
+[294950ms - 298620ms] So take the plunge, Tatewaku.
+[298620ms - 301960ms] For your own luck!
+[305470ms - 306880ms] So, what are you going to do?
+[313300ms - 316930ms] What?! What are you laughing about? It's my lucky item!
+[317390ms - 318560ms] Don't take pictures!
+[318560ms - 319570ms] For Mom.
+[319570ms - 320480ms] For Ecchan.
+[320480ms - 321690ms] Don't send it to people!
+[322110ms - 323810ms] Don't keep it as a memory!
+[325150ms - 328110ms] Where were you even keeping that microphone?
+[328110ms - 330030ms] Someone, help me!
+[341800ms - 344000ms] Wait, where'd they go?
+[344300ms - 346920ms] When did they stop chasing me?
+[357770ms - 361850ms] Matsuri, if you could have only one special power, what would it be?
+[370490ms - 373200ms] The ability to have money come out of my hands nonstop!
+[373200ms - 374250ms] So greedy!
+[375030ms - 376970ms] Well, what about you, Ecchan?
+[377540ms - 378590ms] Me?
+[381750ms - 385500ms] The ability to turn all of that money into counterfeit bills.
+[385500ms - 388620ms] No fair! I'll get caught!
+[389800ms - 392510ms] I won't let you take over the world that easily.
+[393510ms - 395680ms] But Ecchan, that ability...
+[395680ms - 399010ms] It'd be useless unless I was around.
+[401680ms - 404830ms] So, you've finally noticed, Matsuri.
+[405560ms - 406560ms] Who are you?
+[408190ms - 410690ms] Good evening. I'm Ecchan.
+[410690ms - 413610ms] Oh, good. It's just you, Ecchan.
+[413610ms - 417530ms] Without you, my abilities won't manifest.
+[417990ms - 420910ms] So the reason I chose that ability...
+[420910ms - 421960ms] Do you know it?
+[421960ms - 423370ms] I have no idea.
+[423370ms - 425000ms] Think about it a little.
+[426290ms - 429790ms] The thing I really want isn't an ability.
+[430630ms - 431880ms] That's right.
+[432920ms - 434130ms] Matsuri.
+[434590ms - 436880ms] It's you.
+[440300ms - 443020ms] Ecchan!
+[443520ms - 444770ms] Marry me—
+[448440ms - 449560ms] Rejection toss!
+[450560ms - 451940ms] No sweat!
+[451940ms - 453780ms] That's the Ecchan I know!
+[453780ms - 457700ms] Not joining a club and watching sumo every day has served you well.
+[457700ms - 460280ms] That's not true! I'm in the go home club!
+[460280ms - 462660ms] I'm the go home club champion!
+[462660ms - 465530ms] If you're the champion, what am I?
+[467540ms - 469710ms] You're a go home club champion too!
+[469710ms - 471790ms] Two champions!
+[472300ms - 474420ms] Then shall we defend our titles today too?
+[474420ms - 476970ms] We'll defend our titles and leave our mark on history!
+[502480ms - 504890ms] We're almost at the farewell intersection.
+[505950ms - 508460ms] Fifty yen. Let's get some juice.
+[517400ms - 519390ms] Matsuri, what are you doing?
+[519390ms - 522090ms] Imagining money coming out of my hands.
+[525680ms - 529220ms] Stop it, Ecchan! Don't send out those vibrations!
+[544120ms - 548080ms] I don't think I can go on any longer.
+[548710ms - 550230ms] Please give me a break.
+[550920ms - 552830ms] Come on, Sensei, you can do it!
+[554090ms - 558820ms] Mr. Editor, I've gotten this far with nothing but bummer material,
+[560340ms - 562050ms] but now...
+[562050ms - 564800ms] I'm all out of ideas.
+[570440ms - 572020ms] Hello!
+[575980ms - 577070ms] All right, then.
+[577070ms - 579280ms] You're really going at it, huh?
+[579280ms - 581450ms] Oh, you came at just the right time.
+[581910ms - 583770ms] Take this over there.
+[584610ms - 585880ms] Okay, okay.
+[585880ms - 587080ms] Here, take this—
+[590250ms - 592380ms] First player, giant pawn.
+[593040ms - 594920ms] Second player, medium-sized gold.
+[597260ms - 598440ms] Ten seconds.
+[598440ms - 604510ms] One, two, three, four, five, six...
+[604510ms - 605460ms] It went in—
+[607010ms - 609970ms] Please! Pretend you didn't see!
+[609970ms - 612850ms] What?! There's no way you can cover that up!
+[613200ms - 614690ms] It went straight in!
+[614690ms - 616690ms] Then what would you do?
+[620650ms - 621570ms] Run away!
+[621570ms - 622150ms] Ouch!
+[622150ms - 624200ms] The owner can't just run away!
+[624200ms - 626370ms] Then all we can do is apologize!
+[626370ms - 626990ms] Ouch!
+[626990ms - 628760ms] You bastard!
+[628760ms - 630450ms] How naive can you be?
+[630450ms - 632430ms] If I apologize,
+[632430ms - 634120ms] he'll yell at me!
+[637790ms - 640910ms] That's so obvious, it woke me right up.
+[640910ms - 642630ms] Here, come here.
+[643510ms - 645720ms] I can't say this out loud,
+[646180ms - 648450ms] but there's no choice but to trick him.
+[649470ms - 653300ms] Since I can't say it out loud...
+[650260ms - 653300ms] He went on and on about his strategy,
+[653300ms - 657440ms] but my ears were so fuzzy that I was incapable of doing anything...
+[661990ms - 663740ms] I bought a real good one!
+[663740ms - 666700ms] All right, did you get the receipt?
+[666700ms - 668190ms] It's in your wallet.
+[668190ms - 669450ms] Great work.
+[670090ms - 673290ms] So, are you ready?
+[675190ms - 678330ms] This is getting pretty darn exciting!
+[679090ms - 680390ms] Here we go.
+[729350ms - 730030ms] Sorry!
+[730030ms - 731350ms] I am terribly sorry!
+[731350ms - 732520ms] So sorry!
+[732520ms - 733470ms] Sorry!
+[739980ms - 743230ms] No words can possibly express our remorse!
+[745360ms - 746740ms] What a delight!
+[746740ms - 750240ms] I knew it was the right choice to build in a microphone.
+[760130ms - 761880ms] No, no, please raise your heads.
+[762340ms - 764420ms] Be at ease, both of you.
+[765050ms - 769430ms] The reason the cork hit my forehead and that I got all wet
+[769890ms - 773260ms] is because you were kind enough to offer me free champagne.
+[774810ms - 776560ms] It left a dent...
+[776560ms - 780810ms] Your thoughtfulness is most delightful.
+[780810ms - 784400ms] It is only a small gesture,  but allow me to give this to you.
+[784400ms - 786820ms] A Consideration Award.
+[787180ms - 793620ms] This person hasn't noticed the crispy noodles.
+[793970ms - 795370ms] I delivered the food.
+[795370ms - 797580ms] Whoa! Why are you bowing down like that?
+[799010ms - 802830ms] You really came! Thank you so much!
+[803200ms - 806710ms] You honestly looked like a total flake on your resume,
+[806710ms - 809060ms] so I was super worried.
+[809060ms - 809630ms] Hey!
+[810050ms - 814220ms] As embarrassing as it is, this is all thanks to wearing the miniskirt!
+[814220ms - 818100ms] Well then, I'm going to continue my homework in my room—
+[814220ms - 818100ms] room—
+[818100ms - 820230ms] Hot! It's hot!
+[821980ms - 826020ms] Why are there crispy noodles in my bag?!
+[826860ms - 830420ms] So it was just Tatewaku's bag all along?
+[830420ms - 831740ms] Good for you!
+[832290ms - 833540ms] It's not good at all!
+[833540ms - 837370ms] How the heck did two crispy noodles even get into my bag?!
+[838620ms - 840120ms] Don't you understand, Tatewaku?
+[840120ms - 841960ms] How the heck could I understand?!
+[842920ms - 846750ms] For a brief moment, you wore a skirt.
+[847340ms - 851630ms] But you quickly returned to wearing pants.
+[851630ms - 853890ms] In other words, that's how it goes.
+[853890ms - 858390ms] This was destined to happen because you're not wearing your lucky item.
+[860720ms - 864520ms] That's what you think! I'm still wearing it!
+[867940ms - 870030ms] I feel like I've seen this course of events before.
+[870490ms - 872150ms] Don't just go straight back to work!
+[872150ms - 874570ms] Don't just go straight to eating!
+[874570ms - 877780ms] Don't just go straight to taking the staff meal home!
+[878240ms - 881290ms] If you're gonna make fun of me, do it right!
+[881790ms - 884250ms] What the heck is this horoscope?
+[884680ms - 886960ms] What part of this is supposed to be a lucky item?
+[897560ms - 899760ms] That place is smoking again.
+[916490ms - 917360ms] Oh, no!
+[917950ms - 919950ms] Oh, no, no, no...
+[920490ms - 922830ms] No, no, no...
+[924000ms - 926460ms] I think... This is...
+[926860ms - 930960ms] totally one of those "lost my point card" situations!
+[932170ms - 935470ms] I don't have a clue where I could've lost it,
+[936510ms - 942100ms] so I'll sniff some Kaimei ink and calm myself down a bit.
+[943270ms - 947400ms] Maybe it's because of this gentle, nostalgic scent,
+[947400ms - 951560ms] but I find myself reflecting on my life so far.
+[970340ms - 973660ms] These utterly average, unremarkable 20 years
+[973660ms - 975880ms] are a bit depressing even to me.
+[976590ms - 977780ms] At times like this,
+[977780ms - 982430ms] I touch the gills on the underside of my beloved shiitake mushrooms to relax!
+[982430ms - 986580ms] Academically speaking, it might possess an effect similar to drinking warm milk!
+[989270ms - 993070ms] On a whim, I decide to stroke the surface of the shiitake mushroom too,
+[993070ms - 997110ms] and am immediately captivated by its indescribable velvet-like texture.
+[997490ms - 1001750ms] Perhaps this fluttering feeling could take me somewhere interesting,
+[1001750ms - 1005330ms] away from this ordinary daily life.
+[1006050ms - 1010170ms] Just thinking about it makes my heart race.
+[1010830ms - 1014590ms] To calm my overflowing emotions,
+[1014590ms - 1017720ms] I touch the putty eraser I always keep in my pocket
+[1017720ms - 1020200ms] and knead it at a steady pace.
+[1024640ms - 1027180ms] Every part of the shiitake mushroom is precious.
+[1027640ms - 1032310ms] Whatever the case may be,  I am grateful for this encounter.
+[1032310ms - 1035690ms] Paru paru paru, point paru paru.
+[1036650ms - 1042070ms] On a whim, I decide to chant a blessing,  hoping that my point card will appear.
+[1042990ms - 1045890ms] "I'll make your wish come true."
+[1045890ms - 1048200ms] Oh, God!
+[1049210ms - 1051870ms] With such things running through my mind,
+[1052330ms - 1055830ms] I get a good feeling that everything will just work out,
+[1055830ms - 1059150ms] so I quickly start walking towards the police box.
+[1062510ms - 1067010ms] Reality is truly a cruel thing.
+[1070890ms - 1071480ms] Excuse me.
+[1073150ms - 1074450ms] Are you looking for this?
+[1077230ms - 1079660ms] This is it, this is it!
+[1079660ms - 1081740ms] It's been found all of a sudden!
+[1082030ms - 1084360ms] Thank you, Officer!
+[1097550ms - 1101360ms] That god I made yesterday really does have power.
+[1104010ms - 1105760ms] I return to my room
+[1106100ms - 1111440ms] and give the Papico packed into the tip as an offering to the god.
+[1112520ms - 1117270ms] The bit of Papico stuck at the tip,  which I eat just before it melts,
+[1117820ms - 1119820ms] is exceptionally delicious.
+[1120240ms - 1122030ms] The main part is also delicious.
+[1123410ms - 1128770ms] What if I add another layer of happiness to my current state of happiness?
+[1128770ms - 1132450ms] Could it be that I'll become dangerously happy?
+[1133250ms - 1135310ms] I stretch the putty eraser,
+[1135310ms - 1140180ms] creating the fluffy spots that appear just before it breaks,
+[1140180ms - 1143330ms] and begin tapping them gently.
+[1144260ms - 1148560ms] The mystery of this cotton-like substance being formed from a hard putty eraser.
+[1149380ms - 1152180ms] The bliss of crushing it all by myself.
+[1152180ms - 1158730ms] This is truly the bestest,  the greatest, the happiest time of all.
+[1159400ms - 1162830ms] However, this happiness is a different flavor,
+[1162830ms - 1167670ms] which makes me realize that there are all kinds of different happinesses.
+[1178290ms - 1179080ms] A joke...
+[1179810ms - 1180790ms] Anything...
+[1181370ms - 1183020ms] A bummer joke...
+[1196980ms - 1200190ms] We do have one ultimate trump card.
+[1215790ms - 1216830ms] I'm going to say it!
+[1232850ms - 1235520ms] This week will be the final chapter.
+[1235520ms - 1237810ms] What?
+[1247780ms - 1251160ms] I've... thought of something.
+[1259960ms - 1261080ms] Hey.
+[1262130ms - 1263500ms] Sorry!
+[1263500ms - 1266130ms] Were you doing some sexy stuff?
+[1266130ms - 1267920ms] No way!
+[1268300ms - 1270200ms] I was taking a photo of broccoli!
+[1271430ms - 1273600ms] Why did you come barging in here, anyway?
+[1273600ms - 1277480ms] Well, you know, I got extra of the staff meal.
+[1277480ms - 1279150ms] Betcha want some too, right, Niikura?
+[1282850ms - 1285820ms] Thanks for the... food.
+[1286570ms - 1289570ms] What's with that smirk on your face?
+[1289570ms - 1291990ms] All right, that'll be a thousand yen!
+[1292700ms - 1294030ms] Schemer!
+[1295720ms - 1298700ms] Speaking of, how was your part-time job?
+[1298700ms - 1300970ms] Well, listen to this.
+[1301630ms - 1305380ms] Two servings of crispy noodles went straight in like, "whoosh!"
+[1305380ms - 1308630ms] Wow, sounds like a busy day.
+[1308630ms - 1309900ms] Something like that.
+[1310830ms - 1312480ms] Niikura, what did you do?
+[1314290ms - 1316600ms] I went to college.
+[1316600ms - 1320310ms] You should show your face one of these times, Nagumo.
+[1324310ms - 1325810ms] Like "whoosh"?
+[1325810ms - 1327530ms] Like whoosh!
+[1331860ms - 1336030ms] By the way, what were you doing with that broccoli earlier?
+[1336030ms - 1338290ms] You want to know?
+[1338820ms - 1339790ms] Ta-da!
+[1340120ms - 1342660ms] The magazine I bought this morning.
+[1342660ms - 1344870ms] Here, take a look at this!
+[1346820ms - 1349550ms] Yes. Me!
+[1348270ms - 1349550ms] Amazing!
+[1349550ms - 1350550ms] Seriously?
+[1350550ms - 1351880ms] How much did you get for it?
+[1351880ms - 1354260ms] Nothing. Zero yen.
+[1354260ms - 1354830ms] Worthless.
+[1354830ms - 1355800ms] Hey!
+[1356350ms - 1359350ms] If you get the grand prize, it's 100,000. 100,000!
+[1359350ms - 1361060ms] That's the dream, isn't it?
+[1361060ms - 1363360ms] That's enough to cover two months' rent.
+[1366270ms - 1368480ms] Show me the one that won the grand prize.
+[1369730ms - 1370730ms] No way!
+[1371110ms - 1375240ms] Niikura, do they accept pictures taken with a cell phone?
+[1375240ms - 1378200ms] Yeah, I don't think it's a problem.
+[1378200ms - 1380620ms] Seriously? We can totally get the 100,000 yen!
+[1381080ms - 1383700ms] W-What do you take your pictures with?
+[1383700ms - 1386840ms] I use a normal square camera.
+[1386840ms - 1387830ms] So plain!
+[1387830ms - 1389840ms] All right, lend that to me!
+[1391510ms - 1394470ms] Well, if it's for you...
+[1394470ms - 1394970ms] All right!
+[1395930ms - 1397090ms] However!
+[1397680ms - 1399430ms] Please wait until the end of the month.
+[1399890ms - 1403060ms] Once I get paid, I can use the money I've saved...
+[1406350ms - 1408810ms] and buy a DSLR!
+[1414200ms - 1416860ms] I worked super hard and saved up!
+[1416870ms - 1421120ms] Until then, I'll take a bunch of pictures and submit them all!
+[1419910ms - 1421120ms] That's amazing.
+[1422870ms - 1426080ms] Niikura, it seems like you already know the thing you want to do.
+[1426080ms - 1429000ms] W-Where's this coming from all of a sudden?
+[1429360ms - 1432800ms] The thing that'll be your thing throughout your college days.
+[1433420ms - 1436020ms] You've already found it.
+[1437050ms - 1439260ms] It's just a bit of a shock.
+[1441520ms - 1444640ms] Do you want to become a photographer in the future, then?
+[1444960ms - 1449820ms] Well, if I could, that'd be great, but...
+[1449820ms - 1451940ms] What's this all about?
+[1452940ms - 1455900ms] Nagumo, don't you have a thing?  Something you want to do.
+[1455900ms - 1457410ms] I mean, sure I do.
+[1457410ms - 1461200ms] I'll help you too. Let's find it together...
+[1461200ms - 1462280ms] Wait, you do?!
+[1462280ms - 1464870ms] Then what was that whole spiel earlier?
+[1464870ms - 1466820ms] What do you mean, "spiel"?
+[1469920ms - 1474250ms] So, what is it? The thing you want to do.
+[1474880ms - 1476380ms] Something fun.
+[1478430ms - 1481960ms] Well, then I guess you should do something fun.
+[1481960ms - 1485140ms] But there are so many things that I can't choose just one.
+[1486640ms - 1490850ms] But if I'm gonna do something,  I wanna do the most fun thing of all!
+[1493280ms - 1494280ms] Pu...
+[1495440ms - 1499280ms] So pure!
+[1517010ms - 1520760ms] The season that was vague
+[1520760ms - 1524720ms] Melts without a care
+[1524720ms - 1528810ms] In just five minutes on foot  Down the sweltering street
+[1528810ms - 1533060ms] Whether it's a dream or reality I can't tell
+[1533060ms - 1536440ms] Oversleeping and ending up in a pinch
+[1537240ms - 1540490ms] Endlessly chasing all things I want
+[1541030ms - 1545080ms] Feeling embarrassed or being stubborn
+[1545080ms - 1548460ms] They say now's the best time to eat them
+[1549040ms - 1555960ms] Pretending to be the same as always
+[1557210ms - 1560550ms] It's a summer
+[1560550ms - 1565260ms] That's different from last year
+[1565260ms - 1569680ms] Annoying, but still, it's fun
+[1573520ms - 1577940ms] You're still you
+[1580990ms - 1585660ms] In this town on the edge  Where everyone's the same
+[1585660ms - 1588540ms] I want to be with you today too
+[1588540ms - 1592540ms] Beyond the roof
+[1592540ms - 1596040ms] The sun is hiding
+[1596040ms - 1598210ms] Ah, summer is leaving
