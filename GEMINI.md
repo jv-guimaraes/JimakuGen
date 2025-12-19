@@ -6,6 +6,7 @@ This project is a Python-based tool designed to generate Japanese subtitles for 
 ## Key Features
 *   **Smart Segmentation:** Groups dialogue events into manageable chunks based on time gaps to ensure context is preserved.
 *   **Context-Aware Transcription:** Extracts audio chunks and sends them to Gemini along with the corresponding English subtitles. This helps the model differentiate between similar-sounding words or infer context that might be ambiguous in audio alone.
+*   **Automated Track Selection:** Automatically identifies the best English subtitle track and the Japanese audio track using `ffprobe`, ensuring correct data extraction even in dual-audio files.
 *   **Caching:** Caches transcription results to `cache/` to prevent redundant API calls and speed up re-runs.
 *   **Format Handling:** extracting English subtitles from `.ass` tracks within `.mkv` files and outputting standard `.srt` files.
 
@@ -60,7 +61,7 @@ The script generates a new subtitle file in the same directory as the input vide
 
 ## Project Structure
 *   `main.py`: The core script containing the workflow logic (file I/O, API interaction).
-*   `subtitle_extractor.py`: Module for analyzing video files, selecting the best English subtitle track, and extracting/cleaning dialogue events.
+*   `media_utils.py`: Module for analyzing video files, selecting the best English subtitle and Japanese audio tracks, and extracting/cleaning dialogue events.
 *   `requirements.txt`: Python package dependencies.
 *   `cache/`: Directory where intermediate transcription results are stored.
 *   `sample/`: Directory containing sample video and subtitle files.

@@ -115,6 +115,39 @@ def get_best_english_track(input_file):
     best = sorted(candidates, key=lambda x: x['score'], reverse=True)[0]
     return best
 
+def get_best_japanese_audio_track(input_file):
+    # Retrieve stream info
+    cmd = ["ffprobe", "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language", "-of", "json", input_file]
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    except subprocess.CalledProcessError:
+        return None
+        
+    if not result.stdout: return None
+    data = json.loads(result.stdout)
+    
+    candidates = []
+    for stream in data.get("streams", []):
+        if stream.get("codec_type") == "audio":
+            tags = stream.get("tags", {})
+            lang = tags.get("language", "").lower()
+            title = tags.get("title", "").lower()
+            
+            score = 0
+            if lang in ["jpn", "ja"]: score += 10
+            elif "japanese" in title: score += 5
+            
+            candidates.append({
+                'index': stream["index"],
+                'score': score,
+                'tags': tags
+            })
+            
+    if not candidates: return None
+    # Sort by score descending, then by index to pick the first one if scores are equal
+    best = sorted(candidates, key=lambda x: (x['score'], -x['index']), reverse=True)[0]
+    return best
+
 def group_events(events):
     clusters = []
     if not events: return clusters

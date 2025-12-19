@@ -5,7 +5,7 @@ import subprocess
 import re
 from datetime import timedelta
 import google.generativeai as genai
-from subtitle_extractor import get_best_english_track, get_dialogue_from_ass, group_events
+from media_utils import get_best_english_track, get_best_japanese_audio_track, get_dialogue_from_ass, group_events
 
 # Configuration
 API_KEY = os.getenv("GOOGLE_API_KEY")
@@ -93,8 +93,15 @@ def main(video_file):
     if best_track is None: return print("No English track.")
     
     track_index = best_track['index']
-    print(f"Selected track index {track_index} (Score: {best_track['score']:.1f}, Frames: {best_track['frames']})")
+    print(f"Selected subtitle track index {track_index} (Score: {best_track['score']:.1f}, Frames: {best_track['frames']})")
     
+    audio_track = get_best_japanese_audio_track(video_file)
+    audio_index = audio_track['index'] if audio_track else "a:0"
+    if audio_track:
+        print(f"Selected audio track index {audio_index} (Score: {audio_track['score']})")
+    else:
+        print("No Japanese audio track found, defaulting to first audio stream.")
+
     temp_ass = os.path.join(TEMP_DIR, "temp_eng.ass")
     subprocess.run(["ffmpeg", "-y", "-i", video_file, "-map", f"0:{track_index}", temp_ass], capture_output=True)
     
@@ -119,7 +126,7 @@ def main(video_file):
             audio_chunk = os.path.join(TEMP_DIR, f"chunk_{i}.m4a")
             duration_s = (end_ms - start_ms) / 1000.0
             subprocess.run(["ffmpeg", "-y", "-ss", str(timedelta(milliseconds=start_ms)), "-i", video_file,
-                           "-t", str(duration_s), "-vn", "-c:a", "aac", "-b:a", "128k", audio_chunk], capture_output=True)
+                           "-map", f"0:{audio_index}", "-t", str(duration_s), "-vn", "-c:a", "aac", "-b:a", "128k", audio_chunk], capture_output=True)
             
             eng_ctx = "\n".join([f"[{ (e['start'] - start_ms)/1000.0 :.1f}s] {e['text']}" for e in cluster])
             
