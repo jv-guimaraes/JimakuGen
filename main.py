@@ -4,7 +4,6 @@ import time
 import json
 import subprocess
 import re
-import hashlib
 from datetime import timedelta
 import google.generativeai as genai
 
