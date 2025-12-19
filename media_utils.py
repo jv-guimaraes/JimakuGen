@@ -2,11 +2,14 @@ import os
 import re
 import json
 import subprocess
+import logging
 from datetime import timedelta
 
 # Constants
 CHUNK_TARGET_SECONDS = 60
 MAX_GAP_SECONDS = 2.0
+
+logger = logging.getLogger(__name__)
 
 def clean_ass_text(text):
     # If the text contains drawing commands (starts with \p1, \p2 etc inside tags), treat as non-dialogue
@@ -38,6 +41,7 @@ def is_mostly_english(text):
 
 def get_dialogue_from_ass(ass_path):
     dialogue_events = []
+    logger.debug(f"Parsing ASS file: {ass_path}")
     with open(ass_path, 'r', encoding='utf-8', errors='ignore') as f:
         in_events = False
         format_cols = []
@@ -65,6 +69,7 @@ def get_dialogue_from_ass(ass_path):
                         start_ms = parse_ass_time(event['Start'])
                         end_ms = parse_ass_time(event['End'])
                         dialogue_events.append({'start': start_ms, 'end': end_ms, 'text': text})
+    logger.debug(f"Found {len(dialogue_events)} dialogue events")
     return dialogue_events
 
 def get_best_english_track(input_file):
@@ -72,7 +77,8 @@ def get_best_english_track(input_file):
     cmd = ["ffprobe", "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language,NUMBER_OF_FRAMES", "-of", "json", input_file]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
+        logger.error(f"FFprobe failed: {e}")
         return None
         
     if not result.stdout: return None
@@ -109,10 +115,12 @@ def get_best_english_track(input_file):
                 'frames': frames,
                 'tags': tags
             })
+            logger.debug(f"Track candidate: Index={stream['index']}, Lang={lang}, Title='{title}', Frames={frames}, Score={score}")
             
     if not candidates: return None
     # Sort by score descending
     best = sorted(candidates, key=lambda x: x['score'], reverse=True)[0]
+    logger.debug(f"Best track selected: Index={best['index']} (Score: {best['score']})")
     return best
 
 def get_best_japanese_audio_track(input_file):
@@ -120,7 +128,8 @@ def get_best_japanese_audio_track(input_file):
     cmd = ["ffprobe", "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language", "-of", "json", input_file]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
+        logger.error(f"FFprobe failed: {e}")
         return None
         
     if not result.stdout: return None
@@ -142,10 +151,12 @@ def get_best_japanese_audio_track(input_file):
                 'score': score,
                 'tags': tags
             })
+            logger.debug(f"Audio candidate: Index={stream['index']}, Lang={lang}, Title='{title}', Score={score}")
             
     if not candidates: return None
     # Sort by score descending, then by index to pick the first one if scores are equal
     best = sorted(candidates, key=lambda x: (x['score'], -x['index']), reverse=True)[0]
+    logger.debug(f"Best audio selected: Index={best['index']} (Score: {best['score']})")
     return best
 
 def group_events(events):
@@ -163,4 +174,5 @@ def group_events(events):
         else:
             current_cluster.append(curr)
     if current_cluster: clusters.append(current_cluster)
+    logger.debug(f"Grouped {len(events)} events into {len(clusters)} chunks")
     return clusters

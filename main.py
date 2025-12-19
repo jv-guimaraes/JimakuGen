@@ -3,6 +3,8 @@ import sys
 import time
 import subprocess
 import re
+import logging
+import argparse
 from datetime import timedelta
 import google.generativeai as genai
 from media_utils import get_best_english_track, get_best_japanese_audio_track, get_dialogue_from_ass, group_events
@@ -13,8 +15,36 @@ MODEL_NAME = "gemini-2.5-flash-preview-09-2025"
 CACHE_DIR = "cache"
 TEMP_DIR = "/home/jv/.gemini/tmp/cf85e6b8eae3ab12e125ebbeb2537e9d8c4c791de7f2b489ef18d1b6052de1fb"
 
+logger = logging.getLogger(__name__)
+
+def setup_logging(verbose=False):
+    LOG_DIR = "logs"
+    os.makedirs(LOG_DIR, exist_ok=True)
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    LOG_FILE = os.path.join(LOG_DIR, f"app_{timestamp}.log")
+    
+    log_level = logging.DEBUG if verbose else logging.INFO
+    
+    # Remove existing handlers to avoid duplicates if re-configured
+    root_logger = logging.getLogger()
+    if root_logger.hasHandlers():
+        root_logger.handlers.clear()
+
+    logging.basicConfig(
+        level=log_level,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S',
+        handlers=[
+            logging.FileHandler(LOG_FILE, encoding='utf-8'),
+            logging.StreamHandler(sys.stdout)
+        ]
+    )
+    logger.info(f"Logging initialized. Level: {'DEBUG' if verbose else 'INFO'}, File: {LOG_FILE}")
+
 if not API_KEY:
-    print("Error: GOOGLE_API_KEY not found.")
+    # We can't use logger yet if setup_logging hasn't run, but this check is global.
+    # We'll print to stderr for immediate feedback.
+    print("Error: GOOGLE_API_KEY not found.", file=sys.stderr)
     sys.exit(1)
 
 genai.configure(api_key=API_KEY)
@@ -60,10 +90,13 @@ def transcribe_chunk(audio_path, english_context):
     model = genai.GenerativeModel(model_name=MODEL_NAME, system_instruction="You are an expert Japanese media transcriber.")
     prompt = f"Transcribe the Japanese dialogue accurately. Format: [start_seconds - end_seconds] Dialogue\n\nEnglish Context Reference:\n{english_context}"
     
+    logger.debug(f"--- Prompt sent to Gemini ---\n{prompt}\n-----------------------------")
+    
     max_retries = 5
     for attempt in range(max_retries):
         try:
             response = model.generate_content([sample_file, prompt])
+            logger.debug(f"--- Response from Gemini ---\n{response.text}\n----------------------------")
             return response.text
         except Exception as e:
             err_msg = str(e)
@@ -75,7 +108,7 @@ def transcribe_chunk(audio_path, english_context):
                 else:
                     wait_time = 60 # Default fallback
                 
-                print(f"Rate limited (429). Waiting {wait_time:.2f}s before retry...")
+                logger.warning(f"Rate limited (429). Waiting {wait_time:.2f}s before retry...")
                 time.sleep(wait_time)
             else:
                 raise e
@@ -85,29 +118,41 @@ def ms_to_srt_time(ms):
     total_seconds = int(td.total_seconds())
     return f"{total_seconds // 3600:02}:{(total_seconds % 3600) // 60:02}:{total_seconds % 60:02},{int(ms % 1000):03}"
 
-def main(video_file):
+def main():
+    parser = argparse.ArgumentParser(description="Generate Japanese subtitles for a video using Gemini.")
+    parser.add_argument("video_file", help="Path to the input video file")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging (DEBUG level)")
+    args = parser.parse_args()
+
+    setup_logging(args.verbose)
+    
+    video_file = args.video_file
     os.makedirs(TEMP_DIR, exist_ok=True)
     os.makedirs(CACHE_DIR, exist_ok=True)
     
     best_track = get_best_english_track(video_file)
-    if best_track is None: return print("No English track.")
+    if best_track is None:
+        logger.error("No English track found.")
+        return
     
     track_index = best_track['index']
-    print(f"Selected subtitle track index {track_index} (Score: {best_track['score']:.1f}, Frames: {best_track['frames']})")
+    logger.info(f"Selected subtitle track index {track_index} (Score: {best_track['score']:.1f}, Frames: {best_track['frames']})")
     
     audio_track = get_best_japanese_audio_track(video_file)
     audio_index = audio_track['index'] if audio_track else "a:0"
     if audio_track:
-        print(f"Selected audio track index {audio_index} (Score: {audio_track['score']})")
+        logger.info(f"Selected audio track index {audio_index} (Score: {audio_track['score']})")
     else:
-        print("No Japanese audio track found, defaulting to first audio stream.")
+        logger.warning("No Japanese audio track found, defaulting to first audio stream.")
 
     temp_ass = os.path.join(TEMP_DIR, "temp_eng.ass")
-    subprocess.run(["ffmpeg", "-y", "-i", video_file, "-map", f"0:{track_index}", temp_ass], capture_output=True)
+    cmd_extract_sub = ["ffmpeg", "-y", "-i", video_file, "-map", f"0:{track_index}", temp_ass]
+    logger.debug(f"Extracting subtitles command: {' '.join(cmd_extract_sub)}")
+    subprocess.run(cmd_extract_sub, capture_output=True)
     
     events = get_dialogue_from_ass(temp_ass)
     clusters = group_events(events)
-    print(f"Total chunks: {len(clusters)}")
+    logger.info(f"Total chunks: {len(clusters)}")
     
     final_subs = []
     for i, cluster in enumerate(clusters):
@@ -118,15 +163,17 @@ def main(video_file):
         cache_path = get_cache_path(video_file, start_ms, end_ms)
         
         if os.path.exists(cache_path):
-            print(f"[{i+1}/{len(clusters)}] Using cached transcription ({cache_path})")
+            logger.info(f"[{i+1}/{len(clusters)}] Using cached transcription ({cache_path})")
             with open(cache_path, 'r', encoding='utf-8') as f:
                 raw = f.read()
         else:
-            print(f"[{i+1}/{len(clusters)}] Transcribing...")
+            logger.info(f"[{i+1}/{len(clusters)}] Transcribing...")
             audio_chunk = os.path.join(TEMP_DIR, f"chunk_{i}.m4a")
             duration_s = (end_ms - start_ms) / 1000.0
-            subprocess.run(["ffmpeg", "-y", "-ss", str(timedelta(milliseconds=start_ms)), "-i", video_file,
-                           "-map", f"0:{audio_index}", "-t", str(duration_s), "-vn", "-c:a", "aac", "-b:a", "128k", audio_chunk], capture_output=True)
+            cmd_extract_audio = ["ffmpeg", "-y", "-ss", str(timedelta(milliseconds=start_ms)), "-i", video_file,
+                           "-map", f"0:{audio_index}", "-t", str(duration_s), "-vn", "-c:a", "aac", "-b:a", "128k", audio_chunk]
+            logger.debug(f"Extracting audio chunk {i} command: {' '.join(cmd_extract_audio)}")
+            subprocess.run(cmd_extract_audio, capture_output=True)
             
             eng_ctx = "\n".join([f"[{ (e['start'] - start_ms)/1000.0 :.1f}s] {e['text']}" for e in cluster])
             
@@ -135,7 +182,7 @@ def main(video_file):
                 with open(cache_path, 'w', encoding='utf-8') as f:
                     f.write(raw)
             except Exception as e:
-                print(f"Error in chunk {i}: {e}")
+                logger.error(f"Error in chunk {i}: {e}")
                 continue
             finally:
                 if os.path.exists(audio_chunk): os.remove(audio_chunk)
@@ -147,8 +194,8 @@ def main(video_file):
         for k, sub in enumerate(final_subs):
             f.write(f"{k+1}\n{ms_to_srt_time(sub['start'])} --> {ms_to_srt_time(sub['end'])}\n{sub['text']}\n\n")
             
-    print(f"Success! Saved to {output_srt}")
+    logger.info(f"Success! Saved to {output_srt}")
     if os.path.exists(temp_ass): os.remove(temp_ass)
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1: main(sys.argv[1])
+    main()
