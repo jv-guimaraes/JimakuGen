@@ -8,7 +8,7 @@ import argparse
 from datetime import timedelta
 from google import genai
 from google.genai import types
-from media_utils import get_best_english_track, get_best_japanese_audio_track, get_dialogue_from_ass, group_events
+from media_utils import get_best_english_track, get_best_japanese_audio_track, get_dialogue_from_ass, group_events, remove_japanese_spaces
 
 # Configuration
 API_KEY = os.getenv("GOOGLE_API_KEY")
@@ -78,6 +78,7 @@ def parse_timestamps(text, offset_ms):
                 start_ms = parse_time_to_ms(start_str) + offset_ms
                 end_ms = parse_time_to_ms(end_str) + offset_ms
                 if content:
+                    content = remove_japanese_spaces(content)
                     results.append({'start': start_ms, 'end': end_ms, 'text': content})
             except: pass
     return results

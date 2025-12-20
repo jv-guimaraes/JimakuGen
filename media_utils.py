@@ -176,3 +176,25 @@ def group_events(events):
     if current_cluster: clusters.append(current_cluster)
     logger.debug(f"Grouped {len(events)} events into {len(clusters)} chunks")
     return clusters
+
+def remove_japanese_spaces(text):
+    if not text:
+        return text
+    # Japanese character ranges:
+    # Hiragana: \u3040-\u309f
+    # Katakana: \u30a0-\u30ff
+    # Kanji: \u4e00-\u9fff
+    # CJK symbols and punctuation: \u3000-\u303f
+    # Full-width alphanumeric: \uff00-\uffef
+    jp_range = r'[\u3040-\u309f\u30a0-\u30ff\u4e00-\u9fff\u3000-\u303f\uff00-\uffef]'
+    
+    # 1. Remove spaces between two Japanese characters
+    text = re.sub(rf'(?<={jp_range})\s+(?={jp_range})', '', text)
+    
+    # 2. Remove spaces between a Japanese character and common punctuation
+    # (including half-width ! ? . , : ;)
+    punct = r'[!?.,:;]'
+    text = re.sub(rf'(?<={jp_range})\s+(?={punct})', '', text)
+    text = re.sub(rf'(?<={punct})\s+(?={jp_range})', '', text)
+    
+    return text
