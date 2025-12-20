@@ -15,9 +15,8 @@ This project is a Python-based tool designed to generate Japanese subtitles for 
 *   **AI Model:** Google Gemini (specifically `gemini-2.5-flash-preview-09-2025`)
 *   **Media Processing:** `ffmpeg` (via `subprocess`) for extracting audio and subtitle tracks.
 *   **Dependencies:**
-    *   `google-generativeai`: For interacting with the Gemini API.
-    *   `pysrt`: For subtitle handling (though the core parsing logic seems custom-implemented for `.ass`).
-    *   `python-dotenv`: Listed in requirements, likely for environment management (Note: `load_dotenv()` is not currently called in `main.py`).
+    *   `google-genai`: For interacting with the Gemini API.
+
 
 ## Setup & Configuration
 

@@ -6,7 +6,8 @@ import re
 import logging
 import argparse
 from datetime import timedelta
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from media_utils import get_best_english_track, get_best_japanese_audio_track, get_dialogue_from_ass, group_events
 
 # Configuration
@@ -47,7 +48,7 @@ if not API_KEY:
     print("Error: GOOGLE_API_KEY not found.", file=sys.stderr)
     sys.exit(1)
 
-genai.configure(api_key=API_KEY)
+client = genai.Client(api_key=API_KEY)
 
 def get_cache_path(video_file, start_ms, end_ms):
     base = os.path.basename(video_file)
@@ -82,12 +83,11 @@ def parse_timestamps(text, offset_ms):
     return results
 
 def transcribe_chunk(audio_path, english_context):
-    sample_file = genai.upload_file(path=audio_path)
-    while sample_file.state.name == "PROCESSING":
+    sample_file = client.files.upload(file=audio_path)
+    while sample_file.state == types.FileState.PROCESSING:
         time.sleep(2)
-        sample_file = genai.get_file(sample_file.name)
+        sample_file = client.files.get(name=sample_file.name)
     
-    model = genai.GenerativeModel(model_name=MODEL_NAME, system_instruction="You are an expert Japanese media transcriber.")
     prompt = f"Transcribe the Japanese dialogue accurately. Format: [start_seconds - end_seconds] Dialogue\n\nEnglish Context Reference:\n{english_context}"
     
     logger.debug(f"--- Prompt sent to Gemini ---\n{prompt}\n-----------------------------")
@@ -95,7 +95,13 @@ def transcribe_chunk(audio_path, english_context):
     max_retries = 5
     for attempt in range(max_retries):
         try:
-            response = model.generate_content([sample_file, prompt])
+            response = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=[sample_file, prompt],
+                config=types.GenerateContentConfig(
+                    system_instruction="You are an expert Japanese media transcriber."
+                )
+            )
             logger.debug(f"--- Response from Gemini ---\n{response.text}\n----------------------------")
             return response.text
         except Exception as e:
