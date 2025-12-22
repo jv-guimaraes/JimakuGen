@@ -12,7 +12,7 @@ from media_utils import get_best_english_track, get_best_japanese_audio_track, g
 
 # Configuration
 API_KEY = os.getenv("GOOGLE_API_KEY")
-MODEL_NAME = "gemini-2.5-flash-preview-09-2025"
+MODEL_NAME = "gemini-2.5-flash"
 CACHE_DIR = "cache"
 TEMP_DIR = "/home/jv/.gemini/tmp/cf85e6b8eae3ab12e125ebbeb2537e9d8c4c791de7f2b489ef18d1b6052de1fb"
 
@@ -65,12 +65,18 @@ def parse_time_to_ms(ts_str):
     else:
         return float(ts_str) * 1000
 
+def ms_to_mm_ss_mmm(ms):
+    total_seconds = ms / 1000.0
+    m = int(total_seconds // 60)
+    s = total_seconds % 60
+    return f"{m:02}:{s:06.3f}".replace('.', ',')
+
 def parse_timestamps(text, offset_ms):
     results = []
     for line in text.splitlines():
         line = line.strip().replace('`', '')
         if not line: continue
-        match = re.search(r"(\d+[:\d\.]*)\s*-\s*(\d+[:\d\.]*)", line)
+        match = re.search(r"(\d+[:\d\.,]*)\s*-\s*(\d+[:\d\.,]*)", line)
         if match:
             start_str, end_str = match.groups()
             content = line[match.end():].strip().lstrip(']: ')
@@ -89,7 +95,12 @@ def transcribe_chunk(audio_path, english_context):
         time.sleep(2)
         sample_file = client.files.get(name=sample_file.name)
     
-    prompt = f"Transcribe the Japanese dialogue accurately. Format: [start_seconds - end_seconds] Dialogue\n\nEnglish Context Reference:\n{english_context}"
+    prompt = (
+        "Transcribe the Japanese dialogue accurately. "
+        "You MUST use the following timestamp format for EVERY line: [MM:SS,mmm - MM:SS,mmm] Dialogue. "
+        "Do not use any other format. Example: [00:01,250 - 00:03,100] こんにちは\n\n"
+        f"English Context Reference:\n{english_context}"
+    )
     
     logger.debug(f"--- Prompt sent to Gemini ---\n{prompt}\n-----------------------------")
     
@@ -182,7 +193,7 @@ def main():
             logger.debug(f"Extracting audio chunk {i} command: {' '.join(cmd_extract_audio)}")
             subprocess.run(cmd_extract_audio, capture_output=True)
             
-            eng_ctx = "\n".join([f"[{ (e['start'] - start_ms)/1000.0 :.1f}s] {e['text']}" for e in cluster])
+            eng_ctx = "\n".join([f"[{ms_to_mm_ss_mmm(e['start'] - start_ms)} - {ms_to_mm_ss_mmm(e['end'] - start_ms)}] {e['text']}" for e in cluster])
             
             try:
                 raw = transcribe_chunk(audio_chunk, eng_ctx)
