@@ -140,6 +140,7 @@ def main():
     parser = argparse.ArgumentParser(description="Generate Japanese subtitles for a video using Gemini.")
     parser.add_argument("video_file", help="Path to the input video file")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging (DEBUG level)")
+    parser.add_argument("--chunk-size", type=int, default=60, help="Target duration for each chunk in seconds (default: 60)")
     args = parser.parse_args()
 
     setup_logging(args.verbose)
@@ -169,7 +170,7 @@ def main():
     subprocess.run(cmd_extract_sub, capture_output=True)
     
     events = get_dialogue_from_ass(temp_ass)
-    clusters = group_events(events)
+    clusters = group_events(events, target_duration=args.chunk_size)
     logger.info(f"Total chunks: {len(clusters)}")
     
     final_subs = []

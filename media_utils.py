@@ -159,7 +159,7 @@ def get_best_japanese_audio_track(input_file):
     logger.debug(f"Best audio selected: Index={best['index']} (Score: {best['score']})")
     return best
 
-def group_events(events):
+def group_events(events, target_duration=CHUNK_TARGET_SECONDS):
     clusters = []
     if not events: return clusters
     current_cluster = [events[0]]
@@ -168,7 +168,7 @@ def group_events(events):
         curr = events[i]
         gap = (curr['start'] - prev['end']) / 1000.0
         duration = (curr['end'] - current_cluster[0]['start']) / 1000.0
-        if duration > CHUNK_TARGET_SECONDS and gap > MAX_GAP_SECONDS:
+        if duration > target_duration and gap > MAX_GAP_SECONDS:
             clusters.append(current_cluster)
             current_cluster = [curr]
         else:
