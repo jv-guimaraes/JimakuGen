@@ -1,3 +1,14 @@
+[project]
+name = "JimakuGen"
+version = "0.1.0"
+description = "AI-powered Japanese subtitle generator using English context"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "google-genai",
+    "python-dotenv",
+]
+
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
