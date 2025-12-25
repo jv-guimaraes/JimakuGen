@@ -12,7 +12,7 @@ from media_utils import get_best_english_track, get_best_japanese_audio_track, g
 
 # Configuration
 API_KEY = os.getenv("GOOGLE_API_KEY")
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-3-flash-preview"
 CACHE_DIR = "cache"
 TEMP_DIR = "/home/jv/.gemini/tmp/cf85e6b8eae3ab12e125ebbeb2537e9d8c4c791de7f2b489ef18d1b6052de1fb"
 
@@ -136,6 +136,31 @@ def ms_to_srt_time(ms):
     total_seconds = int(td.total_seconds())
     return f"{total_seconds // 3600:02}:{(total_seconds % 3600) // 60:02}:{total_seconds % 60:02},{int(ms % 1000):03}"
 
+def validate_chunk(subs, cps_threshold=25.0, min_cps_threshold=0.2, max_duration=10.0):
+    for sub in subs:
+        duration_s = (sub['end'] - sub['start']) / 1000.0
+        if duration_s <= 0:
+            logger.warning(f"Validation failed: Zero or negative duration for '{sub['text']}'")
+            return False
+        
+        # Check for single line duration exceeding safe limit
+        if duration_s > max_duration:
+            logger.warning(f"Validation failed: Duration {duration_s:.2f}s exceeds limit {max_duration}s for '{sub['text']}'")
+            return False
+
+        text_len = len(sub['text'])
+        cps = text_len / duration_s
+        
+        if cps > cps_threshold:
+            logger.warning(f"Validation failed: High CPS ({cps:.2f}) for '{sub['text']}' ({duration_s:.3f}s)")
+            return False
+            
+        if cps < min_cps_threshold:
+             logger.warning(f"Validation failed: Low CPS ({cps:.2f}) for '{sub['text']}' ({duration_s:.3f}s)")
+             return False
+             
+    return True
+
 def main():
     parser = argparse.ArgumentParser(description="Generate Japanese subtitles for a video using Gemini.")
     parser.add_argument("video_file", help="Path to the input video file")
@@ -186,7 +211,10 @@ def main():
     logger.info(f"Total chunks: {len(clusters)}")
     
     final_subs = []
+    stop_processing = False
     for i, cluster in enumerate(clusters):
+        if stop_processing:
+            break
         if args.limit and i >= args.limit:
             logger.info(f"Limit of {args.limit} chunks reached. Stopping early.")
             break
@@ -197,35 +225,53 @@ def main():
         
         cache_path = get_cache_path(video_file, start_ms, end_ms)
         
-        if os.path.exists(cache_path):
-            logger.info(f"[{i+1}/{len(clusters)}] Using cached transcription ({cache_path})")
-            with open(cache_path, 'r', encoding='utf-8') as f:
-                raw = f.read()
+        retries = 0
+        max_retries = 3
+        while retries < max_retries:
+            raw = None
+            if os.path.exists(cache_path):
+                logger.info(f"[{i+1}/{len(clusters)}] Using cached transcription ({cache_path})")
+                with open(cache_path, 'r', encoding='utf-8') as f:
+                    raw = f.read()
+            else:
+                logger.info(f"[{i+1}/{len(clusters)}] Transcribing... (Attempt {retries + 1})")
+                audio_chunk = os.path.join(TEMP_DIR, f"chunk_{i}.m4a")
+                duration_s = (end_ms - start_ms) / 1000.0
+                cmd_extract_audio = ["ffmpeg", "-y", "-ss", str(timedelta(milliseconds=start_ms)), "-i", video_file,
+                               "-map", f"0:{audio_index}", "-t", str(duration_s), "-vn", "-c:a", "aac", "-b:a", "128k", audio_chunk]
+                logger.debug(f"Extracting audio chunk {i} command: {' '.join(cmd_extract_audio)}")
+                subprocess.run(cmd_extract_audio, capture_output=True)
+                
+                eng_ctx = "\n".join([f"[{ms_to_mm_ss_mmm(e['start'] - start_ms)} - {ms_to_mm_ss_mmm(e['end'] - start_ms)}] {e['text']}" for e in cluster])
+                
+                try:
+                    raw = transcribe_chunk(audio_chunk, eng_ctx, series_context)
+                    with open(cache_path, 'w', encoding='utf-8') as f:
+                        f.write(raw)
+                except RateLimitError as e:
+                    logger.warning(f"Rate limit hit at chunk {i}. Stopping further processing as requested.")
+                    stop_processing = True
+                    break
+                except Exception as e:
+                    logger.error(f"Error in chunk {i}: {e}")
+                    retries += 1
+                    continue
+                finally:
+                    if os.path.exists(audio_chunk): os.remove(audio_chunk)
+            
+            if raw:
+                chunk_subs = parse_timestamps(raw, start_ms)
+                if validate_chunk(chunk_subs):
+                    final_subs.extend(chunk_subs)
+                    break
+                else:
+                    logger.warning(f"Chunk {i} validation failed. Retrying...")
+                    if os.path.exists(cache_path):
+                        os.remove(cache_path)
+                    retries += 1
         else:
-            logger.info(f"[{i+1}/{len(clusters)}] Transcribing...")
-            audio_chunk = os.path.join(TEMP_DIR, f"chunk_{i}.m4a")
-            duration_s = (end_ms - start_ms) / 1000.0
-            cmd_extract_audio = ["ffmpeg", "-y", "-ss", str(timedelta(milliseconds=start_ms)), "-i", video_file,
-                           "-map", f"0:{audio_index}", "-t", str(duration_s), "-vn", "-c:a", "aac", "-b:a", "128k", audio_chunk]
-            logger.debug(f"Extracting audio chunk {i} command: {' '.join(cmd_extract_audio)}")
-            subprocess.run(cmd_extract_audio, capture_output=True)
-            
-            eng_ctx = "\n".join([f"[{ms_to_mm_ss_mmm(e['start'] - start_ms)} - {ms_to_mm_ss_mmm(e['end'] - start_ms)}] {e['text']}" for e in cluster])
-            
-            try:
-                raw = transcribe_chunk(audio_chunk, eng_ctx, series_context)
-                with open(cache_path, 'w', encoding='utf-8') as f:
-                    f.write(raw)
-            except RateLimitError as e:
-                logger.warning(f"Rate limit hit at chunk {i}. Stopping further processing as requested.")
-                break
-            except Exception as e:
-                logger.error(f"Error in chunk {i}: {e}")
-                continue
-            finally:
-                if os.path.exists(audio_chunk): os.remove(audio_chunk)
-        
-        final_subs.extend(parse_timestamps(raw, start_ms))
+             if not stop_processing:
+                logger.error(f"Chunk {i} failed after {max_retries} retries. Skipping.")
 
     output_srt = video_file.replace(".mkv", ".ja.generated.srt")
     with open(output_srt, "w", encoding="utf-8") as f:
