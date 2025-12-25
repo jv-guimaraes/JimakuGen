@@ -9,13 +9,13 @@ from datetime import timedelta
 
 from src.config import DEFAULT_MODEL, CACHE_DIR
 from src.logger import setup_logging
-from src.utils import get_cache_path, ms_to_mm_ss_mmm, parse_timestamps, ms_to_srt_time, validate_chunk
+from src.utils import get_cache_path, ms_to_mm_ss_mmm, parse_timestamps, ms_to_srt_time, validate_chunk, SubtitleEvent
 from src.media_utils import get_best_english_track, get_best_japanese_audio_track, get_dialogue_from_ass, group_events
 from src.transcriber import Transcriber, RateLimitError
 
 logger = logging.getLogger(__name__)
 
-def process_video(video_file, output_path=None, model=DEFAULT_MODEL, chunk_size=60, context_path=None, limit=None, verbose=False):
+def process_video(video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = 60, context_path: str | None = None, limit: int | None = None, verbose: bool = False) -> None:
     setup_logging(verbose)
     
     # Create temporary directory
@@ -66,7 +66,7 @@ def process_video(video_file, output_path=None, model=DEFAULT_MODEL, chunk_size=
         clusters = group_events(events, target_duration=chunk_size)
         logger.info(f"Total chunks: {len(clusters)}")
         
-        final_subs = []
+        final_subs: list[SubtitleEvent] = []
         stop_processing = False
         for i, cluster in enumerate(clusters):
             if stop_processing:
@@ -146,7 +146,7 @@ def process_video(video_file, output_path=None, model=DEFAULT_MODEL, chunk_size=
         shutil.rmtree(temp_dir, ignore_errors=True)
         logger.debug(f"Cleaned up temporary directory: {temp_dir}")
 
-def run_cli():
+def run_cli() -> None:
     parser = argparse.ArgumentParser(description="Generate Japanese subtitles for a video using Gemini.")
     parser.add_argument("video_file", help="Path to the input video file")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging (DEBUG level)")

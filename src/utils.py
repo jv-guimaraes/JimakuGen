@@ -1,17 +1,23 @@
 import os
 import re
 import logging
+from typing import TypedDict, Any
 from datetime import timedelta
 from src.config import CACHE_DIR
 
 logger = logging.getLogger(__name__)
 
-def get_cache_path(video_file, start_ms, end_ms):
+class SubtitleEvent(TypedDict):
+    start: float | int
+    end: float | int
+    text: str
+
+def get_cache_path(video_file: str, start_ms: float | int, end_ms: float | int) -> str:
     base = os.path.basename(video_file)
     os.makedirs(os.path.join(CACHE_DIR, base), exist_ok=True)
     return os.path.join(CACHE_DIR, base, f"{start_ms}_{end_ms}.txt")
 
-def parse_time_to_ms(ts_str):
+def parse_time_to_ms(ts_str: str) -> float:
     ts_str = ts_str.strip().replace(',', '.').replace('s', '')
     parts = ts_str.split(':')
     if len(parts) == 3:
@@ -21,18 +27,18 @@ def parse_time_to_ms(ts_str):
     else:
         return float(ts_str) * 1000
 
-def ms_to_mm_ss_mmm(ms):
+def ms_to_mm_ss_mmm(ms: float | int) -> str:
     total_seconds = ms / 1000.0
     m = int(total_seconds // 60)
     s = total_seconds % 60
     return f"{m:02}:{s:06.3f}".replace('.', ',')
 
-def ms_to_srt_time(ms):
+def ms_to_srt_time(ms: float | int) -> str:
     td = timedelta(milliseconds=ms)
     total_seconds = int(td.total_seconds())
     return f"{total_seconds // 3600:02}:{(total_seconds % 3600) // 60:02}:{total_seconds % 60:02},{int(ms % 1000):03}"
 
-def remove_japanese_spaces(text):
+def remove_japanese_spaces(text: str | None) -> str | None:
     if not text:
         return text
     # Japanese character ranges:
@@ -54,8 +60,8 @@ def remove_japanese_spaces(text):
     
     return text
 
-def parse_timestamps(text, offset_ms):
-    results = []
+def parse_timestamps(text: str, offset_ms: float | int) -> list[SubtitleEvent]:
+    results: list[SubtitleEvent] = []
     for line in text.splitlines():
         line = line.strip().replace('`', '')
         if not line: continue
@@ -68,11 +74,12 @@ def parse_timestamps(text, offset_ms):
                 end_ms = parse_time_to_ms(end_str) + offset_ms
                 if content:
                     content = remove_japanese_spaces(content)
-                    results.append({'start': start_ms, 'end': end_ms, 'text': content})
+                    if content: # Ensure content is not None
+                        results.append({'start': start_ms, 'end': end_ms, 'text': content})
             except: pass
     return results
 
-def validate_chunk(subs, cps_threshold=25.0, min_cps_threshold=0.2, max_duration=10.0):
+def validate_chunk(subs: list[SubtitleEvent], cps_threshold: float = 25.0, min_cps_threshold: float = 0.2, max_duration: float = 10.0) -> bool:
     for sub in subs:
         duration_s = (sub['end'] - sub['start']) / 1000.0
         if duration_s <= 0:

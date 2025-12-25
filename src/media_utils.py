@@ -2,11 +2,13 @@ import json
 import re
 import subprocess
 import logging
+from typing import Any
 from src.config import CHUNK_TARGET_SECONDS, MAX_GAP_SECONDS
+from src.utils import SubtitleEvent
 
 logger = logging.getLogger(__name__)
 
-def clean_ass_text(text):
+def clean_ass_text(text: str) -> str:
     # If the text contains drawing commands (starts with \p1, \p2 etc inside tags), treat as non-dialogue
     if re.search(r'\\p[1-9]', text):
         return ""
@@ -15,7 +17,7 @@ def clean_ass_text(text):
     text = text.replace(r'\n', ' ')
     return text.strip()
 
-def parse_ass_time(ts_str):
+def parse_ass_time(ts_str: str) -> int:
     parts = ts_str.split(':')
     h = int(parts[0])
     m = int(parts[1])
@@ -24,7 +26,7 @@ def parse_ass_time(ts_str):
     cc = int(s_cc[1])
     return (h * 3600 + m * 60 + s) * 1000 + cc * 10
 
-def is_mostly_english(text):
+def is_mostly_english(text: str) -> bool:
     if not text: return False
     # Remove common punctuation and numbers
     text = re.sub(r'[0-9\W_]+', '', text)
@@ -34,8 +36,8 @@ def is_mostly_english(text):
     ascii_count = sum(1 for c in text if ord(c) < 128)
     return (ascii_count / len(text)) > 0.8
 
-def get_dialogue_from_ass(ass_path):
-    dialogue_events = []
+def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
+    dialogue_events: list[SubtitleEvent] = []
     logger.debug(f"Parsing ASS file: {ass_path}")
     with open(ass_path, 'r', encoding='utf-8', errors='ignore') as f:
         in_events = False
@@ -63,11 +65,12 @@ def get_dialogue_from_ass(ass_path):
                     if text and is_mostly_english(text):
                         start_ms = parse_ass_time(event['Start'])
                         end_ms = parse_ass_time(event['End'])
+                        # Explicitly cast to match SubtitleEvent structure
                         dialogue_events.append({'start': start_ms, 'end': end_ms, 'text': text})
     logger.debug(f"Found {len(dialogue_events)} dialogue events")
     return dialogue_events
 
-def get_best_english_track(input_file):
+def get_best_english_track(input_file: str) -> dict[str, Any] | None:
     # Retrieve stream info including number of frames if available
     cmd = ["ffprobe", "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language,NUMBER_OF_FRAMES", "-of", "json", input_file]
     try:
@@ -118,7 +121,7 @@ def get_best_english_track(input_file):
     logger.debug(f"Best track selected: Index={best['index']} (Score: {best['score']})")
     return best
 
-def get_best_japanese_audio_track(input_file):
+def get_best_japanese_audio_track(input_file: str) -> dict[str, Any] | None:
     # Retrieve stream info
     cmd = ["ffprobe", "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language", "-of", "json", input_file]
     try:
@@ -154,7 +157,7 @@ def get_best_japanese_audio_track(input_file):
     logger.debug(f"Best audio selected: Index={best['index']} (Score: {best['score']})")
     return best
 
-def group_events(events, target_duration=CHUNK_TARGET_SECONDS):
+def group_events(events: list[SubtitleEvent], target_duration: float = CHUNK_TARGET_SECONDS) -> list[list[SubtitleEvent]]:
     clusters = []
     if not events: return clusters
     current_cluster = [events[0]]

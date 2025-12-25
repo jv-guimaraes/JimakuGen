@@ -11,17 +11,21 @@ class RateLimitError(Exception):
     pass
 
 class Transcriber:
-    def __init__(self):
+    def __init__(self) -> None:
         if not API_KEY:
             raise ValueError("GOOGLE_API_KEY not found in environment variables.")
         self.client = genai.Client(api_key=API_KEY)
 
-    def transcribe_chunk(self, audio_path, english_context, model_name, series_info=None):
+    def transcribe_chunk(self, audio_path: str, english_context: str, model_name: str, series_info: str | None = None) -> str:
         try:
             sample_file = self.client.files.upload(file=audio_path)
+            file_name = sample_file.name
+            if not file_name:
+                raise ValueError("Failed to upload file: No name returned.")
+
             while sample_file.state == types.FileState.PROCESSING:
                 time.sleep(2)
-                sample_file = self.client.files.get(name=sample_file.name)
+                sample_file = self.client.files.get(name=file_name)
             
             prompt_parts = []
             if series_info:
@@ -46,7 +50,7 @@ class Transcriber:
                 )
             )
             logger.debug(f"--- Response from Gemini ---\n{response.text}\n----------------------------")
-            return response.text
+            return response.text or ""
         except Exception as e:
             err_msg = str(e)
             if "429" in err_msg:
