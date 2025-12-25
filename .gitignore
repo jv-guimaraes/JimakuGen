@@ -4,4 +4,5 @@ __pycache__/
 .env
 cache/
 *.mkv
-sample/already_tested/
+sample/
+logs/
