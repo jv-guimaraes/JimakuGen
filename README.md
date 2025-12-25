@@ -77,8 +77,8 @@ The script will generate a file named `movie.ja.generated.srt` in the same direc
 
 ## Project Structure
 
-*   `main.py`: The core workflow logic (orchestration, API calls, file handling).
-*   `media_utils.py`: Utilities for video analysis, track selection, and subtitle parsing.
+*   `main.py`: Entry point for the CLI.
+*   `src/`: Core application package containing logic, configuration, and utilities.
 *   `cache/`: Stores intermediate transcription results.
 *   `logs/`: Detailed execution logs.
 *   `tests/`: Regression tests and sample fixtures.

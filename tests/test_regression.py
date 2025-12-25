@@ -3,10 +3,10 @@ import os
 import glob
 import sys
 
-# Add project root to path so we can import media_utils
+# Add project root to path so we can import src.media_utils
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from media_utils import get_dialogue_from_ass
+from src.media_utils import get_dialogue_from_ass
 
 class TestSubtitleRegression(unittest.TestCase):
     def test_all_fixtures(self):
