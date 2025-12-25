@@ -64,6 +64,8 @@ python main.py <path_to_video_file>
 *   `--chunk-size <seconds>`: Target duration for each transcription chunk (default: 60).
 *   `--context <file.txt>`: Provide additional series context (character names, world-building terms) to the model.
 *   `--limit <number>`: Limit the number of chunks to process (useful for testing).
+*   `--model <model_name>`: Specify which Gemini model to use (default: `gemini-3-flash-preview`).
+*   `-o`, `--output <path>`: Custom output path for the generated SRT file (default: `<video_name>.ja.generated.srt`).
 
 ### Example
 

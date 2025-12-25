@@ -5,6 +5,9 @@ import subprocess
 import re
 import logging
 import argparse
+import tempfile
+import atexit
+import shutil
 from datetime import timedelta
 from google import genai
 from google.genai import types
@@ -12,9 +15,8 @@ from media_utils import get_best_english_track, get_best_japanese_audio_track, g
 
 # Configuration
 API_KEY = os.getenv("GOOGLE_API_KEY")
-MODEL_NAME = "gemini-3-flash-preview"
+DEFAULT_MODEL = "gemini-3-flash-preview"
 CACHE_DIR = "cache"
-TEMP_DIR = "/home/jv/.gemini/tmp/cf85e6b8eae3ab12e125ebbeb2537e9d8c4c791de7f2b489ef18d1b6052de1fb"
 
 logger = logging.getLogger(__name__)
 
@@ -93,7 +95,7 @@ def parse_timestamps(text, offset_ms):
             except: pass
     return results
 
-def transcribe_chunk(audio_path, english_context, series_info=None):
+def transcribe_chunk(audio_path, english_context, model_name, series_info=None):
     try:
         sample_file = client.files.upload(file=audio_path)
         while sample_file.state == types.FileState.PROCESSING:
@@ -116,7 +118,7 @@ def transcribe_chunk(audio_path, english_context, series_info=None):
         logger.debug(f"--- Prompt sent to Gemini ---\n{prompt}\n-----------------------------")
         
         response = client.models.generate_content(
-            model=MODEL_NAME,
+            model=model_name,
             contents=[sample_file, prompt],
             config=types.GenerateContentConfig(
                 system_instruction="You are an expert Japanese media transcriber."
@@ -168,12 +170,18 @@ def main():
     parser.add_argument("--chunk-size", type=int, default=60, help="Target duration for each chunk in seconds (default: 60)")
     parser.add_argument("--context", help="Path to a text file containing series context (characters, terms, etc.)")
     parser.add_argument("--limit", type=int, help="Limit the number of chunks to process (for testing)")
+    parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Gemini model to use (default: {DEFAULT_MODEL})")
+    parser.add_argument("-o", "--output", help="Output SRT file path (default: <video_name>.ja.generated.srt)")
     args = parser.parse_args()
 
     setup_logging(args.verbose)
     
     video_file = args.video_file
-    os.makedirs(TEMP_DIR, exist_ok=True)
+    
+    # Create temporary directory that will be cleaned up on exit
+    temp_dir = tempfile.mkdtemp(prefix="subtitles_")
+    atexit.register(lambda: shutil.rmtree(temp_dir, ignore_errors=True))
+    
     os.makedirs(CACHE_DIR, exist_ok=True)
     
     series_context = None
@@ -201,7 +209,7 @@ def main():
     else:
         logger.warning("No Japanese audio track found, defaulting to first audio stream.")
 
-    temp_ass = os.path.join(TEMP_DIR, "temp_eng.ass")
+    temp_ass = os.path.join(temp_dir, "temp_eng.ass")
     cmd_extract_sub = ["ffmpeg", "-y", "-i", video_file, "-map", f"0:{track_index}", temp_ass]
     logger.debug(f"Extracting subtitles command: {' '.join(cmd_extract_sub)}")
     subprocess.run(cmd_extract_sub, capture_output=True)
@@ -235,7 +243,7 @@ def main():
                     raw = f.read()
             else:
                 logger.info(f"[{i+1}/{len(clusters)}] Transcribing... (Attempt {retries + 1})")
-                audio_chunk = os.path.join(TEMP_DIR, f"chunk_{i}.m4a")
+                audio_chunk = os.path.join(temp_dir, f"chunk_{i}.m4a")
                 duration_s = (end_ms - start_ms) / 1000.0
                 cmd_extract_audio = ["ffmpeg", "-y", "-ss", str(timedelta(milliseconds=start_ms)), "-i", video_file,
                                "-map", f"0:{audio_index}", "-t", str(duration_s), "-vn", "-c:a", "aac", "-b:a", "128k", audio_chunk]
@@ -245,7 +253,7 @@ def main():
                 eng_ctx = "\n".join([f"[{ms_to_mm_ss_mmm(e['start'] - start_ms)} - {ms_to_mm_ss_mmm(e['end'] - start_ms)}] {e['text']}" for e in cluster])
                 
                 try:
-                    raw = transcribe_chunk(audio_chunk, eng_ctx, series_context)
+                    raw = transcribe_chunk(audio_chunk, eng_ctx, args.model, series_context)
                     with open(cache_path, 'w', encoding='utf-8') as f:
                         f.write(raw)
                 except RateLimitError as e:
@@ -273,13 +281,19 @@ def main():
              if not stop_processing:
                 logger.error(f"Chunk {i} failed after {max_retries} retries. Skipping.")
 
-    output_srt = video_file.replace(".mkv", ".ja.generated.srt")
+    # Determine output path
+    if args.output:
+        output_srt = args.output
+    else:
+        base, _ = os.path.splitext(video_file)
+        output_srt = f"{base}.ja.generated.srt"
+    
     with open(output_srt, "w", encoding="utf-8") as f:
         for k, sub in enumerate(final_subs):
             f.write(f"{k+1}\n{ms_to_srt_time(sub['start'])} --> {ms_to_srt_time(sub['end'])}\n{sub['text']}\n\n")
             
     logger.info(f"Success! Saved to {output_srt}")
-    if os.path.exists(temp_ass): os.remove(temp_ass)
+    # temp_dir cleanup is handled by atexit
 
 if __name__ == "__main__":
     main()
