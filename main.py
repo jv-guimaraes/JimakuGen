@@ -89,18 +89,24 @@ def parse_timestamps(text, offset_ms):
             except: pass
     return results
 
-def transcribe_chunk(audio_path, english_context):
+def transcribe_chunk(audio_path, english_context, series_info=None):
     sample_file = client.files.upload(file=audio_path)
     while sample_file.state == types.FileState.PROCESSING:
         time.sleep(2)
         sample_file = client.files.get(name=sample_file.name)
     
-    prompt = (
+    prompt_parts = []
+    if series_info:
+        prompt_parts.append(f"Series Information:\n{series_info}")
+
+    prompt_parts.append(
         "Transcribe the Japanese dialogue accurately. "
         "You MUST use the following timestamp format for EVERY line: [MM:SS,mmm - MM:SS,mmm] Dialogue. "
-        "Do not use any other format. Example: [00:01,250 - 00:03,100] こんにちは\n\n"
-        f"English Context Reference:\n{english_context}"
+        "Do not use any other format. Example: [00:01,250 - 00:03,100] こんにちは"
     )
+    prompt_parts.append(f"English Context Reference:\n{english_context}")
+    
+    prompt = "\n\n".join(prompt_parts)
     
     logger.debug(f"--- Prompt sent to Gemini ---\n{prompt}\n-----------------------------")
     
@@ -141,6 +147,8 @@ def main():
     parser.add_argument("video_file", help="Path to the input video file")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging (DEBUG level)")
     parser.add_argument("--chunk-size", type=int, default=60, help="Target duration for each chunk in seconds (default: 60)")
+    parser.add_argument("--context", help="Path to a text file containing series context (characters, terms, etc.)")
+    parser.add_argument("--limit", type=int, help="Limit the number of chunks to process (for testing)")
     args = parser.parse_args()
 
     setup_logging(args.verbose)
@@ -149,6 +157,16 @@ def main():
     os.makedirs(TEMP_DIR, exist_ok=True)
     os.makedirs(CACHE_DIR, exist_ok=True)
     
+    series_context = None
+    if args.context:
+        try:
+            with open(args.context, 'r', encoding='utf-8') as f:
+                series_context = f.read().strip()
+            logger.info(f"Loaded series context from {args.context}")
+        except Exception as e:
+            logger.error(f"Failed to read context file: {e}")
+            return
+
     best_track = get_best_english_track(video_file)
     if best_track is None:
         logger.error("No English track found.")
@@ -175,6 +193,10 @@ def main():
     
     final_subs = []
     for i, cluster in enumerate(clusters):
+        if args.limit and i >= args.limit:
+            logger.info(f"Limit of {args.limit} chunks reached. Stopping early.")
+            break
+
         start_ms = cluster[0]['start'] - 700
         if start_ms < 0: start_ms = 0
         end_ms = cluster[-1]['end'] + 700
@@ -197,7 +219,7 @@ def main():
             eng_ctx = "\n".join([f"[{ms_to_mm_ss_mmm(e['start'] - start_ms)} - {ms_to_mm_ss_mmm(e['end'] - start_ms)}] {e['text']}" for e in cluster])
             
             try:
-                raw = transcribe_chunk(audio_chunk, eng_ctx)
+                raw = transcribe_chunk(audio_chunk, eng_ctx, series_context)
                 with open(cache_path, 'w', encoding='utf-8') as f:
                     f.write(raw)
             except Exception as e:
