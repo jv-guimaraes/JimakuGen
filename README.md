@@ -13,7 +13,7 @@ This approach is particularly useful for media where English subtitles are avail
     *   The Japanese audio track.
 *   **Caching:** Stores transcription results in the `cache/` directory to prevent redundant API calls and speed up subsequent runs.
 *   **Clean Output:** Automatically removes unnecessary spaces in the generated Japanese text and outputs standard `.srt` files.
-*   **Format Handling:** Handles `.ass` tracks within `.mkv` containers and produces `.ja.generated.srt` files.
+*   **Format Handling:** Handles `.ass` tracks within `.mkv` containers and produces `.ja.srt` files.
 
 ## Tech Stack
 
@@ -65,7 +65,7 @@ python main.py <path_to_video_file>
 *   `--context <file.txt>`: Provide additional series context (character names, world-building terms) to the model.
 *   `--limit <number>`: Limit the number of chunks to process (useful for testing).
 *   `--model <model_name>`: Specify which Gemini model to use (default: `gemini-3-flash-preview`).
-*   `-o`, `--output <path>`: Custom output path for the generated SRT file (default: `<video_name>.ja.generated.srt`).
+*   `-o`, `--output <path>`: Custom output path for the generated SRT file (default: `<video_name>.ja.srt`).
 
 ### Example
 
@@ -73,7 +73,7 @@ python main.py <path_to_video_file>
 python main.py samples/movie.mkv --context context.txt
 ```
 
-The script will generate a file named `movie.ja.generated.srt` in the same directory as the input video.
+The script will generate a file named `movie.ja.srt` in the same directory as the input video.
 
 ## Project Structure
 

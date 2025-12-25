@@ -2,7 +2,7 @@ import os
 
 # Configuration
 API_KEY = os.getenv("GOOGLE_API_KEY")
-DEFAULT_MODEL = "gemini-2.0-flash-exp"
+DEFAULT_MODEL = "gemini-2.5-flash"
 CACHE_DIR = "cache"
 
 # Media Processing Constants

@@ -134,7 +134,7 @@ def process_video(video_file, output_path=None, model=DEFAULT_MODEL, chunk_size=
             output_srt = output_path
         else:
             base, _ = os.path.splitext(video_file)
-            output_srt = f"{base}.ja.generated.srt"
+            output_srt = f"{base}.ja.srt"
         
         with open(output_srt, "w", encoding="utf-8") as f:
             for k, sub in enumerate(final_subs):
@@ -154,7 +154,7 @@ def run_cli():
     parser.add_argument("--context", help="Path to a text file containing series context (characters, terms, etc.)")
     parser.add_argument("--limit", type=int, help="Limit the number of chunks to process (for testing)")
     parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Gemini model to use (default: {DEFAULT_MODEL})")
-    parser.add_argument("-o", "--output", help="Output SRT file path (default: <video_name>.ja.generated.srt)")
+    parser.add_argument("-o", "--output", help="Output SRT file path (default: <video_name>.ja.srt)")
     args = parser.parse_args()
 
     process_video(
