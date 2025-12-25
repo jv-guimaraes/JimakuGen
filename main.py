@@ -18,6 +18,10 @@ TEMP_DIR = "/home/jv/.gemini/tmp/cf85e6b8eae3ab12e125ebbeb2537e9d8c4c791de7f2b48
 
 logger = logging.getLogger(__name__)
 
+class RateLimitError(Exception):
+    """Custom exception for Gemini rate limits."""
+    pass
+
 def setup_logging(verbose=False):
     LOG_DIR = "logs"
     os.makedirs(LOG_DIR, exist_ok=True)
@@ -90,52 +94,42 @@ def parse_timestamps(text, offset_ms):
     return results
 
 def transcribe_chunk(audio_path, english_context, series_info=None):
-    sample_file = client.files.upload(file=audio_path)
-    while sample_file.state == types.FileState.PROCESSING:
-        time.sleep(2)
-        sample_file = client.files.get(name=sample_file.name)
-    
-    prompt_parts = []
-    if series_info:
-        prompt_parts.append(f"Series Information:\n{series_info}")
+    try:
+        sample_file = client.files.upload(file=audio_path)
+        while sample_file.state == types.FileState.PROCESSING:
+            time.sleep(2)
+            sample_file = client.files.get(name=sample_file.name)
+        
+        prompt_parts = []
+        if series_info:
+            prompt_parts.append(f"Series Information:\n{series_info}")
 
-    prompt_parts.append(
-        "Transcribe the Japanese dialogue accurately. "
-        "You MUST use the following timestamp format for EVERY line: [MM:SS,mmm - MM:SS,mmm] Dialogue. "
-        "Do not use any other format. Example: [00:01,250 - 00:03,100] こんにちは"
-    )
-    prompt_parts.append(f"English Context Reference:\n{english_context}")
-    
-    prompt = "\n\n".join(prompt_parts)
-    
-    logger.debug(f"--- Prompt sent to Gemini ---\n{prompt}\n-----------------------------")
-    
-    max_retries = 5
-    for attempt in range(max_retries):
-        try:
-            response = client.models.generate_content(
-                model=MODEL_NAME,
-                contents=[sample_file, prompt],
-                config=types.GenerateContentConfig(
-                    system_instruction="You are an expert Japanese media transcriber."
-                )
+        prompt_parts.append(
+            "Transcribe the Japanese dialogue accurately. "
+            "You MUST use the following timestamp format for EVERY line: [MM:SS,mmm - MM:SS,mmm] Dialogue. "
+            "Do not use any other format. Example: [00:01,250 - 00:03,100] こんにちは"
+        )
+        prompt_parts.append(f"English Context Reference:\n{english_context}")
+        
+        prompt = "\n\n".join(prompt_parts)
+        
+        logger.debug(f"--- Prompt sent to Gemini ---\n{prompt}\n-----------------------------")
+        
+        response = client.models.generate_content(
+            model=MODEL_NAME,
+            contents=[sample_file, prompt],
+            config=types.GenerateContentConfig(
+                system_instruction="You are an expert Japanese media transcriber."
             )
-            logger.debug(f"--- Response from Gemini ---\n{response.text}\n----------------------------")
-            return response.text
-        except Exception as e:
-            err_msg = str(e)
-            if "429" in err_msg and attempt < max_retries - 1:
-                # Try to extract "retry in 19.739s"
-                match = re.search(r"retry in (\d+\.?\d*)s", err_msg)
-                if match:
-                    wait_time = float(match.group(1)) + 1.0 # Add 1s buffer
-                else:
-                    wait_time = 60 # Default fallback
-                
-                logger.warning(f"Rate limited (429). Waiting {wait_time:.2f}s before retry...")
-                time.sleep(wait_time)
-            else:
-                raise e
+        )
+        logger.debug(f"--- Response from Gemini ---\n{response.text}\n----------------------------")
+        return response.text
+    except Exception as e:
+        err_msg = str(e)
+        if "429" in err_msg:
+            raise RateLimitError(err_msg)
+        else:
+            raise e
 
 def ms_to_srt_time(ms):
     td = timedelta(milliseconds=ms)
@@ -222,6 +216,9 @@ def main():
                 raw = transcribe_chunk(audio_chunk, eng_ctx, series_context)
                 with open(cache_path, 'w', encoding='utf-8') as f:
                     f.write(raw)
+            except RateLimitError as e:
+                logger.warning(f"Rate limit hit at chunk {i}. Stopping further processing as requested.")
+                break
             except Exception as e:
                 logger.error(f"Error in chunk {i}: {e}")
                 continue
