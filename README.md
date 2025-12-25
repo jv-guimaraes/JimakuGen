@@ -16,7 +16,7 @@
 Standard speech recognition often struggles with homophones and context-dependent Kanji in Japanese. By feeding the model the **English translation** of what is being said, JimakuGen provides the AI with the "ground truth" of the meaning, allowing it to:
 1.  **Disambiguate Homophones:** Distinguish between *kumo* (cloud) and *kumo* (spider) based on context.
 2.  **Correct Kanji Selection:** Choose the right characters for names and specialized terms.
-3.  **Speaker Separation:** Understand who is likely speaking based on the dialogue structure.
+3.  **Perfect Timing:** Relies on the precise timestamps of existing English subtitles to ensure perfectly synchronized results.
 
 ### The Context Advantage
 | Audio | Without Context | **With JimakuGen** |
@@ -28,17 +28,6 @@ Standard speech recognition often struggles with homophones and context-dependen
 ## 🛠️ How It Works
 
 JimakuGen automates a complex pipeline to ensure the best results:
-
-```mermaid
-graph LR
-    A[Input Video] --> B{Analyze Streams}
-    B -->|Extract| C[Japanese Audio]
-    B -->|Extract| D[English Subs]
-    C & D --> E[Smart Segmentation]
-    E -->|Chunks + Context| F[Gemini API]
-    F -->|Transcribed Text| G[Formatter]
-    G --> H[Output .ja.srt]
-```
 
 1.  **Stream Analysis**: Uses `ffprobe` to find the main Japanese audio and the best English subtitle track (ignoring "Songs/Signs" tracks).
 2.  **Smart Segmentation**: Splits the media into ~60s chunks, respecting silence gaps to avoid cutting sentences.
@@ -139,4 +128,3 @@ python main.py sample/Houseki_no_Kuni_05.mkv --context sample/houseki_context.tx
 - [ ] **External Subtitle Support**: Allow passing an external `.srt` or `.ass` file for context.
 - [ ] **Batch Processing**: Process entire directories or lists of files.
 - [ ] **GUI**: A simple web or desktop interface for easier usage.
-- [ ] **Diarization**: explicit speaker labeling in the output.
