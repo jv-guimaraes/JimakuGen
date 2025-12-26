@@ -79,7 +79,7 @@ def parse_timestamps(text: str, offset_ms: float | int) -> list[SubtitleEvent]:
             except: pass
     return results
 
-def validate_chunk(subs: list[SubtitleEvent], cps_threshold: float = 25.0, min_cps_threshold: float = 0.2, max_duration: float = 10.0) -> bool:
+def validate_chunk(subs: list[SubtitleEvent], cps_threshold: float = 25.0, min_cps_threshold: float = 0.2, max_duration: float = 13.0) -> bool:
     for sub in subs:
         duration_s = (sub['end'] - sub['start']) / 1000.0
         if duration_s <= 0:
