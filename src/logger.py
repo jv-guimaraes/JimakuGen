@@ -27,4 +27,9 @@ def setup_logging(verbose=False):
             logging.StreamHandler(sys.stdout)
         ]
     )
+    
+    # Silence noise from dependencies
+    for logger_name in ["google.genai", "google_genai", "httpx", "google.api_core", "google.auth", "urllib3"]:
+        logging.getLogger(logger_name).setLevel(logging.WARNING)
+    
     logger.info(f"Logging initialized. Level: {'DEBUG' if verbose else 'INFO'}, File: {LOG_FILE}")
