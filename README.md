@@ -33,7 +33,7 @@ Standard speech recognition often struggles with homophones and context-dependen
 JimakuGen automates a complex pipeline to ensure the best results:
 
 1.  **Stream Analysis**: Uses `ffprobe` to find the main Japanese audio and the best English subtitle track (ignoring "Songs/Signs" tracks).
-2.  **Smart Segmentation**: Splits the media into ~60s chunks, respecting silence gaps to avoid cutting sentences.
+2.  **Smart Segmentation**: Splits the media into ~90s chunks, respecting silence gaps to avoid cutting sentences.
 3.  **Context Fusion**: Sends the audio chunk *plus* the aligned English subtitles to Gemini.
 4.  **Generation**: The AI transcribes the Japanese audio, using the English text to guide meaning.
 5.  **Caching & Output**: Caches results to save money/time on re-runs and outputs a clean SRT file.
@@ -86,7 +86,7 @@ python main.py /path/to/movie.mkv
 | :--- | :--- | :--- |
 | `--model` | `string` | Gemini model to use (default: `gemini-2.5-flash`). |
 | `--context` | `file.txt` | Path to a text file with extra context (names, lore, terms). |
-| `--chunk-size`| `int` | Target duration for chunks in seconds (default: `60`). |
+| `--chunk-size`| `int` | Target duration for chunks in seconds (default: `90`). |
 | `--limit` | `int` | Process only N chunks (useful for testing). |
 | `-o`, `--output`| `path` | Custom output path for the SRT file. |
 | `-v`, `--verbose`| - | Enable detailed DEBUG logs. |

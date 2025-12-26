@@ -6,7 +6,7 @@ import tempfile
 import subprocess
 from datetime import timedelta
 
-from src.config import DEFAULT_MODEL, CACHE_DIR
+from src.config import DEFAULT_MODEL, CACHE_DIR, CHUNK_TARGET_SECONDS
 from src.logger import setup_logging
 from src.utils import get_cache_path, ms_to_mm_ss_mmm, parse_timestamps, ms_to_srt_time, validate_chunk, SubtitleEvent
 from src.media_utils import get_best_english_track, get_best_japanese_audio_track, get_dialogue_from_ass, group_events
@@ -14,7 +14,7 @@ from src.transcriber import Transcriber, RateLimitError
 
 logger = logging.getLogger(__name__)
 
-def process_video(video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = 60, context_path: str | None = None, limit: int | None = None, verbose: bool = False) -> None:
+def process_video(video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = CHUNK_TARGET_SECONDS, context_path: str | None = None, limit: int | None = None, verbose: bool = False) -> None:
     setup_logging(verbose)
     
     # Create temporary directory
@@ -149,7 +149,7 @@ def run_cli() -> None:
     parser = argparse.ArgumentParser(description="JimakuGen: Generate Japanese subtitles for a video using Gemini.")
     parser.add_argument("video_file", help="Path to the input video file")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging (DEBUG level)")
-    parser.add_argument("--chunk-size", type=int, default=60, help="Target duration for each chunk in seconds (default: 60)")
+    parser.add_argument("--chunk-size", type=int, default=CHUNK_TARGET_SECONDS, help=f"Target duration for each chunk in seconds (default: {CHUNK_TARGET_SECONDS})")
     parser.add_argument("--context", help="Path to a text file containing series context (characters, terms, etc.)")
     parser.add_argument("--limit", type=int, help="Limit the number of chunks to process (for testing)")
     parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Gemini model to use (default: {DEFAULT_MODEL})")
