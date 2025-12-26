@@ -4,6 +4,9 @@
 ![Code Style: Pyright](https://img.shields.io/badge/code%20style-pyright-black.svg)
 ![Gemini](https://img.shields.io/badge/AI-Gemini-orange)
 
+> [!WARNING]
+> ⚠️ This project was mostly coded by **Gemini**, with only guidance from the user. Use with caution!
+
 **JimakuGen** is an AI-powered tool that generates Japanese subtitles for video files. It uniquely leverages **English subtitles as context** to help the Google Gemini API transcribe Japanese audio with significantly higher accuracy than standard speech-to-text models.
 
 > **Why "JimakuGen"?**
