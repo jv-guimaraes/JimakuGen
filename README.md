@@ -26,6 +26,15 @@ Standard speech recognition often struggles with homophones and context-dependen
 | :--- | :--- | :--- |
 | *"Hashi wo motte"* | 箸を持って (Take the chopsticks) | **橋を持って (Take the bridge)** *<-- inferred from English "Take the bridge"* |
 
+> [!CAUTION]
+> ### ⚠️ A Note on Hallucinations
+> While JimakuGen's context-aware approach produces significantly better results than pure speech-to-text models (like Whisper), it is still powered by an LLM and is prone to **hallucinations**.
+>
+> Occasionally, the AI may "hallucinate" Japanese dialogue that perfectly matches the English context but doesn't exactly reflect what was spoken in the audio.
+>
+> *   **Intermediate Learners:** This tool is an excellent study aid to help fill in gaps and learn new vocabulary.
+> *   **Beginners:** Use with caution. Beginners may find it difficult to distinguish between an accurate transcription and a context-induced hallucination. Always cross-reference with the audio!
+
 ---
 
 ## 🛠️ How It Works
