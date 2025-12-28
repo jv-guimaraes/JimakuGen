@@ -2,11 +2,13 @@ import os
 import sys
 import time
 import logging
+from pathlib import Path
 
 logger = logging.getLogger("subtitle_generator")
 
 def setup_logging(verbose=False):
-    LOG_DIR = "logs"
+    PROJECT_ROOT = Path(__file__).resolve().parent.parent
+    LOG_DIR = PROJECT_ROOT / "logs"
     os.makedirs(LOG_DIR, exist_ok=True)
     timestamp = time.strftime("%Y%m%d_%H%M%S")
     LOG_FILE = os.path.join(LOG_DIR, f"app_{timestamp}.log")
