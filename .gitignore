@@ -1,8 +1,8 @@
-venv/
+.venv/
 __pycache__/
-*.pyc
-.env
 cache/
 *.mkv
 sample/
 logs/
+*.egg-info/
+build/
