@@ -108,9 +108,9 @@ def process_video(video_file: str, output_path: str | None = None, model: str = 
                         stop_processing = True
                         break
                     except Exception as e:
-                        logger.error(f"Error in chunk {i}: {e}")
-                        retries += 1
-                        continue
+                        logger.critical(f"Critical error in chunk {i}: {e}. Stopping program.")
+                        stop_processing = True
+                        break
                     finally:
                         if os.path.exists(audio_chunk): os.remove(audio_chunk)
                 
@@ -128,6 +128,10 @@ def process_video(video_file: str, output_path: str | None = None, model: str = 
                  if not stop_processing:
                     logger.error(f"Chunk {i} failed after {max_retries} retries. Skipping.")
 
+        if stop_processing and not final_subs:
+            logger.error("Processing failed. No subtitles generated.")
+            return
+
         # Determine output path
         if output_path:
             output_srt = output_path
@@ -138,8 +142,11 @@ def process_video(video_file: str, output_path: str | None = None, model: str = 
         with open(output_srt, "w", encoding="utf-8") as f:
             for k, sub in enumerate(final_subs):
                 f.write(f"{k+1}\n{ms_to_srt_time(sub['start'])} --> {ms_to_srt_time(sub['end'])}\n{sub['text']}\n\n")
-                
-        logger.info(f"Success! Saved to {output_srt}")
+        
+        if stop_processing:
+            logger.warning(f"Processing stopped early due to an error. Partial results saved to {output_srt}")
+        else:
+            logger.info(f"Success! Saved to {output_srt}")
 
     finally:
         shutil.rmtree(temp_dir, ignore_errors=True)
