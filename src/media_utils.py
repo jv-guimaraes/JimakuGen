@@ -62,6 +62,11 @@ def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
                     if any(x in style for x in ['op', 'ed', 'song', 'sign', 'title', 'credit']):
                         continue
                         
+                    # Heuristic: Filter out lines with hardcoded positioning (signs, songs, typesetting)
+                    # Standard dialogue usually relies on default margins/alignment.
+                    if r'\pos' in event.get('Text', '') or r'\move' in event.get('Text', ''):
+                        continue
+
                     if text and is_mostly_english(text):
                         start_ms = parse_ass_time(event['Start'])
                         end_ms = parse_ass_time(event['End'])
