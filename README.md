@@ -50,9 +50,10 @@ python main.py episode_01.mkv --context context.txt
 
 JimakuGen automates the following pipeline:
 1.  **Extraction**: Uses `ffmpeg` to extract the Japanese audio track and the best available English subtitle track. It filters the subtitle stream to remove non-dialogue elements like "Signs & Songs" to ensure the model focuses on spoken dialogue.
-2.  **Segmentation**: Splits the media into chunks (default ~90s), aligning strictly with silence to avoid cutting dialogue.
+2.  **Segmentation**: Splits the media into chunks (default ~90s), aligning strictly with silence to avoid cutting dialogue. This "chunking" approach reduces the cognitive load on the LLM and enables targeted error recovery.
 3.  **Transcription**: Sends the audio chunk along with the corresponding English text to Gemini. The English text serves as both a semantic "ground truth" for meaning and a precise timing reference, allowing the model to generate accurately synchronized Japanese subtitles.
-4.  **Assembly**: Merges the transcribed segments into a final SRT file.
+4.  **Validation & Retry**: Each chunk is validated for common LLM errors (e.g., impossible timestamps, extreme reading speeds, or hallucinations). If a chunk fails validation, the tool automatically retries that specific segment.
+5.  **Assembly**: Merges the transcribed segments into a final SRT file.
 
 **Caching**: Successful chunks are cached locally in `cache/`. If the process is interrupted or you re-run it, it will skip already transcribed segments.
 
