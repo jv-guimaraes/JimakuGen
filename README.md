@@ -1,142 +1,63 @@
-# JimakuGen (字幕Gen)
+# JimakuGen
 
-![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
-![Code Style: Pyright](https://img.shields.io/badge/code%20style-pyright-black.svg)
-![Gemini](https://img.shields.io/badge/AI-Gemini-orange)
+JimakuGen is a CLI tool that generates Japanese subtitles for video files using the Google Gemini API. It improves transcription accuracy by using existing English subtitle tracks as context, helping the model disambiguate homophones and select correct Kanji based on the translation.
 
-> [!WARNING]
-> ⚠️ This project was mostly coded by **Gemini**, with only guidance from the user. Use with caution!
+## Usage
 
-**JimakuGen** is an AI-powered tool that generates Japanese subtitles for video files. It uniquely leverages **English subtitles as context** to help the Google Gemini API transcribe Japanese audio with significantly higher accuracy than standard speech-to-text models.
-
-> **Why "JimakuGen"?**
-> "Jimaku" (字幕) means "subtitles" in Japanese.
-
----
-
-## 🚀 Why JimakuGen?
-
-Standard speech recognition often struggles with homophones and context-dependent Kanji in Japanese. By feeding the model the **English translation** of what is being said, JimakuGen provides the AI with the "ground truth" of the meaning, allowing it to:
-1.  **Disambiguate Homophones:** Distinguish between *kumo* (cloud) and *kumo* (spider) based on context.
-2.  **Correct Kanji Selection:** Choose the right characters for names and specialized terms.
-3.  **Perfect Timing:** Relies on the precise timestamps of existing English subtitles to ensure perfectly synchronized results.
-
-### The Context Advantage
-| Audio | Without Context | **With JimakuGen** |
-| :--- | :--- | :--- |
-| *"Hashi wo motte"* | 箸を持って (Take the chopsticks) | **橋を持って (Take the bridge)** *<-- inferred from English "Take the bridge"* |
-
-> [!CAUTION]
-> ### ⚠️ A Note on Hallucinations
-> While JimakuGen's context-aware approach produces significantly better results than pure speech-to-text models (like Whisper), it is still powered by an LLM and is prone to **hallucinations**.
->
-> Occasionally, the AI may "hallucinate" Japanese dialogue that perfectly matches the English context but doesn't exactly reflect what was spoken in the audio.
->
-> *   **Intermediate Learners:** This tool is an excellent study aid to help fill in gaps and learn new vocabulary.
-> *   **Beginners:** Use with caution. Beginners may find it difficult to distinguish between an accurate transcription and a context-induced hallucination. Always cross-reference with the audio!
-
----
-
-## 🛠️ How It Works
-
-JimakuGen automates a complex pipeline to ensure the best results:
-
-1.  **Stream Analysis**: Uses `ffprobe` to find the main Japanese audio and the best English subtitle track (ignoring "Songs/Signs" tracks).
-2.  **Smart Segmentation**: Splits the media into ~90s chunks, respecting silence gaps to avoid cutting sentences.
-3.  **Context Fusion**: Sends the audio chunk *plus* the aligned English subtitles to Gemini.
-4.  **Generation**: The AI transcribes the Japanese audio, using the English text to guide meaning.
-5.  **Caching & Output**: Caches results to save money/time on re-runs and outputs a clean SRT file.
-
----
-
-## ⚙️ Setup
-
-### Prerequisites
-
-*   **Python 3.10+**
-*   **FFmpeg**: Must be installed and in your PATH.
-*   **Google Cloud API Key**: With access to Gemini models.
-
-### Installation
-
+Basic usage:
 ```bash
-# 1. Clone the repo
-git clone https://github.com/yourusername/JimakuGen.git
-cd JimakuGen
-
-# 2. Set up virtual environment
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-
-# 3. Install dependencies
-pip install -r requirements.txt
+python main.py video.mkv
 ```
+This will generate `video.ja.srt` in the same directory.
 
-### Environment
+### Options
 
-Create a `.env` file or export the variable:
+| Option | Description |
+| :--- | :--- |
+| `--context <file>` | Path to a text file with series specific terms (names, lore, etc). |
+| `--model <name>` | Gemini model to use (default: `gemini-2.5-flash`). |
+| `--chunk-size <sec>` | Target duration for audio chunks (default: 90s). |
+| `--limit <n>` | Process only the first N chunks (for testing). |
+| `-o <path>` | Custom output path. |
+
+Example with a context file:
 ```bash
-export GOOGLE_API_KEY="your_api_key_here"
+python main.py episode_01.mkv --context context.txt
 ```
 
----
+## Installation
 
-## 📖 Usage
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/JimakuGen.git
+    cd JimakuGen
+    ```
 
-Basic usage generates a `.ja.srt` file in the same folder as the video.
+2.  Set up the environment:
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+    pip install -r requirements.txt
+    ```
 
-```bash
-python main.py /path/to/movie.mkv
-```
+3.  Configure your API key:
+    Create a `.env` file in the root directory (or export the variable):
+    ```bash
+    GOOGLE_API_KEY=your_gemini_api_key
+    ```
 
-### CLI Options
+## Functionality
 
-| Flag | Argument | Description |
-| :--- | :--- | :--- |
-| `--model` | `string` | Gemini model to use (default: `gemini-2.5-flash`). |
-| `--context` | `file.txt` | Path to a text file with extra context (names, lore, terms). |
-| `--chunk-size`| `int` | Target duration for chunks in seconds (default: `90`). |
-| `--limit` | `int` | Process only N chunks (useful for testing). |
-| `-o`, `--output`| `path` | Custom output path for the SRT file. |
-| `-v`, `--verbose`| - | Enable detailed DEBUG logs. |
+JimakuGen automates the following pipeline:
+1.  **Extraction**: Uses `ffmpeg` to extract the Japanese audio track and the best available English subtitle track.
+2.  **Segmentation**: Splits the media into chunks (default ~90s), aligning strictly with silence to avoid cutting dialogue.
+3.  **Transcription**: Sends the audio chunk along with the corresponding English text to Gemini. The English text serves as a "ground truth" for meaning, guiding the model's Japanese transcription.
+4.  **Assembly**: Merges the transcribed segments into a final SRT file.
 
-**Example with Context File:**
+**Caching**: Successful chunks are cached locally in `cache/`. If the process is interrupted or you re-run it, it will skip already transcribed segments.
 
-Providing a context file helps Gemini correctly spell names and terminology.
+## Limitations
 
-`houseki_context.txt`:
-```text
-Title: Land of the Lustrous / 宝石の国
-Phosphophyllite / Phos: フォスフォフィライト / フォス
-Cinnabar: シンシャ
-Kongou-sensei: 金剛先生
-Lunarian: 月人
-```
-
-Command:
-```bash
-python main.py sample/Houseki_no_Kuni_05.mkv --context sample/houseki_context.txt
-```
-
----
-
-## 🔧 Troubleshooting
-
-**`ffprobe` / `ffmpeg` not found**
-*   Ensure FFmpeg is installed and added to your system's PATH.
-*   Test by running `ffmpeg -version` in your terminal.
-
-**API Quota Exceeded**
-*   The script uses a conservative chunking strategy, but long videos may hit rate limits on free tiers.
-*   JimakuGen caches successful chunks. If it crashes, simply **run it again**; it will skip already transcribed parts.
-
-**No English Track Found**
-*   The video file must have embedded English subtitles. External `.srt` files are not yet supported (see Roadmap).
-
----
-
-## 🗺️ Roadmap
-
-- [ ] **External Subtitle Support**: Allow passing an external `.srt` or `.ass` file for context.
-- [ ] **Batch Processing**: Process entire directories or lists of files.
-- [ ] **GUI**: A simple web or desktop interface for easier usage.
+*   **Hallucinations**: Like all LLM-based tools, the model may hallucinate. Since it uses English text as a guide, it might occasionally generate Japanese dialogue that matches the *meaning* of the English text but does not match the actual spoken audio.
+*   **API Quotas**: Processing long videos may hit the Gemini API rate limits on free tiers. The tool handles rate limits by stopping gracefully (or crashing, depending on severity), but cached progress is saved.
+*   **Input**: Currently requires a video file with embedded English subtitles. External subtitle files are not yet supported.
