@@ -32,9 +32,11 @@ class Transcriber:
                 prompt_parts.append(f"Series Information:\n{series_info}")
 
             prompt_parts.append(
-                "Transcribe the Japanese dialogue accurately. "
+                "Transcribe the Japanese speech accurately. "
+                "Ignore non-verbal sounds such as grunts, screams, heavy breathing, laughter, or background noise. "
+                "Only transcribe spoken Japanese words. "
                 "You MUST use the following timestamp format for EVERY line: [MM:SS,mmm - MM:SS,mmm] Dialogue. "
-                "Do not use any other format. Example: [00:01,250 - 00:03,100] こんにちは"
+                "Example: [00:01,250 - 00:03,100] こんにちは"
             )
             prompt_parts.append(f"English Context Reference:\n{english_context}")
             
