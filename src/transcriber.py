@@ -46,7 +46,26 @@ class Transcriber:
                 model=model_name,
                 contents=[sample_file, prompt],
                 config=types.GenerateContentConfig(
-                    system_instruction="You are an expert Japanese media transcriber."
+                    system_instruction="You are an expert Japanese media transcriber.",
+                    media_resolution="MEDIA_RESOLUTION_HIGH",
+                    safety_settings=[
+                        types.SafetySetting(
+                            category="HARM_CATEGORY_HARASSMENT",
+                            threshold="BLOCK_NONE",
+                        ),
+                        types.SafetySetting(
+                            category="HARM_CATEGORY_HATE_SPEECH",
+                            threshold="BLOCK_NONE",
+                        ),
+                        types.SafetySetting(
+                            category="HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                            threshold="BLOCK_NONE",
+                        ),
+                        types.SafetySetting(
+                            category="HARM_CATEGORY_DANGEROUS_CONTENT",
+                            threshold="BLOCK_NONE",
+                        ),
+                    ]
                 )
             )
             logger.debug(f"--- Response from Gemini ---\n{response.text}\n----------------------------")
