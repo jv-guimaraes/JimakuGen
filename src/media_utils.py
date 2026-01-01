@@ -39,6 +39,15 @@ def is_mostly_english(text: str) -> bool:
 def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
     dialogue_events: list[SubtitleEvent] = []
     logger.debug(f"Parsing ASS file: {ass_path}")
+    
+    stats = {
+        'total': 0,
+        'style': 0,
+        'pos': 0,
+        'lang_empty': 0,
+        'kept': 0
+    }
+
     with open(ass_path, 'r', encoding='utf-8', errors='ignore') as f:
         in_events = False
         format_cols = []
@@ -53,6 +62,7 @@ def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
                     format_cols = [c.strip() for c in line[7:].split(',')]
                     continue
                 if line.startswith('Dialogue:'):
+                    stats['total'] += 1
                     parts = line[9:].split(',', len(format_cols) - 1)
                     event = dict(zip(format_cols, parts))
                     style = event.get('Style', '').lower()
@@ -60,11 +70,13 @@ def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
                     
                     # Blacklist styles that are definitely non-dialogue
                     if any(x in style for x in ['op', 'ed', 'song', 'sign', 'title', 'credit']):
+                        stats['style'] += 1
                         continue
                         
                     # Heuristic: Filter out lines with hardcoded positioning (signs, songs, typesetting)
                     # Standard dialogue usually relies on default margins/alignment.
                     if r'\pos' in event.get('Text', '') or r'\move' in event.get('Text', ''):
+                        stats['pos'] += 1
                         continue
 
                     if text and is_mostly_english(text):
@@ -72,7 +84,11 @@ def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
                         end_ms = parse_ass_time(event['End'])
                         # Explicitly cast to match SubtitleEvent structure
                         dialogue_events.append({'start': start_ms, 'end': end_ms, 'text': text})
-    logger.debug(f"Found {len(dialogue_events)} dialogue events")
+                        stats['kept'] += 1
+                    else:
+                        stats['lang_empty'] += 1
+
+    logger.debug(f"ASS Parse Stats: Total={stats['total']}, Ignored Style={stats['style']}, Ignored Pos={stats['pos']}, Non-English/Empty={stats['lang_empty']}, Kept={stats['kept']}")
     return dialogue_events
 
 def get_best_english_track(input_file: str) -> dict[str, Any] | None:

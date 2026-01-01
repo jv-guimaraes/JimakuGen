@@ -14,7 +14,7 @@ from src.transcriber import Transcriber, RateLimitError
 
 logger = logging.getLogger(__name__)
 
-def process_video(video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = CHUNK_TARGET_SECONDS, context_path: str | None = None, limit: int | None = None, verbose: bool = False) -> None:
+def process_video(video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = CHUNK_TARGET_SECONDS, context_path: str | None = None, limit: int | None = None, verbose: bool = False, keep_temp: bool = False) -> None:
     setup_logging(verbose)
     
     # Create temporary directory
@@ -70,7 +70,7 @@ def process_video(video_file: str, output_path: str | None = None, model: str = 
         for i, cluster in enumerate(clusters):
             if stop_processing:
                 break
-            if limit and i >= limit:
+            if limit is not None and i >= limit:
                 logger.info(f"Limit of {limit} chunks reached. Stopping early.")
                 break
 
@@ -149,8 +149,11 @@ def process_video(video_file: str, output_path: str | None = None, model: str = 
             logger.info(f"Success! Saved to {output_srt}")
 
     finally:
-        shutil.rmtree(temp_dir, ignore_errors=True)
-        logger.debug(f"Cleaned up temporary directory: {temp_dir}")
+        if keep_temp:
+            logger.info(f"Temporary directory kept at: {temp_dir}")
+        else:
+            shutil.rmtree(temp_dir, ignore_errors=True)
+            logger.debug(f"Cleaned up temporary directory: {temp_dir}")
 
 def run_cli() -> None:
     parser = argparse.ArgumentParser(description="JimakuGen: Generate Japanese subtitles for a video using Gemini.")
@@ -161,6 +164,7 @@ def run_cli() -> None:
     parser.add_argument("--limit", type=int, help="Limit the number of chunks to process (for testing)")
     parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Gemini model to use (default: {DEFAULT_MODEL})")
     parser.add_argument("-o", "--output", help="Output SRT file path (default: <video_name>.ja.srt)")
+    parser.add_argument("--keep-temp", action="store_true", help="Keep temporary files (e.g. extracted subtitles) for debugging")
     args = parser.parse_args()
 
     process_video(
@@ -170,5 +174,6 @@ def run_cli() -> None:
         chunk_size=args.chunk_size,
         context_path=args.context,
         limit=args.limit,
-        verbose=args.verbose
+        verbose=args.verbose,
+        keep_temp=args.keep_temp
     )
