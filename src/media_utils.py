@@ -59,18 +59,21 @@ def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
         style = event.style.lower()
         text_raw = event.text
         
-        if any(x in style for x in ['op', 'ed', 'song', 'sign', 'title', 'credit']):
+        # 1. Style Blacklist
+        if any(x in style for x in ['op', 'ed', 'song', 'sign', 'title', 'credit', 'note']):
             logger.debug(f"Line {i+1}: Skipped due to style '{style}' - '{text_raw}'")
             stats['style'] += 1
             continue
             
-        if r'\\pos' in text_raw or r'\\move' in text_raw:
-            logger.debug(f"Line {i+1}: Skipped due to positioning tag - '{text_raw}'")
+        # 2. Typesetting Tags (pos, move, fad, fade)
+        if any(x in text_raw for x in [r'\pos', r'\move', r'\fad', r'\fade']):
+            logger.debug(f"Line {i+1}: Skipped due to typesetting tags - '{text_raw}'")
             stats['pos'] += 1
             continue
 
         clean_text = clean_ass_text(text_raw)
         
+        # 3. Drawing commands
         if not clean_text and re.search(r'\\p[1-9]', text_raw):
              logger.debug(f"Line {i+1}: Skipped due to drawing commands - '{text_raw}'")
              stats['drawing'] += 1
