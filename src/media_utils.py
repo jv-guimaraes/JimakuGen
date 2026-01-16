@@ -38,31 +38,62 @@ def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
     dialogue_events: list[SubtitleEvent] = []
     logger.debug(f"Parsing ASS file with pysubs2: {ass_path}")
     
+    stats = {
+        'total': 0,
+        'style': 0,
+        'pos': 0,
+        'drawing': 0,
+        'empty': 0,
+        'non_english': 0,
+        'kept': 0
+    }
+
     try:
         subs = pysubs2.load(ass_path, encoding="utf-8")
     except Exception as e:
         logger.error(f"Failed to load ASS file {ass_path}: {e}")
         return []
 
-    for event in subs:
+    for i, event in enumerate(subs):
+        stats['total'] += 1
         style = event.style.lower()
         text_raw = event.text
         
         if any(x in style for x in ['op', 'ed', 'song', 'sign', 'title', 'credit']):
+            logger.debug(f"Line {i+1}: Skipped due to style '{style}' - '{text_raw}'")
+            stats['style'] += 1
             continue
             
         if r'\\pos' in text_raw or r'\\move' in text_raw:
+            logger.debug(f"Line {i+1}: Skipped due to positioning tag - '{text_raw}'")
+            stats['pos'] += 1
             continue
 
         clean_text = clean_ass_text(text_raw)
+        
+        if not clean_text and re.search(r'\\p[1-9]', text_raw):
+             logger.debug(f"Line {i+1}: Skipped due to drawing commands - '{text_raw}'")
+             stats['drawing'] += 1
+             continue
 
-        if clean_text and is_mostly_english(clean_text):
-            dialogue_events.append({
-                'start': event.start,
-                'end': event.end,
-                'text': clean_text
-            })
+        if not clean_text:
+             logger.debug(f"Line {i+1}: Skipped (empty after cleaning) - '{text_raw}'")
+             stats['empty'] += 1
+             continue
+             
+        if not is_mostly_english(clean_text):
+            logger.debug(f"Line {i+1}: Skipped (non-English) - '{clean_text}'")
+            stats['non_english'] += 1
+            continue
 
+        dialogue_events.append({
+            'start': event.start,
+            'end': event.end,
+            'text': clean_text
+        })
+        stats['kept'] += 1
+
+    logger.debug(f"ASS Parse Stats: {stats}")
     return dialogue_events
 
 class MediaProcessor:
