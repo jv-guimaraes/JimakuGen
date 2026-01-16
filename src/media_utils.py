@@ -1,182 +1,161 @@
 import json
 import re
-import subprocess
 import logging
-from typing import Any
+from typing import Any, TypedDict
+from datetime import timedelta
+import pysubs2
 from src.config import CHUNK_TARGET_SECONDS, MAX_GAP_SECONDS
-from src.utils import SubtitleEvent
+from src.utils import SubtitleEvent, run_command
 
 logger = logging.getLogger(__name__)
 
+class TrackInfo(TypedDict):
+    index: int | str
+    score: float
+    lang: str
+    title: str
+    frames: int
+
 def clean_ass_text(text: str) -> str:
-    # If the text contains drawing commands (starts with \p1, \p2 etc inside tags), treat as non-dialogue
+    """
+    Cleans ASS text by removing drawing commands, override tags, and normalizing whitespace.
+    """
     if re.search(r'\\p[1-9]', text):
         return ""
     text = re.sub(r'\{.*?\}', '', text)
-    text = text.replace(r'\N', ' ')
-    text = text.replace(r'\n', ' ')
+    text = text.replace(r'\N', ' ').replace(r'\n', ' ')
+    text = re.sub(r'\s+', ' ', text)
     return text.strip()
-
-def parse_ass_time(ts_str: str) -> int:
-    parts = ts_str.split(':')
-    h = int(parts[0])
-    m = int(parts[1])
-    s_cc = parts[2].split('.')
-    s = int(s_cc[0])
-    cc = int(s_cc[1])
-    return (h * 3600 + m * 60 + s) * 1000 + cc * 10
 
 def is_mostly_english(text: str) -> bool:
     if not text: return False
-    # Remove common punctuation and numbers
     text = re.sub(r'[0-9\W_]+', '', text)
     if not text: return False
-    
-    # Count ASCII characters
     ascii_count = sum(1 for c in text if ord(c) < 128)
     return (ascii_count / len(text)) > 0.8
 
 def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
     dialogue_events: list[SubtitleEvent] = []
-    logger.debug(f"Parsing ASS file: {ass_path}")
+    logger.debug(f"Parsing ASS file with pysubs2: {ass_path}")
     
-    stats = {
-        'total': 0,
-        'style': 0,
-        'pos': 0,
-        'lang_empty': 0,
-        'kept': 0
-    }
+    try:
+        subs = pysubs2.load(ass_path, encoding="utf-8")
+    except Exception as e:
+        logger.error(f"Failed to load ASS file {ass_path}: {e}")
+        return []
 
-    with open(ass_path, 'r', encoding='utf-8', errors='ignore') as f:
-        in_events = False
-        format_cols = []
-        for line in f:
-            line = line.strip()
-            if not line: continue
-            if line.startswith('[Events]'):
-                in_events = True
-                continue
-            if in_events:
-                if line.startswith('Format:'):
-                    format_cols = [c.strip() for c in line[7:].split(',')]
-                    continue
-                if line.startswith('Dialogue:'):
-                    stats['total'] += 1
-                    parts = line[9:].split(',', len(format_cols) - 1)
-                    event = dict(zip(format_cols, parts))
-                    style = event.get('Style', '').lower()
-                    text = clean_ass_text(event.get('Text', ''))
-                    
-                    # Blacklist styles that are definitely non-dialogue
-                    if any(x in style for x in ['op', 'ed', 'song', 'sign', 'title', 'credit']):
-                        stats['style'] += 1
-                        continue
-                        
-                    # Heuristic: Filter out lines with hardcoded positioning (signs, songs, typesetting)
-                    # Standard dialogue usually relies on default margins/alignment.
-                    if r'\pos' in event.get('Text', '') or r'\move' in event.get('Text', ''):
-                        stats['pos'] += 1
-                        continue
+    for event in subs:
+        style = event.style.lower()
+        text_raw = event.text
+        
+        if any(x in style for x in ['op', 'ed', 'song', 'sign', 'title', 'credit']):
+            continue
+            
+        if r'\\pos' in text_raw or r'\\move' in text_raw:
+            continue
 
-                    if text and is_mostly_english(text):
-                        start_ms = parse_ass_time(event['Start'])
-                        end_ms = parse_ass_time(event['End'])
-                        # Explicitly cast to match SubtitleEvent structure
-                        dialogue_events.append({'start': start_ms, 'end': end_ms, 'text': text})
-                        stats['kept'] += 1
-                    else:
-                        stats['lang_empty'] += 1
+        clean_text = clean_ass_text(text_raw)
 
-    logger.debug(f"ASS Parse Stats: Total={stats['total']}, Ignored Style={stats['style']}, Ignored Pos={stats['pos']}, Non-English/Empty={stats['lang_empty']}, Kept={stats['kept']}")
+        if clean_text and is_mostly_english(clean_text):
+            dialogue_events.append({
+                'start': event.start,
+                'end': event.end,
+                'text': clean_text
+            })
+
     return dialogue_events
 
-def get_best_english_track(input_file: str) -> dict[str, Any] | None:
-    # Retrieve stream info including number of frames if available
-    cmd = ["ffprobe", "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language,NUMBER_OF_FRAMES", "-of", "json", input_file]
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    except subprocess.CalledProcessError as e:
-        logger.error(f"FFprobe failed: {e}")
-        return None
-        
-    if not result.stdout: return None
-    data = json.loads(result.stdout)
-    
-    candidates = []
-    for stream in data.get("streams", []):
-        if stream.get("codec_type") == "subtitle":
-            tags = stream.get("tags", {})
-            lang = tags.get("language", "").lower()
-            title = tags.get("title", "").lower()
-            
-            # Estimate event count
-            frames = 0
-            if "NUMBER_OF_FRAMES" in tags:
-                try: frames = int(tags["NUMBER_OF_FRAMES"])
-                except: pass
-            
-            # Score the track
-            score = 0
-            if lang in ["eng", "en"]: score += 10
-            elif lang in ["jpn", "ja"]: score += 5  # Allow 'jpn' tracks as candidates (often full subs)
-            
-            if "dialogue" in title or "full" in title: score += 5
-            if "sign" in title or "song" in title: score -= 10
-            
-            # Prioritize higher frame counts (proxy for dialogue quantity)
-            # Normalize frame count to a score bonus (e.g. 400 frames = +20 points)
-            score += (frames / 20)
-            
-            candidates.append({
-                'index': stream["index"],
-                'score': score,
-                'frames': frames,
-                'tags': tags
-            })
-            logger.debug(f"Track candidate: Index={stream['index']}, Lang={lang}, Title='{title}', Frames={frames}, Score={score}")
-            
-    if not candidates: return None
-    # Sort by score descending
-    best = sorted(candidates, key=lambda x: x['score'], reverse=True)[0]
-    logger.debug(f"Best track selected: Index={best['index']} (Score: {best['score']})")
-    return best
+class MediaProcessor:
+    def __init__(self, ffmpeg_path: str = "ffmpeg", ffprobe_path: str = "ffprobe"):
+        self.ffmpeg_path = ffmpeg_path
+        self.ffprobe_path = ffprobe_path
 
-def get_best_japanese_audio_track(input_file: str) -> dict[str, Any] | None:
-    # Retrieve stream info
-    cmd = ["ffprobe", "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language", "-of", "json", input_file]
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    except subprocess.CalledProcessError as e:
-        logger.error(f"FFprobe failed: {e}")
-        return None
-        
-    if not result.stdout: return None
-    data = json.loads(result.stdout)
-    
-    candidates = []
-    for stream in data.get("streams", []):
-        if stream.get("codec_type") == "audio":
-            tags = stream.get("tags", {})
-            lang = tags.get("language", "").lower()
-            title = tags.get("title", "").lower()
+    def get_best_subtitle_track(self, video_file: str) -> dict[str, Any] | None:
+        cmd = [self.ffprobe_path, "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language,NUMBER_OF_FRAMES", "-of", "json", video_file]
+        try:
+            result = run_command(cmd)
+            data = json.loads(result.stdout)
+        except Exception as e:
+            logger.error(f"FFprobe failed for subtitles: {e}")
+            return None
             
-            score = 0
-            if lang in ["jpn", "ja"]: score += 10
-            elif "japanese" in title: score += 5
+        candidates = []
+        for stream in data.get("streams", []):
+            if stream.get("codec_type") == "subtitle":
+                tags = stream.get("tags", {})
+                lang = tags.get("language", "").lower()
+                title = tags.get("title", "").lower()
+                
+                frames = 0
+                if "NUMBER_OF_FRAMES" in tags:
+                    try: frames = int(tags["NUMBER_OF_FRAMES"])
+                    except: pass
+                
+                score = 0
+                if lang in ["eng", "en"]: score += 10
+                elif lang in ["jpn", "ja"]: score += 5
+                
+                if "dialogue" in title or "full" in title: score += 5
+                if "sign" in title or "song" in title: score -= 10
+                score += (frames / 20)
+                
+                candidates.append({
+                    'index': stream["index"],
+                    'score': score,
+                    'frames': frames,
+                    'lang': lang,
+                    'title': title
+                })
+                
+        if not candidates: return None
+        return sorted(candidates, key=lambda x: x['score'], reverse=True)[0]
+
+    def get_best_audio_track(self, video_file: str) -> dict[str, Any] | None:
+        cmd = [self.ffprobe_path, "-v", "error", "-show_entries", "stream=index,codec_type:stream_tags=title,language", "-of", "json", video_file]
+        try:
+            result = run_command(cmd)
+            data = json.loads(result.stdout)
+        except Exception as e:
+            logger.error(f"FFprobe failed for audio: {e}")
+            return None
             
-            candidates.append({
-                'index': stream["index"],
-                'score': score,
-                'tags': tags
-            })
-            logger.debug(f"Audio candidate: Index={stream['index']}, Lang={lang}, Title='{title}', Score={score}")
-            
-    if not candidates: return None
-    # Sort by score descending, then by index to pick the first one if scores are equal
-    best = sorted(candidates, key=lambda x: (x['score'], -x['index']), reverse=True)[0]
-    logger.debug(f"Best audio selected: Index={best['index']} (Score: {best['score']})")
-    return best
+        candidates = []
+        for stream in data.get("streams", []):
+            if stream.get("codec_type") == "audio":
+                tags = stream.get("tags", {})
+                lang = tags.get("language", "").lower()
+                title = tags.get("title", "").lower()
+                
+                score = 0
+                if lang in ["jpn", "ja"]: score += 10
+                elif "japanese" in title: score += 5
+                
+                candidates.append({
+                    'index': stream["index"],
+                    'score': score,
+                    'lang': lang,
+                    'title': title
+                })
+                
+        if not candidates: return None
+        return sorted(candidates, key=lambda x: (x['score'], -x['index']), reverse=True)[0]
+
+    def extract_subtitles(self, video_file: str, track_index: int, output_ass: str) -> None:
+        cmd = [self.ffmpeg_path, "-y", "-i", video_file, "-map", f"0:{track_index}", output_ass]
+        run_command(cmd)
+
+    def extract_audio_chunk(self, video_file: str, audio_index: int | str, start_ms: int, end_ms: int, output_file: str) -> None:
+        duration_s = (end_ms - start_ms) / 1000.0
+        cmd = [
+            self.ffmpeg_path, "-y", 
+            "-ss", str(timedelta(milliseconds=start_ms)), 
+            "-i", video_file,
+            "-map", f"0:{audio_index}", 
+            "-t", str(duration_s), 
+            "-vn", "-c:a", "aac", "-b:a", "128k", 
+            output_file
+        ]
+        run_command(cmd)
 
 def group_events(events: list[SubtitleEvent], target_duration: float = CHUNK_TARGET_SECONDS) -> list[list[SubtitleEvent]]:
     clusters = []

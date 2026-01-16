@@ -61,10 +61,10 @@
 [254370ms - 256410ms] What are you laughing at?!
 [256410ms - 258290ms] Sorry, sorry.
 [258290ms - 260460ms] Listen, Tatewaku.
-[260460ms - 264500ms] If the lucky item had been curry rice,  what would you have done?
+[260460ms - 264500ms] If the lucky item had been curry rice, what would you have done?
 [266330ms - 268690ms] Would you just look at it all day?
 [268690ms - 271890ms] Would you keep it on you all day and never let it leave your side?
-[272250ms - 276980ms] You wouldn't, would you?  Tatewaku, curry is something you eat.
+[272250ms - 276980ms] You wouldn't, would you? Tatewaku, curry is something you eat.
 [276980ms - 278480ms] And a skirt
 [278480ms - 280200ms] is something you wear.
 [281020ms - 283900ms] You said you wanted to play in the next soccer match, right?
@@ -182,7 +182,7 @@
 [769890ms - 773260ms] is because you were kind enough to offer me free champagne.
 [774810ms - 776560ms] It left a dent...
 [776560ms - 780810ms] Your thoughtfulness is most delightful.
-[780810ms - 784400ms] It is only a small gesture,  but allow me to give this to you.
+[780810ms - 784400ms] It is only a small gesture, but allow me to give this to you.
 [784400ms - 786820ms] A Consideration Award.
 [787180ms - 793620ms] This person hasn't noticed the crispy noodles.
 [793970ms - 795370ms] I delivered the food.
@@ -193,6 +193,7 @@
 [809060ms - 809630ms] Hey!
 [810050ms - 814220ms] As embarrassing as it is, this is all thanks to wearing the miniskirt!
 [814220ms - 818100ms] Well then, I'm going to continue my homework in my room—
+[814220ms - 818100ms] room—
 [818100ms - 820230ms] Hot! It's hot!
 [821980ms - 826020ms] Why are there crispy noodles in my bag?!
 [826860ms - 830420ms] So it was just Tatewaku's bag all along?
@@ -237,9 +238,9 @@
 [1014590ms - 1017720ms] I touch the putty eraser I always keep in my pocket
 [1017720ms - 1020200ms] and knead it at a steady pace.
 [1024640ms - 1027180ms] Every part of the shiitake mushroom is precious.
-[1027640ms - 1032310ms] Whatever the case may be,  I am grateful for this encounter.
+[1027640ms - 1032310ms] Whatever the case may be, I am grateful for this encounter.
 [1032310ms - 1035690ms] Paru paru paru, point paru paru.
-[1036650ms - 1042070ms] On a whim, I decide to chant a blessing,  hoping that my point card will appear.
+[1036650ms - 1042070ms] On a whim, I decide to chant a blessing, hoping that my point card will appear.
 [1042990ms - 1045890ms] "I'll make your wish come true."
 [1045890ms - 1048200ms] Oh, God!
 [1049210ms - 1051870ms] With such things running through my mind,
@@ -254,7 +255,7 @@
 [1097550ms - 1101360ms] That god I made yesterday really does have power.
 [1104010ms - 1105760ms] I return to my room
 [1106100ms - 1111440ms] and give the Papico packed into the tip as an offering to the god.
-[1112520ms - 1117270ms] The bit of Papico stuck at the tip,  which I eat just before it melts,
+[1112520ms - 1117270ms] The bit of Papico stuck at the tip, which I eat just before it melts,
 [1117820ms - 1119820ms] is exceptionally delicious.
 [1120240ms - 1122030ms] The main part is also delicious.
 [1123410ms - 1128770ms] What if I add another layer of happiness to my current state of happiness?
@@ -264,7 +265,7 @@
 [1140180ms - 1143330ms] and begin tapping them gently.
 [1144260ms - 1148560ms] The mystery of this cotton-like substance being formed from a hard putty eraser.
 [1149380ms - 1152180ms] The bliss of crushing it all by myself.
-[1152180ms - 1158730ms] This is truly the bestest,  the greatest, the happiest time of all.
+[1152180ms - 1158730ms] This is truly the bestest, the greatest, the happiest time of all.
 [1159400ms - 1162830ms] However, this happiness is a different flavor,
 [1162830ms - 1167670ms] which makes me realize that there are all kinds of different happinesses.
 [1178290ms - 1179080ms] A joke...
@@ -338,7 +339,7 @@
 [1441520ms - 1444640ms] Do you want to become a photographer in the future, then?
 [1444960ms - 1449820ms] Well, if I could, that'd be great, but...
 [1449820ms - 1451940ms] What's this all about?
-[1452940ms - 1455900ms] Nagumo, don't you have a thing?  Something you want to do.
+[1452940ms - 1455900ms] Nagumo, don't you have a thing? Something you want to do.
 [1455900ms - 1457410ms] I mean, sure I do.
 [1457410ms - 1461200ms] I'll help you too. Let's find it together...
 [1461200ms - 1462280ms] Wait, you do?!
@@ -348,12 +349,12 @@
 [1474880ms - 1476380ms] Something fun.
 [1478430ms - 1481960ms] Well, then I guess you should do something fun.
 [1481960ms - 1485140ms] But there are so many things that I can't choose just one.
-[1486640ms - 1490850ms] But if I'm gonna do something,  I wanna do the most fun thing of all!
+[1486640ms - 1490850ms] But if I'm gonna do something, I wanna do the most fun thing of all!
 [1493280ms - 1494280ms] Pu...
 [1495440ms - 1499280ms] So pure!
 [1517010ms - 1520760ms] The season that was vague
 [1520760ms - 1524720ms] Melts without a care
-[1524720ms - 1528810ms] In just five minutes on foot  Down the sweltering street
+[1524720ms - 1528810ms] In just five minutes on foot Down the sweltering street
 [1528810ms - 1533060ms] Whether it's a dream or reality I can't tell
 [1533060ms - 1536440ms] Oversleeping and ending up in a pinch
 [1537240ms - 1540490ms] Endlessly chasing all things I want
@@ -364,7 +365,7 @@
 [1560550ms - 1565260ms] That's different from last year
 [1565260ms - 1569680ms] Annoying, but still, it's fun
 [1573520ms - 1577940ms] You're still you
-[1580990ms - 1585660ms] In this town on the edge  Where everyone's the same
+[1580990ms - 1585660ms] In this town on the edge Where everyone's the same
 [1585660ms - 1588540ms] I want to be with you today too
 [1588540ms - 1592540ms] Beyond the roof
 [1592540ms - 1596040ms] The sun is hiding

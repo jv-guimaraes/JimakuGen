@@ -3,168 +3,168 @@ import shutil
 import logging
 import argparse
 import tempfile
-import subprocess
 from datetime import timedelta
 
-from src.config import DEFAULT_MODEL, CACHE_DIR, CHUNK_TARGET_SECONDS
+from src.config import DEFAULT_MODEL, CACHE_DIR, CHUNK_TARGET_SECONDS, AUDIO_PADDING_MS, MAX_RETRIES
 from src.logger import setup_logging
 from src.utils import get_cache_path, ms_to_mm_ss_mmm, parse_timestamps, ms_to_srt_time, validate_chunk, SubtitleEvent
-from src.media_utils import get_best_english_track, get_best_japanese_audio_track, get_dialogue_from_ass, group_events
+from src.media_utils import MediaProcessor, get_dialogue_from_ass, group_events
 from src.transcriber import Transcriber, RateLimitError
 
 logger = logging.getLogger(__name__)
 
-def process_video(video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = CHUNK_TARGET_SECONDS, context_path: str | None = None, limit: int | None = None, verbose: bool = False, keep_temp: bool = False) -> None:
-    setup_logging(verbose)
-    
-    # Create temporary directory
-    temp_dir = tempfile.mkdtemp(prefix="subtitles_")
-    logger.debug(f"Created temporary directory: {temp_dir}")
-    
-    try:
-        os.makedirs(CACHE_DIR, exist_ok=True)
+class SubtitleJob:
+    def __init__(self, video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = CHUNK_TARGET_SECONDS, context_path: str | None = None, limit: int | None = None, keep_temp: bool = False):
+        self.video_file = video_file
+        self.output_path = output_path or self._default_output_path()
+        self.model = model
+        self.chunk_size = chunk_size
+        self.context_path = context_path
+        self.limit = limit
+        self.keep_temp = keep_temp
         
-        series_context = None
-        if context_path:
-            try:
-                with open(context_path, 'r', encoding='utf-8') as f:
-                    series_context = f.read().strip()
-                logger.info(f"Loaded series context from {context_path}")
-            except Exception as e:
-                logger.error(f"Failed to read context file: {e}")
+        self.temp_dir = tempfile.mkdtemp(prefix="jimakugen_")
+        self.media = MediaProcessor()
+        self.transcriber = Transcriber()
+        self.series_context = self._load_context()
+        
+        self.final_subs: list[SubtitleEvent] = []
+        self.stop_requested = False
+
+    def _default_output_path(self) -> str:
+        base, _ = os.path.splitext(self.video_file)
+        return f"{base}.ja.srt"
+
+    def _load_context(self) -> str | None:
+        if not self.context_path:
+            return None
+        try:
+            with open(self.context_path, 'r', encoding='utf-8') as f:
+                return f.read().strip()
+        except Exception as e:
+            logger.error(f"Failed to read context file: {e}")
+            return None
+
+    def cleanup(self):
+        if self.keep_temp:
+            logger.info(f"Temporary directory kept at: {self.temp_dir}")
+        else:
+            shutil.rmtree(self.temp_dir, ignore_errors=True)
+            logger.debug(f"Cleaned up temporary directory: {self.temp_dir}")
+
+    def run(self):
+        try:
+            os.makedirs(CACHE_DIR, exist_ok=True)
+            
+            # 1. Track Selection
+            best_sub = self.media.get_best_subtitle_track(self.video_file)
+            if not best_sub:
+                logger.error("No suitable English subtitle track found.")
                 return
 
-        # Initialize Transcriber
-        try:
-            transcriber = Transcriber()
-        except ValueError as e:
-            logger.error(str(e))
-            return
-
-        best_track = get_best_english_track(video_file)
-        if best_track is None:
-            logger.error("No English track found.")
-            return
-        
-        track_index = best_track['index']
-        logger.info(f"Selected subtitle track index {track_index} (Score: {best_track['score']:.1f}, Frames: {best_track['frames']})")
-        
-        audio_track = get_best_japanese_audio_track(video_file)
-        audio_index = audio_track['index'] if audio_track else "a:0"
-        if audio_track:
-            logger.info(f"Selected audio track index {audio_index} (Score: {audio_track['score']})")
-        else:
-            logger.warning("No Japanese audio track found, defaulting to first audio stream.")
-
-        temp_ass = os.path.join(temp_dir, "temp_eng.ass")
-        cmd_extract_sub = ["ffmpeg", "-y", "-i", video_file, "-map", f"0:{track_index}", temp_ass]
-        logger.debug(f"Extracting subtitles command: {' '.join(cmd_extract_sub)}")
-        subprocess.run(cmd_extract_sub, capture_output=True)
-        
-        events = get_dialogue_from_ass(temp_ass)
-        clusters = group_events(events, target_duration=chunk_size)
-        logger.info(f"Total chunks: {len(clusters)}")
-        
-        final_subs: list[SubtitleEvent] = []
-        stop_processing = False
-        for i, cluster in enumerate(clusters):
-            if stop_processing:
-                break
-            if limit is not None and i >= limit:
-                logger.info(f"Limit of {limit} chunks reached. Stopping early.")
-                break
-
-            start_ms = cluster[0]['start'] - 700
-            if start_ms < 0: start_ms = 0
-            end_ms = cluster[-1]['end'] + 700
+            best_audio = self.media.get_best_audio_track(self.video_file)
+            audio_index = best_audio['index'] if best_audio else "a:0"
             
-            cache_path = get_cache_path(video_file, start_ms, end_ms)
+            logger.info(f"Selected Subtitle Track: {best_sub['index']} (Score: {best_sub['score']:.1f})")
+            logger.info(f"Selected Audio Track: {audio_index}")
+
+            # 2. Subtitle Extraction & Grouping
+            temp_ass = os.path.join(self.temp_dir, "extracted.ass")
+            self.media.extract_subtitles(self.video_file, best_sub['index'], temp_ass)
             
-            retries = 0
-            max_retries = 3
-            while retries < max_retries:
-                raw = None
-                if os.path.exists(cache_path):
-                    logger.info(f"[{i+1}/{len(clusters)}] Using cached transcription ({cache_path})")
-                    with open(cache_path, 'r', encoding='utf-8') as f:
-                        raw = f.read()
+            events = get_dialogue_from_ass(temp_ass)
+            clusters = group_events(events, target_duration=self.chunk_size)
+            logger.info(f"Total chunks to process: {len(clusters)}")
+
+            # 3. Main Processing Loop
+            for i, cluster in enumerate(clusters):
+                if self.stop_requested: break
+                if self.limit is not None and i >= self.limit:
+                    logger.info(f"Limit of {self.limit} chunks reached.")
+                    break
+
+                chunk_subs = self._process_chunk(i, cluster, audio_index, len(clusters))
+                if chunk_subs:
+                    self.final_subs.extend(chunk_subs)
+
+            # 4. Save Results
+            if self.final_subs:
+                self._save_srt()
+                if self.stop_requested:
+                    logger.warning(f"Processing stopped early. Partial results saved to {self.output_path}")
                 else:
-                    logger.info(f"[{i+1}/{len(clusters)}] Transcribing... (Attempt {retries + 1})")
-                    audio_chunk = os.path.join(temp_dir, f"chunk_{i}.m4a")
-                    duration_s = (end_ms - start_ms) / 1000.0
-                    cmd_extract_audio = ["ffmpeg", "-y", "-ss", str(timedelta(milliseconds=start_ms)), "-i", video_file,
-                                   "-map", f"0:{audio_index}", "-t", str(duration_s), "-vn", "-c:a", "aac", "-b:a", "128k", audio_chunk]
-                    logger.debug(f"Extracting audio chunk {i} command: {' '.join(cmd_extract_audio)}")
-                    subprocess.run(cmd_extract_audio, capture_output=True)
-                    
+                    logger.info(f"Success! Saved to {self.output_path}")
+            else:
+                logger.error("No subtitles were generated.")
+
+        finally:
+            self.cleanup()
+
+    def _process_chunk(self, index: int, cluster: list[SubtitleEvent], audio_index: int | str, total_chunks: int) -> list[SubtitleEvent] | None:
+        start_ms = max(0, cluster[0]['start'] - AUDIO_PADDING_MS)
+        end_ms = cluster[-1]['end'] + AUDIO_PADDING_MS
+        
+        cache_path = get_cache_path(self.video_file, start_ms, end_ms)
+        
+        for attempt in range(MAX_RETRIES):
+            raw_text = None
+            if os.path.exists(cache_path):
+                logger.info(f"[{index+1}/{total_chunks}] Using cache")
+                with open(cache_path, 'r', encoding='utf-8') as f:
+                    raw_text = f.read()
+            else:
+                logger.info(f"[{index+1}/{total_chunks}] Transcribing (Attempt {attempt + 1})")
+                audio_chunk = os.path.join(self.temp_dir, f"chunk_{index}.m4a")
+                
+                try:
+                    self.media.extract_audio_chunk(self.video_file, audio_index, start_ms, end_ms, audio_chunk)
                     eng_ctx = "\n".join([f"[{ms_to_mm_ss_mmm(e['start'] - start_ms)} - {ms_to_mm_ss_mmm(e['end'] - start_ms)}] {e['text']}" for e in cluster])
                     
-                    try:
-                        raw = transcriber.transcribe_chunk(audio_chunk, eng_ctx, model, series_context)
-                        with open(cache_path, 'w', encoding='utf-8') as f:
-                            f.write(raw)
-                    except RateLimitError as e:
-                        logger.warning(f"Rate limit hit at chunk {i}. Stopping further processing as requested.")
-                        stop_processing = True
-                        break
-                    except Exception as e:
-                        logger.critical(f"Critical error in chunk {i}: {e}. Stopping program.")
-                        stop_processing = True
-                        break
-                    finally:
-                        if os.path.exists(audio_chunk): os.remove(audio_chunk)
-                
-                if raw:
-                    chunk_subs = parse_timestamps(raw, start_ms)
-                    if validate_chunk(chunk_subs):
-                        final_subs.extend(chunk_subs)
-                        break
-                    else:
-                        logger.warning(f"Chunk {i} validation failed. Retrying...")
-                        if os.path.exists(cache_path):
-                            os.remove(cache_path)
-                        retries += 1
-            else:
-                 if not stop_processing:
-                    logger.error(f"Chunk {i} failed after {max_retries} retries. Skipping.")
+                    raw_text = self.transcriber.transcribe_chunk(audio_chunk, eng_ctx, self.model, self.series_context)
+                    with open(cache_path, 'w', encoding='utf-8') as f:
+                        f.write(raw_text)
+                except RateLimitError:
+                    logger.warning(f"Rate limit hit at chunk {index}. Stopping.")
+                    self.stop_requested = True
+                    return None
+                except Exception as e:
+                    logger.error(f"Error in chunk {index}: {e}")
+                    self.stop_requested = True
+                    return None
+                finally:
+                    if os.path.exists(audio_chunk): os.remove(audio_chunk)
 
-        if stop_processing and not final_subs:
-            logger.error("Processing failed. No subtitles generated.")
-            return
-
-        # Determine output path
-        if output_path:
-            output_srt = output_path
-        else:
-            base, _ = os.path.splitext(video_file)
-            output_srt = f"{base}.ja.srt"
+            if raw_text:
+                subs = parse_timestamps(raw_text, start_ms)
+                if validate_chunk(subs):
+                    return subs
+                else:
+                    logger.warning(f"Validation failed for chunk {index}. Retrying...")
+                    if os.path.exists(cache_path): os.remove(cache_path)
         
-        with open(output_srt, "w", encoding="utf-8") as f:
-            for k, sub in enumerate(final_subs):
+        logger.error(f"Chunk {index} failed after {MAX_RETRIES} attempts.")
+        return None
+
+    def _save_srt(self):
+        with open(self.output_path, "w", encoding="utf-8") as f:
+            for k, sub in enumerate(self.final_subs):
                 f.write(f"{k+1}\n{ms_to_srt_time(sub['start'])} --> {ms_to_srt_time(sub['end'])}\n{sub['text']}\n\n")
-        
-        if stop_processing:
-            logger.warning(f"Processing stopped early due to an error. Partial results saved to {output_srt}")
-        else:
-            logger.info(f"Success! Saved to {output_srt}")
 
-    finally:
-        if keep_temp:
-            logger.info(f"Temporary directory kept at: {temp_dir}")
-        else:
-            shutil.rmtree(temp_dir, ignore_errors=True)
-            logger.debug(f"Cleaned up temporary directory: {temp_dir}")
+def process_video(video_file: str, **kwargs) -> None:
+    setup_logging(kwargs.get('verbose', False))
+    job = SubtitleJob(video_file, **kwargs)
+    job.run()
 
 def run_cli() -> None:
     parser = argparse.ArgumentParser(description="JimakuGen: Generate Japanese subtitles for a video using Gemini.")
     parser.add_argument("video_file", help="Path to the input video file")
-    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging (DEBUG level)")
-    parser.add_argument("--chunk-size", type=int, default=CHUNK_TARGET_SECONDS, help=f"Target duration for each chunk in seconds (default: {CHUNK_TARGET_SECONDS})")
-    parser.add_argument("--context", help="Path to a text file containing series context (characters, terms, etc.)")
-    parser.add_argument("--limit", type=int, help="Limit the number of chunks to process (for testing)")
-    parser.add_argument("--model", default=DEFAULT_MODEL, help=f"Gemini model to use (default: {DEFAULT_MODEL})")
-    parser.add_argument("-o", "--output", help="Output SRT file path (default: <video_name>.ja.srt)")
-    parser.add_argument("--keep-temp", action="store_true", help="Keep temporary files (e.g. extracted subtitles) for debugging")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging")
+    parser.add_argument("--chunk-size", type=int, default=CHUNK_TARGET_SECONDS, help="Chunk size in seconds")
+    parser.add_argument("--context", help="Path to context file")
+    parser.add_argument("--limit", type=int, help="Limit number of chunks")
+    parser.add_argument("--model", default=DEFAULT_MODEL, help="Gemini model")
+    parser.add_argument("-o", "--output", help="Output SRT path")
+    parser.add_argument("--keep-temp", action="store_true", help="Keep temp files")
     args = parser.parse_args()
 
     process_video(

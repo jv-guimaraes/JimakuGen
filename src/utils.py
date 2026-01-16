@@ -1,9 +1,10 @@
 import os
 import re
 import logging
+import subprocess
 from typing import TypedDict, Any
 from datetime import timedelta
-from src.config import CACHE_DIR
+from src.config import CACHE_DIR, CPS_THRESHOLD_MAX, CPS_THRESHOLD_MIN, MAX_SUBTITLE_DURATION_S
 
 logger = logging.getLogger(__name__)
 
@@ -11,6 +12,18 @@ class SubtitleEvent(TypedDict):
     start: float | int
     end: float | int
     text: str
+
+def run_command(cmd: list[str], timeout: float | None = None) -> subprocess.CompletedProcess:
+    """
+    Centralized subprocess execution with logging.
+    """
+    logger.debug(f"Executing: {' '.join(cmd)}")
+    try:
+        return subprocess.run(cmd, capture_output=True, text=True, check=True, timeout=timeout)
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Command failed: {' '.join(cmd)}")
+        logger.error(f"Stderr: {e.stderr}")
+        raise e
 
 def get_cache_path(video_file: str, start_ms: float | int, end_ms: float | int) -> str:
     base = os.path.basename(video_file)
@@ -41,23 +54,11 @@ def ms_to_srt_time(ms: float | int) -> str:
 def remove_japanese_spaces(text: str | None) -> str | None:
     if not text:
         return text
-    # Japanese character ranges:
-    # Hiragana: \u3040-\u309f
-    # Katakana: \u30a0-\u30ff
-    # Kanji: \u4e00-\u9fff
-    # CJK symbols and punctuation: \u3000-\u303f
-    # Full-width alphanumeric: \uff00-\uffef
     jp_range = r'[\u3040-\u309f\u30a0-\u30ff\u4e00-\u9fff\u3000-\u303f\uff00-\uffef]'
-    
-    # 1. Remove spaces between two Japanese characters
     text = re.sub(rf'(?<={jp_range})\s+(?={jp_range})', '', text)
-    
-    # 2. Remove spaces between a Japanese character and common punctuation
-    # (including half-width ! ? . , : ;)
     punct = r'[!?.,:;]'
     text = re.sub(rf'(?<={jp_range})\s+(?={punct})', '', text)
     text = re.sub(rf'(?<={punct})\s+(?={jp_range})', '', text)
-    
     return text
 
 def parse_timestamps(text: str, offset_ms: float | int) -> list[SubtitleEvent]:
@@ -74,31 +75,30 @@ def parse_timestamps(text: str, offset_ms: float | int) -> list[SubtitleEvent]:
                 end_ms = parse_time_to_ms(end_str) + offset_ms
                 if content:
                     content = remove_japanese_spaces(content)
-                    if content: # Ensure content is not None
+                    if content:
                         results.append({'start': start_ms, 'end': end_ms, 'text': content})
             except: pass
     return results
 
-def validate_chunk(subs: list[SubtitleEvent], cps_threshold: float = 25.0, min_cps_threshold: float = 0.2, max_duration: float = 13.0) -> bool:
+def validate_chunk(subs: list[SubtitleEvent]) -> bool:
     for sub in subs:
         duration_s = (sub['end'] - sub['start']) / 1000.0
         if duration_s <= 0:
             logger.warning(f"Validation failed: Zero or negative duration for '{sub['text']}'")
             return False
         
-        # Check for single line duration exceeding safe limit
-        if duration_s > max_duration:
-            logger.warning(f"Validation failed: Duration {duration_s:.2f}s exceeds limit {max_duration}s for '{sub['text']}'")
+        if duration_s > MAX_SUBTITLE_DURATION_S:
+            logger.warning(f"Validation failed: Duration {duration_s:.2f}s exceeds limit {MAX_SUBTITLE_DURATION_S}s for '{sub['text']}'")
             return False
 
         text_len = len(sub['text'])
         cps = text_len / duration_s
         
-        if cps > cps_threshold:
+        if cps > CPS_THRESHOLD_MAX:
             logger.warning(f"Validation failed: High CPS ({cps:.2f}) for '{sub['text']}' ({duration_s:.3f}s)")
             return False
             
-        if cps < min_cps_threshold:
+        if cps < CPS_THRESHOLD_MIN:
              logger.warning(f"Validation failed: Low CPS ({cps:.2f}) for '{sub['text']}' ({duration_s:.3f}s)")
              return False
              

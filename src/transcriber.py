@@ -1,8 +1,8 @@
 import time
 import logging
 from google import genai
-from google.genai import types
-from src.config import API_KEY
+from google.genai import types, errors
+from src.config import API_KEY, POLLING_INTERVAL_SECONDS
 
 logger = logging.getLogger(__name__)
 
@@ -24,9 +24,12 @@ class Transcriber:
                 raise ValueError("Failed to upload file: No name returned.")
 
             while sample_file.state == types.FileState.PROCESSING:
-                time.sleep(2)
+                time.sleep(POLLING_INTERVAL_SECONDS)
                 sample_file = self.client.files.get(name=file_name)
             
+            if sample_file.state == types.FileState.FAILED:
+                raise ValueError(f"File processing failed: {sample_file.name}")
+
             prompt_parts = []
             if series_info:
                 prompt_parts.append(f"Series Information:\n{series_info}")
@@ -72,9 +75,17 @@ class Transcriber:
             )
             logger.debug(f"--- Response from Gemini ---\n{response.text}\n----------------------------")
             return response.text or ""
+        
+        except errors.ClientError as e:
+            # 429 is usually ClientError in this SDK
+            if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+                logger.warning(f"Gemini API rate limit exceeded: {e}")
+                raise RateLimitError(str(e))
+            logger.error(f"Gemini Client Error: {e}")
+            raise e
+        except errors.APIError as e:
+            logger.error(f"Gemini API Error: {e}")
+            raise e
         except Exception as e:
-            err_msg = str(e)
-            if "429" in err_msg:
-                raise RateLimitError(err_msg)
-            else:
-                raise e
+            logger.error(f"Unexpected error in transcribe_chunk: {e}")
+            raise e
