@@ -8,10 +8,12 @@ dependencies = [
     "google-genai",
     "python-dotenv",
     "pysubs2",
+    "typer",
+    "rich",
 ]
 
 [project.scripts]
-jimakugen = "src.core:run_cli"
+jimakugen = "src.cli:app"
 
 [tool.setuptools.packages.find]
 where = ["."]

@@ -4,25 +4,44 @@ JimakuGen is a CLI tool that generates Japanese subtitles for video files using 
 
 ## Usage
 
-Basic usage:
+JimakuGen provides a modern CLI with several commands.
+
+### Configuration
+First, set up your API key:
 ```bash
-python main.py video.mkv
+jimakugen config
+# Or manually provide it:
+jimakugen config --api-key YOUR_KEY
+```
+
+### Checking Environment
+Verify that FFmpeg and credentials are set up correctly:
+```bash
+jimakugen check
+```
+
+### Generating Subtitles
+Run the transcription on a video file:
+```bash
+jimakugen run video.mkv
 ```
 This will generate `video.ja.srt` in the same directory.
 
-### Options
+### Options for `run`
 
 | Option | Description |
 | :--- | :--- |
-| `--context <file>` | Path to a text file with series specific terms (names, lore, etc). |
+| `--context, -c <file>` | Path to a text file with series specific terms. |
 | `--model <name>` | Gemini model to use (default: `gemini-2.5-flash`). |
 | `--chunk-size <sec>` | Target duration for audio chunks (default: 90s). |
 | `--limit <n>` | Process only the first N chunks (for testing). |
-| `-o <path>` | Custom output path. |
+| `--output, -o <path>` | Custom output path. |
+| `--verbose, -v` | Enable verbose logging (to file). |
+| `--keep-temp` | Keep temporary files (extracted audio/subs). |
 
-Example with a context file:
+Example:
 ```bash
-python main.py episode_01.mkv --context context.txt
+jimakugen run episode_01.mkv --context context.txt --model gemini-2.5-pro
 ```
 
 ## Installation

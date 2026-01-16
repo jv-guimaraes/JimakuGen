@@ -1,4 +1,4 @@
-from src.core import run_cli
+from src.cli import app
 
 if __name__ == "__main__":
-    run_cli()
+    app()

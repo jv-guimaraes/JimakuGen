@@ -1,9 +1,11 @@
 import os
 import shutil
 import logging
-import argparse
 import tempfile
 from datetime import timedelta
+from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, MofNCompleteColumn
+from rich.panel import Panel
+from rich.console import Console
 
 from src.config import DEFAULT_MODEL, CACHE_DIR, CHUNK_TARGET_SECONDS, AUDIO_PADDING_MS, MAX_RETRIES
 from src.logger import setup_logging
@@ -12,9 +14,10 @@ from src.media_utils import MediaProcessor, get_dialogue_from_ass, group_events
 from src.transcriber import Transcriber, RateLimitError
 
 logger = logging.getLogger(__name__)
+console = Console()
 
 class SubtitleJob:
-    def __init__(self, video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = CHUNK_TARGET_SECONDS, context_path: str | None = None, limit: int | None = None, keep_temp: bool = False):
+    def __init__(self, video_file: str, output_path: str | None = None, model: str = DEFAULT_MODEL, chunk_size: int = CHUNK_TARGET_SECONDS, context_path: str | None = None, limit: int | None = None, keep_temp: bool = False, verbose: bool = False):
         self.video_file = video_file
         self.output_path = output_path or self._default_output_path()
         self.model = model
@@ -22,6 +25,7 @@ class SubtitleJob:
         self.context_path = context_path
         self.limit = limit
         self.keep_temp = keep_temp
+        self.verbose = verbose
         
         self.temp_dir = tempfile.mkdtemp(prefix="jimakugen_")
         self.media = MediaProcessor()
@@ -56,64 +60,118 @@ class SubtitleJob:
         try:
             os.makedirs(CACHE_DIR, exist_ok=True)
             
-            # 1. Track Selection
-            best_sub = self.media.get_best_subtitle_track(self.video_file)
-            if not best_sub:
-                logger.error("No suitable English subtitle track found.")
-                return
+            with Progress(
+                SpinnerColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                transient=True,
+                disable=self.verbose
+            ) as setup_progress:
+                task_id = setup_progress.add_task("Initializing...", total=None)
 
-            best_audio = self.media.get_best_audio_track(self.video_file)
-            audio_index = best_audio['index'] if best_audio else "a:0"
+                # 1. Track Selection
+                setup_progress.update(task_id, description="Selecting tracks...")
+                best_sub = self.media.get_best_subtitle_track(self.video_file)
+                if not best_sub:
+                    logger.error("No suitable English subtitle track found.")
+                    return
+
+                best_audio = self.media.get_best_audio_track(self.video_file)
+                audio_index = best_audio['index'] if best_audio else "a:0"
+                
+                # 2. Subtitle Extraction & Grouping
+                setup_progress.update(task_id, description="Extracting subtitles...")
+                temp_ass = os.path.join(self.temp_dir, "extracted.ass")
+                self.media.extract_subtitles(self.video_file, best_sub['index'], temp_ass)
+                
+                events = get_dialogue_from_ass(temp_ass)
+                clusters = group_events(events, target_duration=self.chunk_size)
+                total_chunks = len(clusters)
+                if self.limit:
+                    total_chunks = min(total_chunks, self.limit)
+                
+                # 3. Show Summary Panel
+                if not self.verbose:
+                    def fmt_track(track):
+                        if not track: return "None"
+                        parts = [f"#{track['index']}"]
+                        if track.get('lang'): parts.append(f"[{track['lang']}]")
+                        if track.get('title'): parts.append(f"({track['title']})")
+                        return " ".join(parts)
+
+                    console.print() # Ensure clean line
+                    summary_text = (
+                        f"  [bold]Input:[/bold]    {os.path.basename(self.video_file)}\n"
+                        f"  [bold]Output:[/bold]   {os.path.basename(self.output_path)}\n"
+                        f"  [bold]Model:[/bold]    {self.model}\n"
+                        f"  [bold]Audio:[/bold]    {fmt_track(best_audio)}\n"
+                        f"  [bold]Context:[/bold]  {fmt_track(best_sub)} (Score: {best_sub['score']:.1f})\n"
+                        f"  [bold]Workload:[/bold] {total_chunks} Chunks"
+                    )
+                    console.print(Panel(summary_text, title="Job Summary", expand=False, border_style="cyan"))
+
+                logger.info(f"Selected Subtitle Track: {best_sub['index']} (Score: {best_sub['score']:.1f})")
+                logger.info(f"Selected Audio Track: {audio_index}")
+                logger.info(f"Total chunks to process: {total_chunks}")
             
-            logger.info(f"Selected Subtitle Track: {best_sub['index']} (Score: {best_sub['score']:.1f})")
-            logger.info(f"Selected Audio Track: {audio_index}")
-
-            # 2. Subtitle Extraction & Grouping
-            temp_ass = os.path.join(self.temp_dir, "extracted.ass")
-            self.media.extract_subtitles(self.video_file, best_sub['index'], temp_ass)
-            
-            events = get_dialogue_from_ass(temp_ass)
-            clusters = group_events(events, target_duration=self.chunk_size)
-            logger.info(f"Total chunks to process: {len(clusters)}")
-
-            # 3. Main Processing Loop
+            # 4. Main Processing Loop
             for i, cluster in enumerate(clusters):
                 if self.stop_requested: break
                 if self.limit is not None and i >= self.limit:
                     logger.info(f"Limit of {self.limit} chunks reached.")
                     break
 
-                chunk_subs = self._process_chunk(i, cluster, audio_index, len(clusters))
+                # Use a spinner for the active task if not verbose
+                if not self.verbose:
+                    with console.status(f"Processing Chunk {i+1}/{total_chunks}...") as status:
+                        chunk_subs = self._process_chunk(i, cluster, audio_index, total_chunks, status)
+                else:
+                    chunk_subs = self._process_chunk(i, cluster, audio_index, total_chunks)
+
                 if chunk_subs:
                     self.final_subs.extend(chunk_subs)
 
-            # 4. Save Results
+            # 5. Save Results
             if self.final_subs:
                 self._save_srt()
                 if self.stop_requested:
                     logger.warning(f"Processing stopped early. Partial results saved to {self.output_path}")
                 else:
                     logger.info(f"Success! Saved to {self.output_path}")
+                    if not self.verbose:
+                        console.print(f"[green]✓[/green] Subtitles saved to: [bold]{self.output_path}[/bold]")
             else:
                 logger.error("No subtitles were generated.")
 
         finally:
             self.cleanup()
 
-    def _process_chunk(self, index: int, cluster: list[SubtitleEvent], audio_index: int | str, total_chunks: int) -> list[SubtitleEvent] | None:
+    def _process_chunk(self, index: int, cluster: list[SubtitleEvent], audio_index: int | str, total_chunks: int, status_spinner=None) -> list[SubtitleEvent] | None:
         start_ms = max(0, cluster[0]['start'] - AUDIO_PADDING_MS)
         end_ms = cluster[-1]['end'] + AUDIO_PADDING_MS
+        timestamp = ms_to_mm_ss_mmm(start_ms).split(',')[0] # Get mm:ss
+        chunk_label = f"Chunk {index+1:02d}/{total_chunks:02d}"
         
         cache_path = get_cache_path(self.video_file, start_ms, end_ms)
         
         for attempt in range(MAX_RETRIES):
             raw_text = None
+            from_cache = False
+            
             if os.path.exists(cache_path):
-                logger.info(f"[{index+1}/{total_chunks}] Using cache")
+                logger.debug(f"[{index+1}/{total_chunks}] Using cache")
+                if not self.verbose:
+                    console.print(f"[{timestamp}] {chunk_label}: [dim]Using Cache[/dim]")
+                
                 with open(cache_path, 'r', encoding='utf-8') as f:
                     raw_text = f.read()
+                from_cache = True
             else:
-                logger.info(f"[{index+1}/{total_chunks}] Transcribing (Attempt {attempt + 1})")
+                action = "Transcribing" if attempt == 0 else "Retrying"
+                logger.debug(f"[{index+1}/{total_chunks}] {action} (Attempt {attempt + 1})")
+                
+                if status_spinner:
+                    status_spinner.update(f"{action} {chunk_label} ({timestamp})...")
+
                 audio_chunk = os.path.join(self.temp_dir, f"chunk_{index}.m4a")
                 
                 try:
@@ -125,6 +183,8 @@ class SubtitleJob:
                         f.write(raw_text)
                 except RateLimitError:
                     logger.warning(f"Rate limit hit at chunk {index}. Stopping.")
+                    if not self.verbose:
+                         console.print(f"[{timestamp}] {chunk_label}: [bold red]Rate Limit Hit[/bold red]")
                     self.stop_requested = True
                     return None
                 except Exception as e:
@@ -137,12 +197,18 @@ class SubtitleJob:
             if raw_text:
                 subs = parse_timestamps(raw_text, start_ms)
                 if validate_chunk(subs):
+                    if not self.verbose and not from_cache:
+                         console.print(f"[{timestamp}] {chunk_label}: [green]Transcribed[/green]")
                     return subs
                 else:
                     logger.warning(f"Validation failed for chunk {index}. Retrying...")
+                    if not self.verbose:
+                        console.print(f"[{timestamp}] {chunk_label}: [yellow]Validation Failed (Retrying)[/yellow]")
                     if os.path.exists(cache_path): os.remove(cache_path)
         
         logger.error(f"Chunk {index} failed after {MAX_RETRIES} attempts.")
+        if not self.verbose:
+            console.print(f"[{timestamp}] {chunk_label}: [bold red]Failed[/bold red]")
         return None
 
     def _save_srt(self):
@@ -151,30 +217,8 @@ class SubtitleJob:
                 f.write(f"{k+1}\n{ms_to_srt_time(sub['start'])} --> {ms_to_srt_time(sub['end'])}\n{sub['text']}\n\n")
 
 def process_video(video_file: str, **kwargs) -> None:
-    verbose = kwargs.pop('verbose', False)
-    setup_logging(verbose)
+    verbose = kwargs.get('verbose', False)
+    # Enable console logging if verbose is True, otherwise disable it to use Rich
+    setup_logging(verbose, console_output=verbose)
     job = SubtitleJob(video_file, **kwargs)
     job.run()
-
-def run_cli() -> None:
-    parser = argparse.ArgumentParser(description="JimakuGen: Generate Japanese subtitles for a video using Gemini.")
-    parser.add_argument("video_file", help="Path to the input video file")
-    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose logging")
-    parser.add_argument("--chunk-size", type=int, default=CHUNK_TARGET_SECONDS, help="Chunk size in seconds")
-    parser.add_argument("--context", help="Path to context file")
-    parser.add_argument("--limit", type=int, help="Limit number of chunks")
-    parser.add_argument("--model", default=DEFAULT_MODEL, help="Gemini model")
-    parser.add_argument("-o", "--output", help="Output SRT path")
-    parser.add_argument("--keep-temp", action="store_true", help="Keep temp files")
-    args = parser.parse_args()
-
-    process_video(
-        video_file=args.video_file,
-        output_path=args.output,
-        model=args.model,
-        chunk_size=args.chunk_size,
-        context_path=args.context,
-        limit=args.limit,
-        verbose=args.verbose,
-        keep_temp=args.keep_temp
-    )
