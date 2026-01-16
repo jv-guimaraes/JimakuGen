@@ -151,7 +151,8 @@ class SubtitleJob:
                 f.write(f"{k+1}\n{ms_to_srt_time(sub['start'])} --> {ms_to_srt_time(sub['end'])}\n{sub['text']}\n\n")
 
 def process_video(video_file: str, **kwargs) -> None:
-    setup_logging(kwargs.get('verbose', False))
+    verbose = kwargs.pop('verbose', False)
+    setup_logging(verbose)
     job = SubtitleJob(video_file, **kwargs)
     job.run()
 
