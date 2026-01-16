@@ -17,6 +17,7 @@ class Transcriber:
         self.client = genai.Client(api_key=API_KEY)
 
     def transcribe_chunk(self, audio_path: str, english_context: str, model_name: str, series_info: str | None = None) -> str:
+        file_name = None
         try:
             sample_file = self.client.files.upload(file=audio_path)
             file_name = sample_file.name
@@ -89,3 +90,10 @@ class Transcriber:
         except Exception as e:
             logger.error(f"Unexpected error in transcribe_chunk: {e}")
             raise e
+        finally:
+            if file_name:
+                try:
+                    self.client.files.delete(name=file_name)
+                    logger.debug(f"Deleted remote file: {file_name}")
+                except Exception as e:
+                    logger.warning(f"Failed to delete remote file {file_name}: {e}")
