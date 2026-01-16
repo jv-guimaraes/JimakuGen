@@ -193,7 +193,6 @@
 [809060ms - 809630ms] Hey!
 [810050ms - 814220ms] As embarrassing as it is, this is all thanks to wearing the miniskirt!
 [814220ms - 818100ms] Well then, I'm going to continue my homework in my room—
-[814220ms - 818100ms] room—
 [818100ms - 820230ms] Hot! It's hot!
 [821980ms - 826020ms] Why are there crispy noodles in my bag?!
 [826860ms - 830420ms] So it was just Tatewaku's bag all along?

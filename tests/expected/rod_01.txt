@@ -1,0 +1,300 @@
+[13210ms - 15380ms] Please watch your step, Mr. President.
+[16260ms - 16710ms] Freeze!!
+[16840ms - 18680ms] Hands up and turn around!!
+[29350ms - 30100ms] Shoot him!!
+[56960ms - 57550ms] Hey!
+[58550ms - 61130ms] Isn't this the Library?
+[61760ms - 63050ms] No, it isn't...!
+[65970ms - 66850ms] Blockheads.
+[70640ms - 73190ms] Oh well... then I'll go on foot.
+[73980ms - 75520ms] What are you?!
+[78610ms - 79320ms] I-jin.
+[185840ms - 186720ms] Hello...
+[187720ms - 189430ms] This is Readman.
+[190140ms - 192100ms] Yes, Yomiko Readman...
+[193100ms - 194850ms] Yes, I am.
+[196230ms - 197520ms] Yes!
+[198400ms - 199900ms] Yes, I'm totally free!
+[200440ms - 202480ms] Yes, that's fine.
+[203230ms - 204490ms] You can count on me!
+[205820ms - 206950ms] Just a moment please.
+[218540ms - 219630ms] Yes, go ahead.
+[220590ms - 221000ms] Yes...
+[222090ms - 223000ms] Yes!
+[223590ms - 225170ms] Yes, the twelfth, next week.
+[225880ms - 227590ms] OK, the week after.
+[228260ms - 232890ms] Not at all, thank you! Thank you very much!
+[236430ms - 238940ms] I did it!
+[374860ms - 376600ms] Note: "Immortal Beloved", the addressee of a love letter which composer Ludwig van Beethoven wrote in July 1812.
+[390170ms - 392130ms] Wait, don't take that.
+[392420ms - 393550ms] Why?
+[393930ms - 395430ms] I was going to buy that book.
+[396300ms - 399310ms] But I'm the one who picked it up.
+[400510ms - 401470ms] Well, then.
+[415950ms - 416910ms] Can I get this?
+[417110ms - 417950ms] 3500 Yen.
+[421240ms - 424290ms] Ah... I'm sorry, but could I pay at the end of the month?
+[431460ms - 432960ms] Immortal Beloved...
+[469460ms - 471290ms] What? What is this?!
+[475880ms - 477340ms] Bugs? What is this?!
+[520890ms - 522890ms] I'll take that book!
+[535360ms - 536070ms] Unmistakable.
+[554590ms - 555880ms] What happened?
+[562430ms - 564430ms] Please give my book back!
+[569640ms - 571850ms] I just started reading that!
+[575360ms - 576360ms] Give it back!
+[597250ms - 598340ms] Am I too late!?
+[605180ms - 605970ms] Yomiko!
+[607560ms - 608640ms] Joker??
+[609600ms - 611180ms] Yomiko! Why are you here?
+[611430ms - 613520ms] You too Joker!? Why are you here??
+[616270ms - 618190ms] I see. It was you.
+[618820ms - 624160ms] What in the world was that?
+[624410ms - 625780ms] I'll explain later.
+[626240ms - 629990ms] Yomiko... I mean, The Paper, come with me.
+[633080ms - 634250ms] Let me borrow that for a moment.
+[635790ms - 637210ms] I haven't read it yet!
+[637420ms - 639380ms] I'll return it after it's analyzed.
+[639550ms - 641880ms] What is it really? Geez!
+[642260ms - 643380ms] The world is in danger.
+[670030ms - 671450ms] Hi, Joker. That was fast.
+[671660ms - 672370ms] Paul.
+[672540ms - 674290ms] Please take a look at this immediately.
+[674580ms - 675120ms] OK.
+[680840ms - 684840ms] You shine brightest when surrounded by books.
+[685300ms - 686630ms] Do... do I?
+[687220ms - 690180ms] But, evidently you need improvement in all other areas.
+[694140ms - 695680ms] Gentleman is waiting for you.
+[700400ms - 703320ms] Mr. Gentleman, I've brought The Paper.
+[703780ms - 704900ms] Yomiko, eh?
+[706740ms - 708160ms] It's been a long time.
+[708950ms - 710660ms] You grew up.
+[711870ms - 714080ms] Please allow me to bring you up to speed.
+[714330ms - 715120ms] Very well...
+[716370ms - 716870ms] Well then.
+[719670ms - 720500ms] Two days ago...
+[720630ms - 723090ms] a mystery man appeared in Washington DC.
+[723920ms - 725590ms] He caused tremendous damage...
+[725760ms - 728630ms] eventually attacking the United States Library of Congress.
+[729180ms - 732970ms] He stole six hundred manuscripts and disappeared.
+[733350ms - 734430ms] Manuscripts?
+[734810ms - 735600ms] Yes.
+[736640ms - 740600ms] We have received a formal request from the US Library of Congress.
+[741270ms - 744610ms] It's for capturing the offender and returning the manuscripts.
+[745400ms - 748950ms] However, this case has bizarre elements.
+[750240ms - 753370ms] Concerning this footage of the mystery man...
+[753700ms - 755910ms] In other words... It's about this...
+[756250ms - 760000ms] The Elekiter, made by a Japanese inventor named Gennai Hiraga.
+[760500ms - 761290ms] Which is to say...
+[761460ms - 763920ms] there's the possibility that the mystery man is Hiraga Gennai.
+[764210ms - 767550ms] But Hiraga Gennai died years ago.
+[768510ms - 770010ms] Precisely...
+[773680ms - 776930ms] A year ago, stem-cell samples of I-jin were stolen...
+[777100ms - 779440ms] from the Department of Dominant Gene Conservation.
+[779850ms - 783310ms] Hiraga Gennai's name is on this list of stolen DNA.
+[784650ms - 788280ms] Someone may have used this DNA to bring Gennai back to life...
+[789030ms - 791950ms] with dreadful special abilities.
+[792280ms - 793570ms] For what purpose?
+[795160ms - 796160ms] Unknown.
+[802830ms - 804960ms] The entry in the grasshopper guy's note book...
+[805460ms - 807500ms] corresponds to Fabre's "Book of insects".
+[807670ms - 810670ms] That man is a clone of Jean-Henri Fabre.
+[811720ms - 813800ms] Why did Fabre attack me?
+[814050ms - 816810ms] You were not his target, the book was.
+[817510ms - 818520ms] This is the first of two books.
+[819140ms - 821520ms] The second book was among the stolen manuscripts.
+[822600ms - 827270ms] Gentleman, someone has concocted an evil plot utilizing I-jin DNA.
+[828190ms - 830780ms] Please devise an official operation to settle this business.
+[831700ms - 832530ms] All right.
+[832950ms - 834240ms] Thank you very much.
+[834780ms - 837830ms] Now, the British Library Special Engineer Force...
+[837910ms - 841000ms] shall commence "Operation Manuscript Retrieval."
+[841410ms - 845080ms] Excuse me, am I part of this, too?
+[845290ms - 846500ms] Of course you are.
+[847710ms - 849630ms] I... I have a substitute-teaching job...
+[849710ms - 851720ms] as a maternity leave replacement starting next week.
+[853180ms - 856100ms] Which do you think is more important? World peace or maternity leave?
+[856300ms - 861520ms] But... but, even if the world was at peace, without a job, I wouldn't be happy at all!
+[861930ms - 863440ms] We'll pay for your services.
+[863640ms - 864560ms] It's not enough!
+[865020ms - 867110ms] I've been buying so many books this month.
+[867650ms - 869230ms] Oh, and I have an unpaid balance on that book, also!
+[874570ms - 875990ms] You haven't changed.
+[876530ms - 878990ms] You're impetuous as usual.
+[880620ms - 885210ms] OK, I'll give you the second volume of that stolen book as an extra reward.
+[885580ms - 886380ms] Really?
+[886880ms - 887580ms] Yes.
+[888090ms - 889380ms] I... I'll try my best!
+[889550ms - 890750ms] Are you sure about that?
+[891000ms - 892920ms] I can fake it.
+[898350ms - 899430ms] What is it?
+[900060ms - 900970ms] The book...
+[901600ms - 903100ms] Analysis first.
+[908190ms - 908770ms] Gentleman.
+[909230ms - 912610ms] I would like to have a support staff and one more agent.
+[912940ms - 913990ms] Very well.
+[932170ms - 933630ms] Drake Anderson speaking.
+[948980ms - 951770ms] Now listen here! I picked a paper fortune this morning!
+[952320ms - 954490ms] It said "Great Fortune". You know, that's big time lucky!
+[955110ms - 956740ms] But half way through the day...
+[956950ms - 961240ms] stupid Joker called me and told me to support you!
+[962030ms - 963950ms] If "Great Fortune" gives me a day like this...
+[964160ms - 966290ms] what kind of disaster would it have been if I picked a bad fortune?
+[972540ms - 974510ms] Ah... Drake!
+[975210ms - 976300ms] It's a mission! Get down!
+[976590ms - 977720ms] Oh... yes!
+[988020ms - 989850ms] Mister Anderson, over here.
+[990020ms - 990980ms] Poor thing...
+[992270ms - 992940ms] What's wrong?
+[993190ms - 995030ms] The damage to this wall is odd.
+[995360ms - 998820ms] There's no residue of any explosive or fire damage either.
+[999660ms - 1003490ms] Has the other agent arrived?
+[1003830ms - 1004790ms] I don't know.
+[1005040ms - 1005490ms] And?
+[1005620ms - 1005990ms] Yes.
+[1006790ms - 1009620ms] What should I do now?
+[1009830ms - 1011580ms] Just don't bother anybody.
+[1011750ms - 1013840ms] Go to a corner to sit and daydream or something.
+[1014670ms - 1015750ms] What do you mean?
+[1016090ms - 1018920ms] This room appears to have become a microwave.
+[1019090ms - 1020340ms] Is it an Optical weapon?
+[1023640ms - 1025010ms] Corner... corner...
+[1029600ms - 1031850ms] Von Arnim's "Letters to the Assembly"!
+[1034190ms - 1036780ms] This one is Pincinelli's "Mundus Symbolicus"!
+[1048250ms - 1050910ms] "Gustav Flaubert" is just sitting here.
+[1057420ms - 1058130ms] You're...!
+[1059260ms - 1061380ms] We meet again, The Paper.
+[1063840ms - 1065470ms] Then, it's you!
+[1065600ms - 1066930ms] I'm Miss Deep.
+[1067430ms - 1068270ms] Deep?
+[1069020ms - 1070890ms] I've been hearing rumors about you.
+[1071310ms - 1073480ms] Though I was not expecting to see you in Tokyo.
+[1074730ms - 1076360ms] So you're after this book, too?
+[1076610ms - 1081490ms] It was an order from Joker. But I didn't think you were The Paper.
+[1083360ms - 1085700ms] I'm Yomiko, Yomiko Readman.
+[1086030ms - 1086830ms] I see.
+[1094500ms - 1096460ms] What's your name?
+[1096750ms - 1098920ms] I told you, I'm Miss Deep.
+[1099250ms - 1100210ms] Your real name?
+[1100460ms - 1103340ms] Are there any agents that give their real names at a first meeting?
+[1104220ms - 1104680ms] Yeah...
+[1104930ms - 1106550ms] Your awareness is insufficient.
+[1106970ms - 1110600ms] But, won't we get along better calling each other by name?
+[1111890ms - 1115940ms] We pair up for the mission. Codenames are enough.
+[1116480ms - 1117610ms] I see...
+[1118400ms - 1120480ms] Well, nice to meet you for now.
+[1122280ms - 1122650ms] Yes!
+[1125490ms - 1125950ms] Huh?
+[1136170ms - 1138090ms] This is my power.
+[1138380ms - 1140710ms] I can dive deeply into substances and pass through them.
+[1140880ms - 1141920ms] That's why I am Deep.
+[1143880ms - 1147340ms] You leave yourself wide open. The Paper is no big threat.
+[1154810ms - 1156480ms] I'm sorry... I was...
+[1157480ms - 1159020ms] My glasses are...
+[1160190ms - 1161730ms] So you do have some skills.
+[1162360ms - 1162860ms] Huh?
+[1168240ms - 1169990ms] I am Otto Lilienthal!
+[1170530ms - 1172040ms] I'll take that book!
+[1172330ms - 1172910ms] What?!
+[1190930ms - 1193010ms] A bullet can't kill the wind!
+[1193310ms - 1194810ms] You can never kill the wind!
+[1210280ms - 1211070ms] What a bad day...
+[1211160ms - 1212490ms] Drake!
+[1213490ms - 1215330ms] He took the book!
+[1216000ms - 1216870ms] Huh?
+[1219750ms - 1220750ms] I'll go after him!
+[1221250ms - 1223340ms] The enemy was one of the I-jin, report it!
+[1224760ms - 1225590ms] Who is this?
+[1225880ms - 1227220ms] Oh, my partner...
+[1227420ms - 1228590ms] Miss Deep.
+[1231470ms - 1232800ms] What's your fortune today?
+[1233470ms - 1234060ms] Huh?
+[1240600ms - 1243480ms] Malone from the FBI. Connect me to the Pentagon.
+[1248780ms - 1249700ms] Come in.
+[1250360ms - 1252070ms] I brought the data.
+[1253490ms - 1255120ms] I-jin have been spotted!
+[1255410ms - 1257370ms] This one's name is "Otto Lilienthal".
+[1257950ms - 1259540ms] Who is that?
+[1260830ms - 1263420ms] He was called, "the Aerial King of Germany".
+[1264000ms - 1265300ms] Mister Gentleman?!
+[1265800ms - 1268550ms] An obscure genius during the glider generation.
+[1269220ms - 1271380ms] That genius is heading to New York.
+[1272300ms - 1273720ms] At phenomenal speed!
+[1279310ms - 1283940ms] Echo 1, 2, 3. We spotted the target, an unidentified flying object.
+[1284690ms - 1285690ms] Shoot him down!
+[1290070ms - 1292240ms] They're flying such pedestrian crafts.
+[1307130ms - 1309090ms] Still one left, eh?
+[1319850ms - 1322140ms] Echo 1, 2 and 3 shot down.
+[1322690ms - 1324810ms] The US army is having a hard time.
+[1325360ms - 1327230ms] You can't fight him conventionally.
+[1327520ms - 1328650ms] My book...
+[1328940ms - 1329940ms] My book...
+[1330400ms - 1332320ms] All units converge on target.
+[1332950ms - 1336320ms] All units, prepare for battle! Fire as soon as you have a visual.
+[1337950ms - 1339080ms] A Samurai?!
+[1353840ms - 1355510ms] All... destroyed!
+[1363440ms - 1364640ms] Bail out!
+[1386750ms - 1388840ms] What can we do? We can't catch him on foot.
+[1389090ms - 1391420ms] I know. But there must be some way...
+[1392590ms - 1394090ms] There is a way!
+[1413030ms - 1414570ms] You're going after him in that? Seriously?
+[1414780ms - 1415610ms] Unbelievable...
+[1416150ms - 1416950ms] Hurry!
+[1419320ms - 1420280ms] Take this.
+[1421870ms - 1423620ms] I've never had a mission like this.
+[1426670ms - 1428040ms] Don't blame me if you fall off!
+[1428290ms - 1429130ms] I'll blame you!
+[1429880ms - 1430500ms] Three...
+[1431170ms - 1431960ms] Two...
+[1432300ms - 1433050ms] One...
+[1433800ms - 1435630ms] Fire!!
+[1442140ms - 1443890ms] That woman is misfortune.
+[1444310ms - 1445640ms] Hey! What's going on?
+[1445770ms - 1447770ms] Sorry! I forgot the tail assembly!
+[1451610ms - 1453070ms] Successful takeoff!
+[1453480ms - 1455280ms] I thought it was falling.
+[1464120ms - 1465870ms] It's about time to go back... mm?
+[1488060ms - 1489850ms] Please give my book back!
+[1491480ms - 1493230ms] Land slowly, now!
+[1493900ms - 1494940ms] Don't underestimate me!
+[1495530ms - 1498650ms] I'll show you why I was called "The Aerial King"!
+[1503490ms - 1506580ms] Flying in that thing! How shameless!
+[1506750ms - 1507790ms] This is ridiculous!
+[1508000ms - 1509080ms] He's up to something!
+[1514500ms - 1515710ms] Spin! Spin!!
+[1515800ms - 1516670ms] Crash!!
+[1516840ms - 1517840ms] Hold on!
+[1532650ms - 1533560ms] This sucks!
+[1533940ms - 1534770ms] I am not happy!
+[1535270ms - 1537780ms] Ms. Deep! I'm changing tactics!
+[1548240ms - 1549370ms] Ok, I'm going.
+[1549620ms - 1550620ms] Please!
+[1573020ms - 1574060ms] Fall! Fall!
+[1574770ms - 1576060ms] Eat some dust!
+[1581900ms - 1583360ms] You...!
+[1583740ms - 1584740ms] Witch!!
+[1585280ms - 1587660ms] If you're a witch you should fly with a broom.
+[1591790ms - 1593000ms] What?!
+[1596580ms - 1599090ms] My book. Please give it back!
+[1601970ms - 1603220ms] Give it back to me!
+[1603630ms - 1605010ms] You...!!
+[1622400ms - 1623820ms] Paper...
+[1625990ms - 1626570ms] The book...
+[1644010ms - 1645300ms] Die! Die!
+[1655190ms - 1657690ms] Your sky comes to a dead end here.
+[1658270ms - 1661020ms] Die!!
+[1666150ms - 1668360ms] Die!!
+[1670370ms - 1671330ms] The book!
+[1700650ms - 1702150ms] You're an idiot, aren't you?
+[1703440ms - 1705490ms] Don't you ever think about the consequences?
+[1705940ms - 1707860ms] Is that book more important than your life?
+[1711530ms - 1714740ms] But at least you're not a useless idiot, after all.
+[1730680ms - 1732470ms] Thank you very much Miss Dee...
+[1732720ms - 1735060ms] Nancy. Nancy Makuhari.
+[1735350ms - 1736720ms] Eh? But...
+[1736890ms - 1740850ms] It's fine now. To be honest, I hate that codename.
+[1741600ms - 1742730ms] It's not cute at all.
+[1743110ms - 1745820ms] I'm Yomiko, Yomiko Readman.
+[1746400ms - 1747490ms] I heard that before.
+[1749450ms - 1751450ms] He was a blockhead, even on the verge of death.
+[1754080ms - 1755870ms] Oh well, let's report back.
