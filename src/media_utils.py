@@ -191,6 +191,14 @@ class MediaProcessor:
         ]
         run_command(cmd)
 
+    def is_valid_media(self, video_file: str) -> bool:
+        cmd = [self.ffprobe_path, "-v", "error", video_file]
+        try:
+            run_command(cmd)
+            return True
+        except Exception:
+            return False
+
 def group_events(events: list[SubtitleEvent], target_duration: float = CHUNK_TARGET_SECONDS) -> list[list[SubtitleEvent]]:
     clusters = []
     if not events: return clusters

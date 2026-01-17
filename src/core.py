@@ -60,6 +60,11 @@ class SubtitleJob:
         try:
             os.makedirs(CACHE_DIR, exist_ok=True)
             
+            if not self.media.is_valid_media(self.video_file):
+                logger.error(f"Invalid media file: {self.video_file}")
+                console.print(f"[bold red]Error:[/bold red] '{self.video_file}' is not a valid media file or cannot be read.")
+                return
+
             with Progress(
                 SpinnerColumn(),
                 TextColumn("[progress.description]{task.description}"),
@@ -71,19 +76,40 @@ class SubtitleJob:
                 # 1. Track Selection
                 setup_progress.update(task_id, description="Selecting tracks...")
                 best_sub = self.media.get_best_subtitle_track(self.video_file)
+                best_audio = self.media.get_best_audio_track(self.video_file)
+
                 if not best_sub:
+                    setup_progress.stop()
                     logger.error("No suitable English subtitle track found.")
+                    console.print("[bold red]Error:[/bold red] No suitable English subtitle track found in the video.")
                     return
 
-                best_audio = self.media.get_best_audio_track(self.video_file)
-                audio_index = best_audio['index'] if best_audio else "a:0"
+                if not best_audio:
+                    setup_progress.stop()
+                    logger.error("No audio track found.")
+                    console.print("[bold red]Error:[/bold red] No audio track found in the video.")
+                    return
+
+                audio_index = best_audio['index']
                 
                 # 2. Subtitle Extraction & Grouping
                 setup_progress.update(task_id, description="Extracting subtitles...")
                 temp_ass = os.path.join(self.temp_dir, "extracted.ass")
-                self.media.extract_subtitles(self.video_file, best_sub['index'], temp_ass)
+                try:
+                    self.media.extract_subtitles(self.video_file, best_sub['index'], temp_ass)
+                except Exception as e:
+                    setup_progress.stop()
+                    logger.error(f"Failed to extract subtitles: {e}")
+                    console.print(f"[bold red]Error:[/bold red] Failed to extract subtitles with FFmpeg.")
+                    return
                 
                 events = get_dialogue_from_ass(temp_ass)
+                if not events:
+                    setup_progress.stop()
+                    logger.error("No dialogue events found in extracted subtitles.")
+                    console.print("[bold red]Error:[/bold red] No dialogue events found. The subtitle track might be empty or incompatible.")
+                    return
+
                 clusters = group_events(events, target_duration=self.chunk_size)
                 total_chunks = len(clusters)
                 if self.limit:
@@ -141,7 +167,13 @@ class SubtitleJob:
                         console.print(f"[green]✓[/green] Subtitles saved to: [bold]{self.output_path}[/bold]")
             else:
                 logger.error("No subtitles were generated.")
+                console.print("[bold yellow]Warning:[/bold yellow] No subtitles were generated. Check the audio track and model output.")
 
+        except Exception as e:
+            logger.exception("An unexpected error occurred during the transcription job.")
+            console.print(f"[bold red]Critical Error:[/bold red] {e}")
+            if self.verbose:
+                console.print_exception()
         finally:
             self.cleanup()
 
@@ -189,6 +221,8 @@ class SubtitleJob:
                     return None
                 except Exception as e:
                     logger.error(f"Error in chunk {index}: {e}")
+                    if not self.verbose:
+                        console.print(f"[{timestamp}] {chunk_label}: [bold red]Error: {e}[/bold red]")
                     self.stop_requested = True
                     return None
                 finally:
@@ -212,9 +246,16 @@ class SubtitleJob:
         return None
 
     def _save_srt(self):
-        with open(self.output_path, "w", encoding="utf-8") as f:
-            for k, sub in enumerate(self.final_subs):
-                f.write(f"{k+1}\n{ms_to_srt_time(sub['start'])} --> {ms_to_srt_time(sub['end'])}\n{sub['text']}\n\n")
+        try:
+            with open(self.output_path, "w", encoding="utf-8") as f:
+                for k, sub in enumerate(self.final_subs):
+                    f.write(f"{k+1}\n{ms_to_srt_time(sub['start'])} --> {ms_to_srt_time(sub['end'])}\n{sub['text']}\n\n")
+        except PermissionError:
+            logger.error(f"Permission denied when writing to {self.output_path}")
+            console.print(f"[bold red]Error:[/bold red] Permission denied when writing to [bold]{self.output_path}[/bold]")
+        except Exception as e:
+            logger.error(f"Failed to save subtitles: {e}")
+            console.print(f"[bold red]Error:[/bold red] Failed to save subtitles to {self.output_path}: {e}")
 
 def process_video(video_file: str, **kwargs) -> None:
     verbose = kwargs.get('verbose', False)
