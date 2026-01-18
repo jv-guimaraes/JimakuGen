@@ -57,11 +57,14 @@ def get_dialogue_from_ass(ass_path: str) -> list[SubtitleEvent]:
     for i, event in enumerate(subs):
         stats['total'] += 1
         style = event.style.lower()
+        name = event.name.lower()
         text_raw = event.text
         
-        # 1. Style Blacklist
-        if any(x in style for x in ['op', 'ed', 'song', 'sign', 'title', 'credit', 'note']):
-            logger.debug(f"Line {i+1}: Skipped due to style '{style}' - '{text_raw}'")
+        # 1. Style/Name Blacklist
+        # Regex matches start-of-token to avoid false positives (e.g. 'Top' containing 'op')
+        if re.search(r'(?:^|[\W_])(op|ed|song|sign|title|credit|note)', style) or \
+           re.search(r'(?:^|[\W_])(op|ed|song|sign|title|credit|note)', name):
+            logger.debug(f"Line {i+1}: Skipped due to style/name '{style}/{name}' - '{text_raw}'")
             stats['style'] += 1
             continue
             
