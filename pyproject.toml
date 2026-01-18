@@ -10,6 +10,7 @@ dependencies = [
     "pysubs2",
     "typer",
     "rich",
+    "wikipedia",
 ]
 
 [project.scripts]
