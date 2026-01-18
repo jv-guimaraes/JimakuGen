@@ -20,12 +20,30 @@ Verify that FFmpeg and credentials are set up correctly:
 jimakugen check
 ```
 
+### Generating Context
+Generate a context reference file from Wikipedia to improve transcription accuracy:
+```bash
+jimakugen context "僕の心のヤバイやつ"
+```
+This will search Japanese Wikipedia by default and use Gemini to summarize character names and terminology into a Markdown file.
+
 ### Generating Subtitles
 Run the transcription on a video file:
 ```bash
 jimakugen run video.mkv
 ```
-This will generate `video.ja.srt` in the same directory.
+This will generate `video.ja.srt` in the same directory. You can use the generated context file:
+```bash
+jimakugen run video.mkv --context boku_no_kokoro_no_yabai_yatsu_context.md
+```
+
+### Options for `context`
+
+| Option | Description |
+| :--- | :--- |
+| `--output, -o <path>` | Custom output path for the markdown file. |
+| `--lang <lang>` | Wikipedia language code (default: `ja`). |
+| `--model <name>` | Gemini model to use for summarization. |
 
 ### Options for `run`
 

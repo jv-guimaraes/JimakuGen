@@ -6,10 +6,44 @@ from rich.panel import Panel
 from rich.prompt import Prompt
 from src.config import PROJECT_ROOT, API_KEY, DEFAULT_MODEL
 from src.core import process_video
+from src.context_generator import ContextGenerator, get_wiki_content
 import logging
 
 app = typer.Typer(help="JimakuGen: AI-powered Japanese subtitle generator.")
 console = Console()
+
+@app.command()
+def context(
+    query: str = typer.Argument(..., help="Search query for Wikipedia (e.g., anime title)"),
+    output: Path = typer.Option(None, "--output", "-o", help="Custom output path for the context markdown file"),
+    lang: str = typer.Option("ja", "--lang", help="Wikipedia language code (default: ja)"),
+    model: str = typer.Option(DEFAULT_MODEL, "--model", help="Gemini model to use for summarization"),
+):
+    """
+    Generate a context reference file from Wikipedia for better transcription accuracy.
+    """
+    if not os.getenv("GOOGLE_API_KEY") and not API_KEY:
+        console.print(Panel("Google API Key not found. Please run [bold]jimakugen config[/bold] first.", title="Error", border_style="red"))
+        raise typer.Exit(code=1)
+
+    try:
+        with console.status(f"[bold green]Searching Wikipedia for '{query}' ({lang})...[/bold green]"):
+            raw_text = get_wiki_content(query, lang=lang)
+        
+        with console.status("[bold green]Generating context summary with Gemini...[/bold green]"):
+            generator = ContextGenerator(model_name=model)
+            summary = generator.generate_summary(raw_text, query)
+        
+        if not output:
+            safe_name = query.replace(" ", "_").lower()
+            output = Path(f"{safe_name}_context.md")
+        
+        output.write_text(summary, encoding="utf-8")
+        console.print(Panel(f"Context saved to [bold]{output}[/bold]", title="Success", border_style="green"))
+
+    except Exception as e:
+        console.print(f"[red]Error:[/red] {str(e)}")
+        raise typer.Exit(code=1)
 
 @app.command()
 def config(

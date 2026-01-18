@@ -3,3 +3,4 @@ python-dotenv
 pysubs2
 typer
 rich
+wikipedia
