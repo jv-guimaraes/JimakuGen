@@ -211,7 +211,16 @@ def group_events(events: list[SubtitleEvent], target_duration: float = CHUNK_TAR
         curr = events[i]
         gap = (curr['start'] - prev['end']) / 1000.0
         duration = (curr['end'] - current_cluster[0]['start']) / 1000.0
+        
+        should_split = False
         if duration > target_duration and gap > MAX_GAP_SECONDS:
+            should_split = True
+        elif duration > (target_duration * 1.5) and gap > 0.5:
+            should_split = True
+        elif duration > (target_duration * 2.0) and gap > 0.1:
+            should_split = True
+
+        if should_split:
             clusters.append(current_cluster)
             current_cluster = [curr]
         else:
